@@ -3,27 +3,25 @@ import L from "leaflet";
 import icon from "leaflet/dist/images/marker-icon.png";
 import "leaflet/dist/leaflet.css";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
-import {
-  MapContainer,
-  TileLayer,
-  Marker,
-  Popup,
-  useMapEvents,
-} from "react-leaflet";
+import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
 import { Button, Typography } from "@material-ui/core";
 
-const MapComponent = ({ socket }) => {
+const MapComponent = ({ socket, setImageUrls }) => {
   const position = [51.505, -0.09];
   const [markerPos, setMarkerPos] = useState([51.505, -0.09]);
 
   const [distance, setDistance] = useState(-1);
   const [roundPosition, setRoundPosition] = useState(undefined);
 
+  const [nextAvailable, setNextAvailable] = useState(false);
+
   useEffect(() => {
     if (!socket) return;
     socket.on("handleCorrectPosition", (data) => {
       setDistance(+data["distance"]);
+      console.log(data);
       setRoundPosition(data["correctPosition"]);
+      setNextAvailable(true);
     });
   }, [socket]);
   const defaultIcon = (color) =>
@@ -56,6 +54,14 @@ const MapComponent = ({ socket }) => {
     });
   };
 
+  const handleNextPosition = () => {
+    socket.emit("handleGetNextPosition", {});
+    setImageUrls([]);
+    setRoundPosition(undefined);
+    setNextAvailable(false);
+    setDistance(-1);
+  };
+
   return (
     <div style={{ padding: 20 }}>
       <MapContainer
@@ -86,6 +92,13 @@ const MapComponent = ({ socket }) => {
           Send
         </Button>
       </div>
+      {nextAvailable && (
+        <div style={{ textAlign: "center", paddingBottom: 20 }}>
+          <Button onClick={handleNextPosition} variant="contained">
+            Get Next Position
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

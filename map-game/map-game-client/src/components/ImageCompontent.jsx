@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Pannellum } from "pannellum-react";
-import "./ImageComponent.css";
 import { CircularProgress, Typography } from "@material-ui/core";
+import "./ImageComponent.css";
+import MapComponent from "./MapComponent";
 
 const ImageComponent = ({ socket }) => {
   const getImage = (imageKey) => {
     socket.emit("getImageData", { imageKey });
-    socket.on("getImage", (data) => {
-      console.log("image data", data);
-    });
+    socket.on("getImage", (data) => {});
   };
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -33,6 +32,7 @@ const ImageComponent = ({ socket }) => {
           const url = getImageUrlFromKey(currKey);
           myImageUrls.push(url);
         }
+        setCurrentIndex(0);
         setImageUrls(myImageUrls);
         setImgUrl(myImageUrls[0]);
       }
@@ -40,19 +40,17 @@ const ImageComponent = ({ socket }) => {
   }, [socket]);
 
   const changeImage = (newIndex) => {
-    console.log("currentIndex", newIndex);
-    console.log(imageUrls[newIndex]);
     setImgUrl(imageUrls[newIndex]);
   };
 
   const incIndex = () => {
     let newIndex = -1;
     if (currentIndex === imageUrls.length - 1) {
-      setCurrentIndex(0);
       newIndex = 0;
+      setCurrentIndex(0);
     } else {
-      setCurrentIndex(currentIndex + 1);
       newIndex = currentIndex + 1;
+      setCurrentIndex(currentIndex + 1);
     }
     changeImage(newIndex);
   };
@@ -71,7 +69,6 @@ const ImageComponent = ({ socket }) => {
 
   return (
     <div>
-      <h4>Image component</h4>
       {imageUrls.length > 0 ? (
         <div className="pano-container">
           <Typography style={{ textAlign: "center" }}>
@@ -96,9 +93,6 @@ const ImageComponent = ({ socket }) => {
             yaw={180}
             hfov={110}
             autoLoad
-            onLoad={() => {
-              console.log("panorama loaded");
-            }}
           />
         </div>
       ) : (
@@ -106,6 +100,7 @@ const ImageComponent = ({ socket }) => {
           <CircularProgress />
         </div>
       )}
+      <MapComponent socket={socket} setImageUrls={setImageUrls} />
     </div>
   );
 };

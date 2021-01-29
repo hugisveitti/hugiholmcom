@@ -67,51 +67,6 @@ module.exports = (app, server) => {
     });
   };
 
-  const getRandomLatLng = () => {
-    const lng = parseInt(Math.random() * 180 - 70);
-    const lat = parseInt(Math.random() * 360 - 180);
-    console.log("getting random corr", { lat, lng });
-    return { lat, lng };
-  };
-
-  const getSequence = async (socket, game) => {
-    // const url = `https://a.mapillary.com/v3/sequences?bbox=16.430300,7.241686,16.438757,7.253186&userkeys=AGfe-07BEJX0-kxpu9J3rA&client_id=${mapillaryAPIKey}`;
-    // min_longitude,min_latitude,max_longitude,max_latitu
-    let { lat, lng } = getRandomLatLng();
-    console.log("lng lat", lng, lat);
-    let perpage = "per_page=4";
-    const pano = "pano=true";
-    // const bbox = `bbox=${lng},${lat},${lng + 2},${lat + 2}`;
-    // const url = `https://a.mapillary.com/v3/sequences?${bbox}&${pano}&min_quality_score=3&${perpage}&client_id=${mapillaryAPIKey}`;
-    let radius = "radius=10000000000";
-    const getImageWithLatLng = (myLat, myLng, imageKnown) => {
-      if (imageKnown) {
-        radius = "radius=1000";
-        perpage = "per_page=30";
-      }
-      const bbox = `closeto=${myLng},${myLat}`;
-      const url = `https://a.mapillary.com/v3/images?${bbox}&${pano}&min_quality_score=3&${perpage}&${radius}&client_id=${mapillaryAPIKey}`;
-      request(options(url), (err, apiRes, body) => {
-        const data = JSON.parse(body);
-        console.log(data["features"].length);
-        if (data["features"].length < 3) {
-          console.log("not enough data");
-          const newCoor = getRandomLatLng();
-          getImageWithLatLng(newCoor.lat, newCoor.lng, false);
-        } else if (!imageKnown) {
-          const coor = data["features"][0]["geometry"]["coordinates"];
-          getImageWithLatLng(coor[1], coor[0], true);
-        } else {
-          console.log("body got");
-          console.log("my lat lang", myLat, myLng);
-          socket.emit("sendSequence", data);
-          game.setCurrentPosition(myLat, myLng);
-        }
-      });
-    };
-    getImageWithLatLng(lat, lng, false);
-  };
-
   const handleGuess = (socket, game) => {
     socket.on("handleSendGuess", (data) => {
       console.log("guess received", data);
@@ -126,14 +81,23 @@ module.exports = (app, server) => {
     });
   };
 
+  const handleGetNextPosition = (socket, game) => {
+    socket.on("handleGetNextPosition", (data) => {
+      game.getNextRandomPosition();
+    });
+  };
+
   io.on("connection", (socket) => {
     console.log("connection made");
     socket.emit("connectedToRoomCallBack", { message: "Hello from socket" });
     clients[socket.id] = socket;
-    const game = new MapGame(io);
-    getSequence(socket, game);
+    const game = new MapGame(io, socket);
+    game.getNextRandomPosition();
+    // getSequence(socket, game);
 
     handleGuess(socket, game);
+
+    handleGetNextPosition(socket, game);
 
     socket.on("disconnect", (data) => {
       delete clients[socket.id];

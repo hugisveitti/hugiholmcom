@@ -2,25 +2,23 @@ import React, { useState, useEffect } from "react";
 import socketIOClient from "socket.io-client";
 import ImageComponent from "./ImageCompontent";
 import { config } from "../config";
-import MapComponent from "./MapComponent";
 
 const ENDPOINT = config.ENDPOINT;
 const FrontPage = () => {
   const [socket, setSocket] = useState(undefined);
-  console.log("config", config);
   useEffect(() => {
     const newSocket = socketIOClient.connect(ENDPOINT);
     setSocket(newSocket);
-    newSocket.on("connectedToRoomCallBack", (data) => {
-      console.log("callback", data);
-    });
+    newSocket.on("connectedToRoomCallBack", (data) => {});
   }, []);
 
   return (
     <div>
-      <h2>Frontpage</h2>
+      <div style={{ textAlign: "center" }}>
+        <h2>Map game</h2>
+        <p>Still in development</p>
+      </div>
       <ImageComponent socket={socket} />
-      <MapComponent socket={socket} />
     </div>
   );
 };
