@@ -3,65 +3,96 @@ import L from "leaflet";
 import icon from "leaflet/dist/images/marker-icon.png";
 import "leaflet/dist/leaflet.css";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
-import { MapContainer, TileLayer, Marker, useMapEvents } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  useMapEvents,
+  Polyline,
+} from "react-leaflet";
 import { Button, Typography } from "@material-ui/core";
 
-const MapComponent = ({ socket, setImageUrls }) => {
+const MapComponent = ({
+  socket,
+  setImageUrls,
+  imageLoaded,
+  guessSentCallback,
+  isLeader,
+  distance,
+  roundPosition,
+  setGuessSent,
+  guessSent,
+}) => {
   const position = [51.505, -0.09];
-  const [markerPos, setMarkerPos] = useState([51.505, -0.09]);
-
-  const [distance, setDistance] = useState(-1);
-  const [roundPosition, setRoundPosition] = useState(undefined);
-
-  const [nextAvailable, setNextAvailable] = useState(false);
+  const [markerPos, setMarkerPos] = useState({ lat: 51.505, lng: -0.09 });
 
   useEffect(() => {
     if (!socket) return;
-    socket.on("handleCorrectPosition", (data) => {
-      setDistance(+data["distance"]);
-      console.log(data);
-      setRoundPosition(data["correctPosition"]);
-      setNextAvailable(true);
-    });
+    //  socket.on("handleCorrectPosition", (data) => {
+    //    setDistance(+data["distance"]);
+    //    setRoundPosition(data["correctPosition"]);
+    //    setNextAvailable(true);
+    //  });
   }, [socket]);
-  const defaultIcon = (color) =>
+
+  const defaultIcon = (correctIcon) =>
     L.icon({
-      iconUrl: icon,
+      iconUrl: correctIcon
+        ? icon
+        : "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-yellow.png",
       shadowUrl: iconShadow,
       iconSize: [25, 41],
       iconAnchor: [10, 41],
-      html: `<span style="background-color:${color}" />`,
     });
+
+  const CorrectMarker = () => {
+    if (!roundPosition) return null;
+    return <Marker icon={defaultIcon(true)} position={roundPosition} />;
+  };
+
+  const LineBetweenMarkers = () => {
+    if (!roundPosition) return null;
+    return (
+      <Polyline
+        positions={[
+          [roundPosition.lat, roundPosition.lng],
+          [markerPos.lat, markerPos.lng],
+        ]}
+      />
+    );
+  };
 
   const MyMarker = () => {
     useMapEvents({
       click(e) {
-        console.log("map cliiiick", e);
-        setMarkerPos([e.latlng.lat, e.latlng.lng]);
+        setMarkerPos({ lat: e.latlng.lat, lng: e.latlng.lng });
       },
     });
-    return <Marker icon={defaultIcon("blue")} position={markerPos} />;
-  };
 
-  const CorrectMarker = () => {
-    if (!roundPosition) return null;
-    return <Marker icon={defaultIcon("green")} position={roundPosition} />;
+    return (
+      <>
+        <Marker icon={defaultIcon(false)} position={markerPos} />
+        <CorrectMarker />
+        <LineBetweenMarkers />
+      </>
+    );
   };
 
   const handleGuessSent = () => {
+    guessSentCallback();
+    setGuessSent(true);
     socket.emit("handleSendGuess", {
-      position: { lat: markerPos[0], lng: markerPos[1] },
+      position: { lat: markerPos.lat, lng: markerPos.lng },
     });
   };
 
-  const handleNextPosition = () => {
-    socket.emit("handleGetNextPosition", {});
+  const startNextRound = () => {
+    socket.emit("handleStartNextRound", {});
     setImageUrls([]);
-    setRoundPosition(undefined);
-    setNextAvailable(false);
-    setDistance(-1);
+    // setRoundPosition(undefined);
+    setGuessSent(false);
+    // setDistance(-1);
   };
-
   return (
     <div style={{ padding: 20 }}>
       <MapContainer
@@ -70,34 +101,56 @@ const MapComponent = ({ socket, setImageUrls }) => {
         style={{
           height: 400,
           width: "70%",
-          // minWidth: 275,
           margin: "auto",
           marginBottom: 15,
         }}
       >
         <MyMarker />
-        <CorrectMarker />
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
       </MapContainer>
-      {distance !== -1 && (
-        <Typography style={{ textAlign: "center" }}>
-          You were {distance.toLocaleString()} KM from the correct position.
-        </Typography>
+      {roundPosition && (
+        <React.Fragment>
+          {distance !== -1 ? (
+            <Typography style={{ textAlign: "center" }}>
+              You were {distance.toLocaleString()} KM from the correct position.
+            </Typography>
+          ) : (
+            <Typography style={{ textAlign: "center" }}>
+              You did not guess this round.
+            </Typography>
+          )}
+        </React.Fragment>
       )}
-      <div style={{ textAlign: "center", paddingBottom: 20 }}>
-        <Button onClick={handleGuessSent} variant="contained">
-          Send
-        </Button>
-      </div>
-      {nextAvailable && (
+
+      {imageLoaded && !roundPosition && (
         <div style={{ textAlign: "center", paddingBottom: 20 }}>
-          <Button onClick={handleNextPosition} variant="contained">
-            Get Next Position
+          <Button onClick={handleGuessSent} variant="contained">
+            Send
           </Button>
         </div>
+      )}
+      {guessSent && !roundPosition && (
+        <div style={{ textAlign: "center" }}>
+          <Typography>Waiting for other players to finish.</Typography>
+        </div>
+      )}
+      {guessSent && roundPosition && (
+        <React.Fragment>
+          {isLeader ? (
+            <div style={{ textAlign: "center", paddingBottom: 20 }}>
+              <Button onClick={startNextRound} variant="contained">
+                Start next round
+              </Button>
+            </div>
+          ) : (
+            <div style={{ textAlign: "center", paddingBottom: 20 }}>
+              <Typography>Waiting for leader to start next round</Typography>
+            </div>
+          )}
+        </React.Fragment>
       )}
     </div>
   );
