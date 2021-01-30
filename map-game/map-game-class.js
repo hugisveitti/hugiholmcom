@@ -85,7 +85,7 @@ const getRandomLatLng = () => {
   }
 };
 
-const getSequence = async (socket, game) => {
+const getSequence = (game, callBack) => {
   // const url = `https://a.mapillary.com/v3/sequences?bbox=16.430300,7.241686,16.438757,7.253186&userkeys=AGfe-07BEJX0-kxpu9J3rA&client_id=${mapillaryAPIKey}`;
   // min_longitude,min_latitude,max_longitude,max_latitu
   let { lat, lng } = getRandomLatLng();
@@ -97,7 +97,7 @@ const getSequence = async (socket, game) => {
   const getImageWithLatLng = (myLat, myLng, imageKnown) => {
     if (imageKnown) {
       radius = "radius=100000";
-      perpage = "per_page=30";
+      perpage = "per_page=50";
     }
     const bbox = `closeto=${myLng},${myLat}`;
     const url = `https://a.mapillary.com/v3/images?${bbox}&${pano}&min_quality_score=3&${perpage}&${radius}&client_id=${mapillaryAPIKey}`;
@@ -114,8 +114,10 @@ const getSequence = async (socket, game) => {
       } else {
         console.log("body got");
         console.log("my lat lang", myLat, myLng);
-        socket.emit("sendSequence", data);
+        // socket.emit("sendSequence", data);
+        game.setCurrentGameData(data);
         game.setCurrentPosition(myLat, myLng);
+        callBack();
       }
     });
   };
@@ -123,21 +125,122 @@ const getSequence = async (socket, game) => {
 };
 
 class Player {
-  constructor(socket) {
+  constructor(socket, playerName) {
     this.score = 0;
     this.currentGuess = { lat: 0, lng: 0 };
     this.socket = socket;
+    this.playerName = playerName;
+    this.game = undefined;
+    this.handleGuess();
+    this.watchGetNextRound();
+    this.connectedToWaitingRoom();
+    this.isGameLeader = false;
+    this.playerIndex = -1;
+    this.roundGuessGotten = false;
+    this.lastDistance = -1;
+  }
+
+  handleStartGame() {
+    if (this.isGameLeader) {
+      this.socket.on("handleStartGame", (data) => {
+        const { timePerRound, numberOfRounds } = data;
+        this.game.startGame(timePerRound, numberOfRounds);
+      });
+    }
+  }
+
+  setIsGameLeader() {
+    this.isGameLeader = true;
+  }
+
+  connectedToWaitingRoom() {
+    this.socket.once("connectedToWaitingRoom", () => {
+      this.socket.emit("connectedToWaitingRoomCallback", {
+        roomName: this.game.roomName,
+        players: this.game.playerNames,
+        isLeader: this.isGameLeader,
+      });
+    });
+  }
+
+  handleGuess() {
+    this.socket.on("handleSendGuess", (data) => {
+      console.log("guess received", data);
+      const currentDistance = Math.floor(
+        this.game.calculateDistance(data.position.lat, data.position.lng)
+      );
+
+      // this.socket.emit("handleCorrectPosition", {
+      //   distance: currentDistance,
+      //    correctPosition: this.game.currentPosition,
+      // });
+      this.roundGuessGotten = true;
+      this.lastDistance = currentDistance;
+      this.score += Math.max(this.game.maxScore - currentDistance, 0);
+      this.game.playerNames[this.playerIndex].score = this.score;
+      this.game.addPlayerGuessed(this);
+    });
+  }
+
+  watchGetNextRound() {
+    this.socket.on("handleStartNextRound", (data) => {
+      console.log("handle start next round");
+      this.game.getNextRandomPosition();
+    });
+  }
+
+  setGame(game) {
+    this.game = game;
+  }
+
+  handleRoundOver() {
+    this.socket.emit("handleRoundOver", {
+      isGameLeader: this.isGameLeader,
+      distance: this.lastDistance,
+      correctPosition: this.game.currentPosition,
+    });
+    this.lastDistance = -1;
   }
 }
 
 class MapGame {
-  constructor(io, socket) {
+  constructor(io, socket, roomName) {
     this.players = {};
     this.numberOfRounds = 5;
     this.currentRound = 0;
     this.currentPosition = { lat: 0, lng: 0 };
     this.io = io;
     this.socket = socket;
+    this.gameStarted = false;
+    this.leader = undefined;
+    this.gameFinished = false;
+    this.roomName = roomName;
+    this.playerNames = [];
+    this.timePerRound = 60;
+    this.currentGameData = undefined;
+    this.maxScore = 5000;
+    this.playersGuessed = [];
+    this.timeoutFunction = undefined;
+  }
+
+  sendRoundOverToPlayers() {
+    const playerKeys = Object.keys(this.players);
+    for (let i = 0; i < playerKeys.length; i++) {
+      this.players[playerKeys[i]].handleRoundOver();
+    }
+  }
+
+  addPlayerGuessed(player) {
+    console.log("add player guessed");
+    this.playersGuessed.push(player);
+    if (this.playersGuessed.length === this.playerNames.length) {
+      clearTimeout(this.timeoutFunction);
+      this.sendRoundOverToPlayers();
+    }
+  }
+
+  setCurrentGameData(data) {
+    this.currentGameData = data;
   }
 
   calculateDistance(lat, lng) {
@@ -155,8 +258,87 @@ class MapGame {
     this.currentPosition.lng = lng;
   }
 
+  monitorTime() {
+    console.log("start monitorin time");
+    this.timeoutFunction = setTimeout(() => {
+      console.log("round over");
+      this.sendRoundOverToPlayers();
+      // this.getNextRandomPosition();
+    }, this.timePerRound * 1000);
+  }
+
+  gameOver() {
+    this.io
+      .to(this.roomName)
+      .emit("handleGameOver", { players: this.playerNames });
+  }
+
+  startRound() {
+    this.currentRound++;
+    if (this.currentRound > this.numberOfRounds) {
+      console.log("game over");
+      this.gameOver();
+    } else {
+      this.playersGuessed = [];
+      console.log("start round");
+      this.io.to(this.roomName).emit("handleSendImages", {
+        gameData: this.currentGameData,
+        players: this.playerNames,
+        timePerRound: this.timePerRound,
+        currentRound: this.currentRound,
+        numberOfRounds: this.numberOfRounds,
+      });
+      this.monitorTime();
+    }
+  }
+
   getNextRandomPosition() {
-    getSequence(this.socket, this);
+    getSequence(this, () => {
+      this.startRound();
+    });
+  }
+
+  sendUpdatePlayerList() {
+    console.log("send updateplayer list", this.playerNames);
+    this.io
+      .to(this.roomName)
+      .emit("updatePlayers", { players: this.playerNames });
+  }
+
+  restartPlayersScores() {
+    const playerKeys = Object.keys(this.players);
+    for (let i = 0; i < playerKeys.length; i++) {
+      this.players[playerKeys[i]].score = 0;
+    }
+  }
+
+  startGame(timePerRound, numberOfRounds) {
+    this.currentRound = 0;
+
+    this.timePerRound = +timePerRound;
+    this.numberOfRounds = +numberOfRounds;
+    this.gameStarted = true;
+    console.log("game started");
+    this.io.to(this.roomName).emit("gameStarted");
+    this.getNextRandomPosition();
+  }
+
+  addPlayer(player) {
+    let isLeader = false;
+    if (this.playerNames.length === 0) {
+      this.leader = player;
+      player.isGameLeader = true;
+      isLeader = true;
+      player.handleStartGame();
+    }
+    this.players[player.socket.id] = player;
+    this.playerNames.push({
+      name: player.playerName,
+      isLeader,
+      score: player.score,
+    });
+    player.playerIndex = this.playerNames.length - 1;
+    this.sendUpdatePlayerList();
   }
 }
 
