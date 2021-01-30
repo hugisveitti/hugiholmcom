@@ -17,6 +17,15 @@ const FrontPage = ({ socket, ...props }) => {
       <div style={{ textAlign: "center" }}>
         <h2>Map game</h2>
         <p>Still in development</p>
+        <p>
+          Please write in 'Room Name' anything, then tell your friends to write
+          the same thing to play together. Or you can play by yourself.
+        </p>
+        <p>
+          This is in development so there are probably hella bugs. ToDo: add
+          leaderboard. Make finding new positions better. Using open street maps
+          and Mapillary.
+        </p>
         <TextField
           id="player-text-field"
           placeholder="Name"
