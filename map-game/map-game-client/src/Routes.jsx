@@ -28,12 +28,10 @@ const Routes = () => {
         render={(props) => <FrontPage {...props} socket={socket} />}
       />
       <Route
-        exact
         path={gamePagePath}
         render={(props) => <ImageComponent {...props} socket={socket} />}
       />
       <Route
-        exact
         path={waitingPagePath}
         render={(props) => <WaitingRoomComponent {...props} socket={socket} />}
       />

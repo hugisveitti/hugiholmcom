@@ -13,13 +13,12 @@ const options = (url) => ({
 });
 
 module.exports = (app, server) => {
-  // const http = require("http").Server(app);
   const clients = {};
   const games = {};
   var io = require("socket.io")(server, { cors: { origin: "*" } });
   const urlPrefix = "/map-game/";
 
-  app.use(express.static(path.join(__dirname, "map-game-client/build")));
+  app.use(express.static(path.join(__dirname, "./map-game-client/build")));
 
   app.get(urlPrefix, (req, res) => {
     res.sendFile(path.join(__dirname, "./map-game-client/build/index.html"));
@@ -54,6 +53,7 @@ module.exports = (app, server) => {
     clients[socket.id] = socket;
 
     socket.on("disconnect", (data) => {
+      console.log("client disconnected");
       delete clients[socket.id];
       console.log("connected clients", Object.keys(clients));
 
