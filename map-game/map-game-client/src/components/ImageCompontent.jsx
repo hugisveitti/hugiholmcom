@@ -32,6 +32,7 @@ const ImageComponent = ({ socket }) => {
   const [gameOver, setGameOver] = useState(false);
   const [guessSent, setGuessSent] = useState(false);
   const [roomName, setRoomName] = useState("");
+  const [playerName, setPlayerName] = useState("");
 
   const guessSentCallback = () => {
     setImageLoaded(false);
@@ -93,6 +94,10 @@ const ImageComponent = ({ socket }) => {
       const { isGameLeader, correctPosition } = data;
 
       const _distance = data["distance"];
+      const _players = data["players"];
+      const _playerName = data["playerName"];
+      setPlayerName(_playerName);
+      setPlayers(_players);
       setRoundPosition(correctPosition);
       setDistance(_distance);
       setGuessSent(true);
@@ -154,7 +159,7 @@ const ImageComponent = ({ socket }) => {
         </div>
       ) : (
         <React.Fragment>
-          <div id="countdown-clock-container" style={{ margin: "auto" }}>
+          <div id="countdown-clock-container" style={{ padding: 15 }}>
             <CountdownCircleTimer
               key={countDownKey}
               isPlaying={countdownStarted}
@@ -169,10 +174,10 @@ const ImageComponent = ({ socket }) => {
             >
               {({ remainingTime }) => remainingTime}
             </CountdownCircleTimer>
+            <Typography>
+              Round {currentRound} of {numberOfRounds}
+            </Typography>
           </div>
-          <Typography>
-            Round {currentRound} of {numberOfRounds}
-          </Typography>
           {imageUrls.length > 0 ? (
             <div className="pano-container">
               <Typography style={{ textAlign: "center" }}>
@@ -222,6 +227,8 @@ const ImageComponent = ({ socket }) => {
             roundPosition={roundPosition}
             setGuessSent={setGuessSent}
             guessSent={guessSent}
+            players={players}
+            playerName={playerName}
           />
         </React.Fragment>
       )}
@@ -254,6 +261,7 @@ const ImageComponent = ({ socket }) => {
           </List>
         </div>
       )}
+      <br />
     </div>
   );
 };

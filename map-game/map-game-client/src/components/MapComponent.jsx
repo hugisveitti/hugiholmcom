@@ -9,6 +9,7 @@ import {
   Marker,
   useMapEvents,
   Polyline,
+  Popup,
 } from "react-leaflet";
 import { Button, Typography } from "@material-ui/core";
 
@@ -22,6 +23,8 @@ const MapComponent = ({
   roundPosition,
   setGuessSent,
   guessSent,
+  players,
+  playerName,
 }) => {
   const position = [51.505, -0.09];
   const [markerPos, setMarkerPos] = useState({ lat: 51.505, lng: -0.09 });
@@ -32,6 +35,15 @@ const MapComponent = ({
         ? icon
         : "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-yellow.png",
       shadowUrl: iconShadow,
+      iconSize: [25, 41],
+      iconAnchor: [10, 41],
+    });
+
+  const otherPlayersIcon = () =>
+    L.icon({
+      iconUrl:
+        "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-grey.png",
+      // shadowUrl: iconShadow,
       iconSize: [25, 41],
       iconAnchor: [10, 41],
     });
@@ -53,6 +65,8 @@ const MapComponent = ({
     );
   };
 
+  console.log("players", players);
+
   const MyMarker = () => {
     useMapEvents({
       click(e) {
@@ -64,8 +78,22 @@ const MapComponent = ({
     return (
       <>
         <Marker icon={defaultIcon(false)} position={markerPos} />
-        <CorrectMarker />
-        <LineBetweenMarkers />
+        {guessSent && <CorrectMarker />}
+        {guessSent && <LineBetweenMarkers />}
+        {players.map((player) => {
+          if (player.markerPosition && player.name !== playerName) {
+            return (
+              <Marker
+                icon={otherPlayersIcon()}
+                position={player.markerPosition}
+                key={player.name}
+              >
+                <Popup>{player.name}</Popup>
+              </Marker>
+            );
+          }
+          return null;
+        })}
       </>
     );
   };
@@ -116,7 +144,7 @@ const MapComponent = ({
           )}
         </React.Fragment>
       )}
-
+      <br />
       {imageLoaded && !roundPosition && (
         <div style={{ textAlign: "center", paddingBottom: 20 }}>
           <Button onClick={handleGuessSent} variant="contained">

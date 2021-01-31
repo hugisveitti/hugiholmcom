@@ -140,15 +140,11 @@ class Player {
       const currentDistance = Math.floor(
         this.game.calculateDistance(data.position.lat, data.position.lng)
       );
-
-      // this.socket.emit("handleCorrectPosition", {
-      //   distance: currentDistance,
-      //    correctPosition: this.game.currentPosition,
-      // });
       this.roundGuessGotten = true;
       this.lastDistance = currentDistance;
       this.score += Math.max(this.game.maxScore - currentDistance, 0);
       this.game.playerNames[this.playerIndex].score = this.score;
+      this.game.playerNames[this.playerIndex].markerPosition = data.position;
       this.game.addPlayerGuessed(this);
     });
   }
@@ -169,8 +165,14 @@ class Player {
       isGameLeader: this.isGameLeader,
       distance: this.lastDistance,
       correctPosition: this.game.currentPosition,
+      players: this.game.playerNames,
+      playerName: this.playerName,
     });
     this.lastDistance = -1;
+  }
+
+  resetGameMarketPosition() {
+    this.game.playerNames[this.playerIndex].markerPosition = undefined;
   }
 }
 
@@ -234,6 +236,13 @@ class MapGame {
     }
   }
 
+  resetPlayersMarketPositions() {
+    const playerKeys = Object.keys(this.players);
+    for (let i = 0; i < playerKeys.length; i++) {
+      this.players[playerKeys[i]].resetGameMarketPosition();
+    }
+  }
+
   addPlayerGuessed(player) {
     console.log("add player guessed");
     this.playersGuessed.push(player);
@@ -283,6 +292,8 @@ class MapGame {
     } else {
       this.playersGuessed = [];
       console.log("start round");
+      this.resetPlayersMarketPositions();
+
       this.io.to(this.roomName).emit("handleSendImages", {
         gameData: this.currentGameData,
         players: this.playerNames,
@@ -340,6 +351,7 @@ class MapGame {
       name: player.playerName,
       isLeader,
       score: player.score,
+      markerPosition: undefined,
     });
     player.playerIndex = this.playerNames.length - 1;
     this.sendUpdatePlayerList();
