@@ -31,6 +31,18 @@ const ImageComponent = ({ socket }) => {
   const [numberOfRounds, setNumberOfRounds] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [guessSent, setGuessSent] = useState(false);
+  const [roomName, setRoomName] = useState("");
+
+  const guessSentCallback = () => {
+    setImageLoaded(false);
+  };
+
+  // 1024 640 or 2048
+  const getImageUrlFromKey = (key) => {
+    const _imgUrl = `https://images.mapillary.com/${key}/thumb-2048.jpg`;
+    // setImgUrl(_imgUrl);
+    return _imgUrl;
+  };
 
   const changeCountdownKey = () => {
     if (countDownKey === "countDownTimer") {
@@ -39,19 +51,7 @@ const ImageComponent = ({ socket }) => {
       setCountDownKey("countDownTimer");
     }
     setTimerSeconds(timePerRound);
-  };
-
-  const guessSentCallback = () => {
-    setImageLoaded(false);
-    setCountdownStarted(false);
-    changeCountdownKey();
-  };
-
-  // 1024 640 or 2048
-  const getImageUrlFromKey = (key) => {
-    const _imgUrl = `https://images.mapillary.com/${key}/thumb-2048.jpg`;
-    // setImgUrl(_imgUrl);
-    return _imgUrl;
+    setCountdownStarted(true);
   };
 
   useEffect(() => {
@@ -63,6 +63,8 @@ const ImageComponent = ({ socket }) => {
       const _timePerRound = data["timePerRound"];
       const _currentRound = data["currentRound"];
       const _numberOfRounds = data["numberOfRounds"];
+      const _roomName = data["roomName"];
+      setRoomName(_roomName);
       setCurrentRound(_currentRound);
       setNumberOfRounds(_numberOfRounds);
       setTimePerRound(_timePerRound);
@@ -80,11 +82,10 @@ const ImageComponent = ({ socket }) => {
         setImageUrls(myImageUrls);
         setImgUrl(myImageUrls[0]);
         setImageLoaded(true);
-        setCountdownStarted(true);
         setRoundPosition(undefined);
         setDistance(-1);
-        changeCountdownKey();
         setGuessSent(false);
+        changeCountdownKey();
       }
     });
 
@@ -202,10 +203,14 @@ const ImageComponent = ({ socket }) => {
                 autoLoad
               />
             </div>
-          ) : (
+          ) : !guessSent ? (
             <div style={{ textAlign: "center" }}>
               <CircularProgress />
             </div>
+          ) : (
+            <Typography style={{ textAlign: "center" }}>
+              Waiting for leader to start round.
+            </Typography>
           )}
           <MapComponent
             socket={socket}
@@ -222,7 +227,7 @@ const ImageComponent = ({ socket }) => {
       )}
       {players.length > 0 && (
         <div style={{ textAlign: "center" }}>
-          <Typography>Players in room</Typography>
+          <Typography>Players in room {roomName}</Typography>
           <List style={{ width: 200, margin: "auto" }}>
             <ListItem>
               <ListItemText>Score</ListItemText>

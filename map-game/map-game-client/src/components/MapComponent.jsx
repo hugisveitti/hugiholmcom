@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import L from "leaflet";
 import icon from "leaflet/dist/images/marker-icon.png";
 import "leaflet/dist/leaflet.css";
@@ -25,15 +25,6 @@ const MapComponent = ({
 }) => {
   const position = [51.505, -0.09];
   const [markerPos, setMarkerPos] = useState({ lat: 51.505, lng: -0.09 });
-
-  useEffect(() => {
-    if (!socket) return;
-    //  socket.on("handleCorrectPosition", (data) => {
-    //    setDistance(+data["distance"]);
-    //    setRoundPosition(data["correctPosition"]);
-    //    setNextAvailable(true);
-    //  });
-  }, [socket]);
 
   const defaultIcon = (correctIcon) =>
     L.icon({
@@ -65,6 +56,7 @@ const MapComponent = ({
   const MyMarker = () => {
     useMapEvents({
       click(e) {
+        console.log("map clicked", e.latlng);
         setMarkerPos({ lat: e.latlng.lat, lng: e.latlng.lng });
       },
     });
@@ -108,7 +100,7 @@ const MapComponent = ({
         <MyMarker />
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png"
         />
       </MapContainer>
       {roundPosition && (

@@ -1,4 +1,7 @@
 const request = require("request");
+
+const { worldMapSplits } = require("./map-game-positions");
+
 const options = (url) => ({
   dataType: "json",
   type: "Get",
@@ -38,51 +41,17 @@ const getRandomRange = (max, min) => {
   return Math.random() * (max - min) + min;
 };
 
-const getRandomNorthAmerica = () => {
-  const lng = getRandomRange(-65, -127);
-  const lat = getRandomRange(48, 7);
-  console.log("getting random north america", { lat, lng });
-  return { lat, lng };
-};
-
-const getRandomSouthAmerica = () => {
-  const lng = getRandomRange(-4, -72);
-  const lat = getRandomRange(7, -50);
-  console.log("getting random south america", { lat, lng });
-  return { lat, lng };
-};
-
-const getRandomEurope = () => {
-  const lng = getRandomRange(44, -4);
-  const lat = getRandomRange(55, 36);
-  console.log("getting random europe", { lat, lng });
-  return { lat, lng };
-};
-
-const getRandomAsia = () => {
-  const lng = getRandomRange(117, 60);
-  const lat = getRandomRange(30, 0);
-  console.log("getting random asia", { lat, lng });
-  return { lat, lng };
-};
-
-const possiblePlacesFuncs = [
-  getRandomEurope,
-  getRandomAsia,
-  getRandomNorthAmerica,
-  getRandomSouthAmerica,
-];
-
 const getRandomLatLng = () => {
-  const r = Math.random();
-  let s = 1 / possiblePlacesFuncs.length;
-  for (let i = 0; i < possiblePlacesFuncs.length; i++) {
-    if (r < s) {
-      return possiblePlacesFuncs[i]();
-    } else {
-      s += 1 / possiblePlacesFuncs.length;
-    }
-  }
+  const latIndex = Math.floor(Math.random() * worldMapSplits.length);
+  const lngIndex = Math.floor(
+    Math.random() * worldMapSplits[latIndex].lngIntervals.length
+  );
+
+  const latRange = worldMapSplits[latIndex];
+  const lngRange = worldMapSplits[latIndex].lngIntervals[lngIndex];
+  const lng = getRandomRange(lngRange.max, lngRange.min);
+  const lat = getRandomRange(latRange.max, latRange.min);
+  return { lat, lng };
 };
 
 const getSequence = (game, callBack) => {
@@ -93,7 +62,8 @@ const getSequence = (game, callBack) => {
   const pano = "pano=true";
   // const bbox = `bbox=${lng},${lat},${lng + 2},${lat + 2}`;
   // const url = `https://a.mapillary.com/v3/sequences?${bbox}&${pano}&min_quality_score=3&${perpage}&client_id=${mapillaryAPIKey}`;
-  let radius = "radius=100000000";
+  // 500 km
+  let radius = "radius=5000000";
   const getImageWithLatLng = (myLat, myLng, imageKnown) => {
     if (imageKnown) {
       radius = "radius=100000";
@@ -138,6 +108,7 @@ class Player {
     this.playerIndex = -1;
     this.roundGuessGotten = false;
     this.lastDistance = -1;
+    this.disconnected = false;
   }
 
   handleStartGame() {
@@ -223,6 +194,39 @@ class MapGame {
     this.timeoutFunction = undefined;
   }
 
+  // check if game has player with that name
+  createPlayer(playerName, socket) {
+    const playerIds = Object.keys(this.players);
+    for (let i = 0; i < playerIds.length; i++) {
+      const currPlayer = this.players[playerIds[i]];
+      if (currPlayer.playerName === playerName) {
+        if (currPlayer.disconnected) {
+          currPlayer.socket = socket;
+          currPlayer.disconnected = false;
+          if (this.gameStarted) {
+            socket.emit("gameStarted", {});
+            socket.emit("handleSendImages", {
+              gameData: this.currentGameData,
+              players: this.playerNames,
+              timePerRound: this.timePerRound,
+              currentRound: this.currentRound,
+              numberOfRounds: this.numberOfRounds,
+              // time left not correct
+            });
+          }
+          return currPlayer;
+        } else {
+          // player name in use and connected
+          return undefined;
+        }
+      }
+    }
+    const player = new Player(socket, playerName);
+    this.addPlayer(player);
+    player.setGame(this);
+    return player;
+  }
+
   sendRoundOverToPlayers() {
     const playerKeys = Object.keys(this.players);
     for (let i = 0; i < playerKeys.length; i++) {
@@ -259,11 +263,9 @@ class MapGame {
   }
 
   monitorTime() {
-    console.log("start monitorin time");
     this.timeoutFunction = setTimeout(() => {
-      console.log("round over");
+      console.log("times up!");
       this.sendRoundOverToPlayers();
-      // this.getNextRandomPosition();
     }, this.timePerRound * 1000);
   }
 
@@ -287,6 +289,7 @@ class MapGame {
         timePerRound: this.timePerRound,
         currentRound: this.currentRound,
         numberOfRounds: this.numberOfRounds,
+        roomName: this.roomName,
       });
       this.monitorTime();
     }
@@ -314,6 +317,7 @@ class MapGame {
 
   startGame(timePerRound, numberOfRounds) {
     this.currentRound = 0;
+    this.restartPlayersScores();
 
     this.timePerRound = +timePerRound;
     this.numberOfRounds = +numberOfRounds;

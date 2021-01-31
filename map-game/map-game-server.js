@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const { disconnect } = require("process");
 const request = require("request");
 
 const { MapGame, Player } = require("./map-game-class");
@@ -28,6 +29,29 @@ module.exports = (app, server) => {
     res.send("hello map game");
   });
 
+  const disconnectPlayer = (socket) => {
+    // delete game if no one is using
+    const gameRooms = Object.keys(games);
+    for (let i = 0; i < gameRooms.length; i++) {
+      const playerIds = Object.keys(games[gameRooms[i]].players);
+      let playersDisconnected = 0;
+      for (let j = 0; j < playerIds.length; j++) {
+        if (playerIds[j] === socket.id) {
+          games[gameRooms[i]].players[playerIds[j]].disconnected = true;
+        }
+
+        if (games[gameRooms[i]].players[playerIds[j]].disconnected) {
+          playersDisconnected += 1;
+        }
+      }
+
+      if (playersDisconnected === playerIds.length) {
+        console.log("all players disconnected, deleting game", gameRooms[i]);
+        delete games[gameRooms[i]];
+      }
+    }
+  };
+
   io.on("connection", (socket) => {
     console.log("connection made");
     socket.emit("connectedToRoomCallBack", { message: "Hello from socket" });
@@ -36,12 +60,16 @@ module.exports = (app, server) => {
       console.log(data);
       const { roomName, playerName } = data;
       socket.join(roomName);
-      const player = new Player(socket, playerName);
       if (roomName in games) {
         const game = games[roomName];
-        game.addPlayer(player);
-        player.setGame(game);
+        const player = game.createPlayer(playerName, socket);
+        if (player) {
+          // player created
+        } else {
+          console.log("name in use", playerName);
+        }
       } else {
+        const player = new Player(socket, playerName);
         const game = new MapGame(io, socket, roomName);
         game.addPlayer(player);
         player.setGame(game);
@@ -57,7 +85,7 @@ module.exports = (app, server) => {
       delete clients[socket.id];
       console.log("connected clients", Object.keys(clients));
 
-      // delete game if no one is using
+      disconnectPlayer(socket);
     });
   });
 };
