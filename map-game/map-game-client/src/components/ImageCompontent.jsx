@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { Pannellum } from "pannellum-react";
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import {
@@ -13,6 +13,14 @@ import {
 import { ChildCare } from "@material-ui/icons";
 import "./ImageComponent.css";
 import MapComponent from "./MapComponent";
+
+const sortPlayersByScore = (players) => {
+  return players.sort((a, b) => {
+    if (a.score < b.score) return 1;
+    if (a.score > b.score) return -1;
+    return 0;
+  });
+};
 
 const ImageComponent = ({ socket }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -45,22 +53,23 @@ const ImageComponent = ({ socket }) => {
     return _imgUrl;
   };
 
-  const changeCountdownKey = () => {
+  const startCountDownTimer = useCallback(() => {
     if (countDownKey === "countDownTimer") {
-      setCountDownKey("countDownKey");
+      setCountDownKey("countDownTimer2");
     } else {
       setCountDownKey("countDownTimer");
     }
     setTimerSeconds(timePerRound);
     setCountdownStarted(true);
-  };
+  }, [countDownKey, timePerRound]);
 
   useEffect(() => {
     if (!socket) return;
     socket.on("handleSendImages", (data) => {
       setGameOver(false);
       const { gameData } = data;
-      const _players = data["players"];
+      let _players = data["players"];
+      _players = sortPlayersByScore(_players);
       const _timePerRound = data["timePerRound"];
       const _currentRound = data["currentRound"];
       const _numberOfRounds = data["numberOfRounds"];
@@ -86,7 +95,7 @@ const ImageComponent = ({ socket }) => {
         setRoundPosition(undefined);
         setDistance(-1);
         setGuessSent(false);
-        changeCountdownKey();
+        startCountDownTimer();
       }
     });
 
@@ -103,14 +112,16 @@ const ImageComponent = ({ socket }) => {
       setGuessSent(true);
       setIsLeader(isGameLeader);
       setImageUrls([]);
+      setCountdownStarted(false);
     });
 
     socket.on("handleGameOver", (data) => {
-      const _players = data["players"];
+      let _players = data["players"];
+      _players = sortPlayersByScore(_players);
       setPlayers(_players);
       setGameOver(true);
     });
-  }, [socket]);
+  }, [socket, startCountDownTimer]);
 
   const changeImage = (newIndex) => {
     setImgUrl(imageUrls[newIndex]);

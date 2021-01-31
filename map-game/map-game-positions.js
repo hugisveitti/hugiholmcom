@@ -65,7 +65,7 @@ const worldMapSplits = [
     lngIntervals: [
       { min: -116, max: -97 }, // mexico, texas
       { min: -85, max: -72 }, // carabean islands, florida
-      { min: -17, max: -15 }, // sahara
+      // { min: -17, max: -15 }, // sahara
       { min: 29, max: 35 }, // egypt
       { min: 34, max: 49 }, // saudi arabi, israel
       { min: 50, max: 60 }, // arab countries, Oman, Iran
@@ -157,7 +157,8 @@ const worldMapSplits = [
     max: -40,
     min: -50,
     lngIntervals: [
-      { min: -75, max: -62 }, // chile argentina
+      { min: -75, max: -70 }, // chile argentina
+      { min: -65, max: -62 }, // chile argentina
       { min: 144, max: 148 }, // Tasmania
       { min: 166, max: 177 }, // New Zealand
     ],

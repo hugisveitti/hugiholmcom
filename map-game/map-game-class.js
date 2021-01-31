@@ -55,35 +55,34 @@ const getRandomLatLng = () => {
 };
 
 const getSequence = (game, callBack) => {
-  // const url = `https://a.mapillary.com/v3/sequences?bbox=16.430300,7.241686,16.438757,7.253186&userkeys=AGfe-07BEJX0-kxpu9J3rA&client_id=${mapillaryAPIKey}`;
   // min_longitude,min_latitude,max_longitude,max_latitu
   let { lat, lng } = getRandomLatLng();
   let perpage = "per_page=4";
-  const pano = "pano=true";
+  // not only use panos
+  const pano = `pano=${game.onlyPano}`;
   // const bbox = `bbox=${lng},${lat},${lng + 2},${lat + 2}`;
-  // const url = `https://a.mapillary.com/v3/sequences?${bbox}&${pano}&min_quality_score=3&${perpage}&client_id=${mapillaryAPIKey}`;
-  // 500 km
-  let radius = "radius=5000000";
+  // 100 km
+  let radius = "radius=1000000";
   const getImageWithLatLng = (myLat, myLng, imageKnown) => {
     if (imageKnown) {
-      radius = "radius=100000";
+      // 10 km
+      radius = "radius=10000";
       perpage = "per_page=50";
     }
     const bbox = `closeto=${myLng},${myLat}`;
     const url = `https://a.mapillary.com/v3/images?${bbox}&${pano}&min_quality_score=3&${perpage}&${radius}&client_id=${mapillaryAPIKey}`;
     request(options(url), (err, apiRes, body) => {
       const data = JSON.parse(body);
-      console.log(data["features"].length);
+      console.log("number of images at location", data["features"].length);
       if (data["features"].length < 3) {
-        console.log("not enough data");
+        console.log("not enough data on", "lat:", myLat, ", lng:", myLng);
         const newCoor = getRandomLatLng();
         getImageWithLatLng(newCoor.lat, newCoor.lng, false);
       } else if (!imageKnown) {
         const coor = data["features"][0]["geometry"]["coordinates"];
         getImageWithLatLng(coor[1], coor[0], true);
       } else {
-        console.log("body got");
-        console.log("my lat lang", myLat, myLng);
+        console.log("place at lat lag", myLat, myLng);
         // socket.emit("sendSequence", data);
         game.setCurrentGameData(data);
         game.setCurrentPosition(myLat, myLng);
@@ -114,8 +113,8 @@ class Player {
   handleStartGame() {
     if (this.isGameLeader) {
       this.socket.on("handleStartGame", (data) => {
-        const { timePerRound, numberOfRounds } = data;
-        this.game.startGame(timePerRound, numberOfRounds);
+        const { timePerRound, numberOfRounds, onlyPano } = data;
+        this.game.startGame(timePerRound, numberOfRounds, onlyPano);
       });
     }
   }
@@ -194,6 +193,7 @@ class MapGame {
     this.maxScore = 5000;
     this.playersGuessed = [];
     this.timeoutFunction = undefined;
+    this.onlyPano = true;
   }
 
   // check if game has player with that name
@@ -285,31 +285,31 @@ class MapGame {
   }
 
   startRound() {
+    this.playersGuessed = [];
+    console.log("start round");
+    this.resetPlayersMarketPositions();
+
+    this.io.to(this.roomName).emit("handleSendImages", {
+      gameData: this.currentGameData,
+      players: this.playerNames,
+      timePerRound: this.timePerRound,
+      currentRound: this.currentRound,
+      numberOfRounds: this.numberOfRounds,
+      roomName: this.roomName,
+    });
+    this.monitorTime();
+  }
+
+  getNextRandomPosition() {
     this.currentRound++;
     if (this.currentRound > this.numberOfRounds) {
       console.log("game over");
       this.gameOver();
     } else {
-      this.playersGuessed = [];
-      console.log("start round");
-      this.resetPlayersMarketPositions();
-
-      this.io.to(this.roomName).emit("handleSendImages", {
-        gameData: this.currentGameData,
-        players: this.playerNames,
-        timePerRound: this.timePerRound,
-        currentRound: this.currentRound,
-        numberOfRounds: this.numberOfRounds,
-        roomName: this.roomName,
+      getSequence(this, () => {
+        this.startRound();
       });
-      this.monitorTime();
     }
-  }
-
-  getNextRandomPosition() {
-    getSequence(this, () => {
-      this.startRound();
-    });
   }
 
   sendUpdatePlayerList() {
@@ -326,8 +326,11 @@ class MapGame {
     }
   }
 
-  startGame(timePerRound, numberOfRounds) {
+  startGame(timePerRound, numberOfRounds, onlyPano) {
     this.currentRound = 0;
+    if (onlyPano !== undefined) {
+      this.onlyPano = onlyPano;
+    }
     this.restartPlayersScores();
 
     this.timePerRound = +timePerRound;

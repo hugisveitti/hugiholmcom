@@ -7,6 +7,7 @@ import {
   Typography,
   Button,
   TextField,
+  Checkbox,
 } from "@material-ui/core";
 import { ChildCare } from "@material-ui/icons";
 import { gamePagePath } from "../Routes";
@@ -17,6 +18,7 @@ const WaitingRoomComponent = ({ socket, ...props }) => {
   const [isLeader, setIsLeader] = useState(false);
   const [numberOfRounds, setNumberOfRounds] = useState(5);
   const [timePerRound, setTimePerRound] = useState(60);
+  const [onlyPano, setOnlyPano] = useState(false);
 
   useEffect(() => {
     if (socket) {
@@ -45,7 +47,11 @@ const WaitingRoomComponent = ({ socket, ...props }) => {
 
   const handleStartGame = () => {
     if (!isNaN(+timePerRound) && !isNaN(+numberOfRounds)) {
-      socket.emit("handleStartGame", { timePerRound, numberOfRounds });
+      socket.emit("handleStartGame", {
+        timePerRound,
+        numberOfRounds,
+        onlyPano,
+      });
     }
   };
   return (
@@ -93,6 +99,10 @@ const WaitingRoomComponent = ({ socket, ...props }) => {
             value={timePerRound}
             onChange={(e) => setTimePerRound(e.target.value)}
           />
+          <br />
+          <br />
+          <Typography>Use only panoramas?</Typography>
+          <Checkbox value={onlyPano} onChange={() => setOnlyPano(!onlyPano)} />
           <br />
           <br />
 

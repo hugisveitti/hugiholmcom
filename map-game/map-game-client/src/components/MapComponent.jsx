@@ -65,8 +65,6 @@ const MapComponent = ({
     );
   };
 
-  console.log("players", players);
-
   const MyMarker = () => {
     useMapEvents({
       click(e) {
@@ -109,9 +107,7 @@ const MapComponent = ({
   const startNextRound = () => {
     socket.emit("handleStartNextRound", {});
     setImageUrls([]);
-    // setRoundPosition(undefined);
     setGuessSent(false);
-    // setDistance(-1);
   };
   return (
     <div style={{ padding: 20 }}>
