@@ -25,7 +25,7 @@ module.exports = (app, server) => {
     res.sendFile(path.join(__dirname, "./map-game-client/build/index.html"));
   });
 
-  app.get(urlPrefix + "/*", (req, res) => {
+  app.get(urlPrefix + "*", (req, res) => {
     res.sendFile(path.join(__dirname, "./map-game-client/build/index.html"));
   });
 
