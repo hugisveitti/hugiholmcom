@@ -4,7 +4,7 @@ import "./App.css";
 
 function App() {
   return (
-    <BrowserRouter basename="/map-game">
+    <BrowserRouter basename="/jeojuessr">
       <Routes />
     </BrowserRouter>
   );
