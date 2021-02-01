@@ -59,6 +59,7 @@ module.exports = (app, server) => {
     socket.on("roomConnection", (data) => {
       console.log(data);
       const { roomName, playerName } = data;
+      console.log("### PLAYER ", playerName, "CONNECTED");
       socket.join(roomName);
       if (roomName in games) {
         const game = games[roomName];

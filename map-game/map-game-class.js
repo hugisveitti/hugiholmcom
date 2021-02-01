@@ -1,4 +1,5 @@
 const request = require("request");
+const uuid = require("uuid").v4;
 
 const { worldMapSplits } = require("./map-game-positions");
 
@@ -41,8 +42,13 @@ const getRandomRange = (max, min) => {
   return Math.random() * (max - min) + min;
 };
 
-const getRandomLatLng = () => {
-  const latIndex = Math.floor(Math.random() * worldMapSplits.length);
+const getRandomLatLng = (game) => {
+  // europe
+  let indexSearchLength = worldMapSplits.length;
+  if (game.onlyEuropeUsa) {
+    indexSearchLength = 3;
+  }
+  const latIndex = Math.floor(Math.random() * indexSearchLength);
   const lngIndex = Math.floor(
     Math.random() * worldMapSplits[latIndex].lngIntervals.length
   );
@@ -56,19 +62,21 @@ const getRandomLatLng = () => {
 
 const getSequence = (game, callBack) => {
   // min_longitude,min_latitude,max_longitude,max_latitu
-  let { lat, lng } = getRandomLatLng();
+  let { lat, lng } = getRandomLatLng(game);
   let perpage = "per_page=4";
   // not only use panos
   const pano = `pano=${game.onlyPano}`;
   // const bbox = `bbox=${lng},${lat},${lng + 2},${lat + 2}`;
   // 100 km
   let radius = "radius=1000000";
-  const getImageWithLatLng = (myLat, myLng, imageKnown) => {
+  const getImageWithLatLng = (myLat, myLng, imageKnown, radius_meters) => {
+    radius = `radius=${radius_meters}`;
     if (imageKnown) {
       // 10 km
       radius = "radius=10000";
       perpage = "per_page=50";
     }
+    console.log("radius", radius);
     const bbox = `closeto=${myLng},${myLat}`;
     const url = `https://a.mapillary.com/v3/images?${bbox}&${pano}&min_quality_score=3&${perpage}&${radius}&client_id=${mapillaryAPIKey}`;
     request(options(url), (err, apiRes, body) => {
@@ -76,11 +84,12 @@ const getSequence = (game, callBack) => {
       console.log("number of images at location", data["features"].length);
       if (data["features"].length < 3) {
         console.log("not enough data on", "lat:", myLat, ", lng:", myLng);
-        const newCoor = getRandomLatLng();
-        getImageWithLatLng(newCoor.lat, newCoor.lng, false);
+        const newCoor = getRandomLatLng(game);
+        // increase search space, so loading isnt long
+        getImageWithLatLng(newCoor.lat, newCoor.lng, false, radius_meters * 10);
       } else if (!imageKnown) {
         const coor = data["features"][0]["geometry"]["coordinates"];
-        getImageWithLatLng(coor[1], coor[0], true);
+        getImageWithLatLng(coor[1], coor[0], true, 10000);
       } else {
         console.log("place at lat lag", myLat, myLng);
         // socket.emit("sendSequence", data);
@@ -90,7 +99,7 @@ const getSequence = (game, callBack) => {
       }
     });
   };
-  getImageWithLatLng(lat, lng, false);
+  getImageWithLatLng(lat, lng, false, 1000000);
 };
 
 class Player {
@@ -113,8 +122,13 @@ class Player {
   handleStartGame() {
     if (this.isGameLeader) {
       this.socket.on("handleStartGame", (data) => {
-        const { timePerRound, numberOfRounds, onlyPano } = data;
-        this.game.startGame(timePerRound, numberOfRounds, onlyPano);
+        const { timePerRound, numberOfRounds, onlyPano, onlyEuropeUsa } = data;
+        this.game.startGame(
+          timePerRound,
+          numberOfRounds,
+          onlyPano,
+          onlyEuropeUsa
+        );
       });
     }
   }
@@ -150,7 +164,6 @@ class Player {
 
   watchGetNextRound() {
     this.socket.on("handleStartNextRound", (data) => {
-      console.log("handle start next round");
       this.game.getNextRandomPosition();
     });
   }
@@ -173,6 +186,11 @@ class Player {
   resetGameMarketPosition() {
     this.game.playerNames[this.playerIndex].markerPosition = undefined;
   }
+
+  resetScore() {
+    this.score = 0;
+    this.game.playerNames[this.playerIndex].score = 0;
+  }
 }
 
 class MapGame {
@@ -194,6 +212,7 @@ class MapGame {
     this.playersGuessed = [];
     this.timeoutFunction = undefined;
     this.onlyPano = true;
+    this.onlyEuropeUsa = false;
   }
 
   // check if game has player with that name
@@ -243,6 +262,13 @@ class MapGame {
     }
   }
 
+  resetPlayersScore() {
+    const playerKeys = Object.keys(this.players);
+    for (let i = 0; i < playerKeys.length; i++) {
+      this.players[playerKeys[i]].resetScore();
+    }
+  }
+
   addPlayerGuessed(player) {
     console.log("add player guessed");
     this.playersGuessed.push(player);
@@ -275,7 +301,7 @@ class MapGame {
     this.timeoutFunction = setTimeout(() => {
       console.log("times up!");
       this.sendRoundOverToPlayers();
-    }, this.timePerRound * 1000);
+    }, (this.timePerRound + 1) * 1000);
   }
 
   gameOver() {
@@ -319,19 +345,15 @@ class MapGame {
       .emit("updatePlayers", { players: this.playerNames });
   }
 
-  restartPlayersScores() {
-    const playerKeys = Object.keys(this.players);
-    for (let i = 0; i < playerKeys.length; i++) {
-      this.players[playerKeys[i]].score = 0;
-    }
-  }
-
-  startGame(timePerRound, numberOfRounds, onlyPano) {
+  startGame(timePerRound, numberOfRounds, onlyPano, onlyEuropeUsa) {
     this.currentRound = 0;
     if (onlyPano !== undefined) {
       this.onlyPano = onlyPano;
     }
-    this.restartPlayersScores();
+    if (onlyEuropeUsa !== undefined) {
+      this.onlyEuropeUsa = onlyEuropeUsa;
+    }
+    this.resetPlayersScore();
 
     this.timePerRound = +timePerRound;
     this.numberOfRounds = +numberOfRounds;

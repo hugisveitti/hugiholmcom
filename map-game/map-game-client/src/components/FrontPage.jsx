@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import { Button, TextField } from "@material-ui/core";
+import { Button, Card, CardContent, TextField } from "@material-ui/core";
 import { waitingPagePath } from "../Routes";
+import AppContainer, { useStyles } from "./AppContainer";
+import icon from "./icon.png";
 
 const FrontPage = ({ socket, ...props }) => {
+  const classes = useStyles();
   const [roomName, setRoomName] = useState("");
   const [playerName, setPlayerName] = useState("");
   const handleConnectToRoom = () => {
@@ -12,42 +15,50 @@ const FrontPage = ({ socket, ...props }) => {
   };
 
   return (
-    <div>
+    <AppContainer>
       <div style={{ textAlign: "center" }}>
-        <h2>Map game</h2>
-        <p>Still in development</p>
-        <div style={{ margin: "auto", width: 400 }}>
-          <p>
-            Please write in 'Room Name' anything, then tell your friends to
-            write the same thing to play together. Or you can play by yourself.
-          </p>
-          <p>
-            This is in development so there are probably hella bugs. ToDo: add
-            leaderboard. Make finding new positions better. Using open street
-            maps and Mapillary.
-          </p>
-        </div>
-        <TextField
-          id="player-text-field"
-          placeholder="Name"
-          value={playerName}
-          onChange={(e) => setPlayerName(e.target.value)}
-        />
-        <br />
-        <br />
-        <TextField
-          id="room-text-field"
-          placeholder="Room Name"
-          value={roomName}
-          onChange={(e) => setRoomName(e.target.value)}
-        />
-        <br />
-        <br />
-        <Button variant="outlined" onClick={handleConnectToRoom}>
-          Connect
-        </Button>
+        <img className={classes.icon} src={icon} alt="joejuessrlogo" />
+        <Card className={classes.cardContainer}>
+          <CardContent>
+            <p>Still in development</p>
+            <p>
+              Please write in 'Room Name' anything, then tell your friends to
+              write the same thing to play together. Or you can play by
+              yourself.
+            </p>
+            <p>
+              This is in development so there are probably hella bugs. ToDo: add
+              leaderboard. Make finding new positions better. Using open street
+              maps and Mapillary.
+            </p>
+
+            <TextField
+              id="player-text-field"
+              placeholder="Name"
+              value={playerName}
+              onChange={(e) => setPlayerName(e.target.value)}
+            />
+            <br />
+            <br />
+            <TextField
+              id="room-text-field"
+              placeholder="Room Name"
+              value={roomName}
+              onChange={(e) => setRoomName(e.target.value)}
+            />
+            <br />
+            <br />
+            <Button
+              className={classes.buttonGreen}
+              variant="contained"
+              onClick={handleConnectToRoom}
+            >
+              Connect
+            </Button>
+          </CardContent>
+        </Card>
       </div>
-    </div>
+    </AppContainer>
   );
 };
 

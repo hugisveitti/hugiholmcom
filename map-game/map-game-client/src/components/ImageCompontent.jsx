@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { Pannellum } from "pannellum-react";
+
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import {
   CircularProgress,
@@ -9,10 +10,13 @@ import {
   ListItem,
   ListItemIcon,
   Button,
+  Paper,
 } from "@material-ui/core";
 import { ChildCare } from "@material-ui/icons";
 import "./ImageComponent.css";
 import MapComponent from "./MapComponent";
+import AppContainer, { useStyles } from "./AppContainer";
+import icon from "./icon.png";
 
 const sortPlayersByScore = (players) => {
   return players.sort((a, b) => {
@@ -41,6 +45,10 @@ const ImageComponent = ({ socket }) => {
   const [guessSent, setGuessSent] = useState(false);
   const [roomName, setRoomName] = useState("");
   const [playerName, setPlayerName] = useState("");
+  const [roundOver, setRoundOver] = useState(false);
+  const [playingAgainPressed, setPlayAgainPressed] = useState(false);
+
+  const classes = useStyles();
 
   const guessSentCallback = () => {
     setImageLoaded(false);
@@ -96,6 +104,7 @@ const ImageComponent = ({ socket }) => {
         setDistance(-1);
         setGuessSent(false);
         startCountDownTimer();
+        setRoundOver(false);
       }
     });
 
@@ -109,10 +118,10 @@ const ImageComponent = ({ socket }) => {
       setPlayers(_players);
       setRoundPosition(correctPosition);
       setDistance(_distance);
-      setGuessSent(true);
+
       setIsLeader(isGameLeader);
-      setImageUrls([]);
       setCountdownStarted(false);
+      setRoundOver(true);
     });
 
     socket.on("handleGameOver", (data) => {
@@ -121,9 +130,24 @@ const ImageComponent = ({ socket }) => {
       setPlayers(_players);
       setGameOver(true);
     });
+
+    socket.on("gameStarted", () => {
+      setGameOver(false);
+      setDistance(-1);
+      setPlayAgainPressed(false);
+      setRoundOver(false);
+      setRoundPosition(undefined);
+    });
   }, [socket, startCountDownTimer]);
 
   const changeImage = (newIndex) => {
+    // delete webGL so its doesn't load stuff we dont want
+    const webGLContainer = document.getElementsByClassName(
+      "pnlm-render-container"
+    )[0];
+    while (webGLContainer.childNodes.length > 0) {
+      webGLContainer.removeChild(webGLContainer.childNodes[0]);
+    }
     setImgUrl(imageUrls[newIndex]);
   };
 
@@ -152,39 +176,86 @@ const ImageComponent = ({ socket }) => {
   };
 
   const handlePlayAgain = () => {
+    setPlayAgainPressed(true);
     socket.emit("handleStartGame", { timePerRound, numberOfRounds });
   };
 
+  const PannellumRender = () => {
+    return (
+      <Pannellum
+        width="100%"
+        height="500px"
+        image={imgUrl}
+        pitch={10}
+        yaw={180}
+        hfov={110}
+        compass
+        autoLoad
+      />
+    );
+  };
+
+  const RenderPlayAgainBtn = () => {
+    if (playingAgainPressed) {
+      return (
+        <div style={{ textAlign: "center" }}>
+          <CircularProgress />
+        </div>
+      );
+    }
+
+    return (
+      <Button
+        variant="contained"
+        onClick={handlePlayAgain}
+        className={classes.buttonGreen}
+      >
+        Play again
+      </Button>
+    );
+  };
+
   return (
-    <div>
+    <AppContainer>
       {gameOver ? (
         <div style={{ textAlign: "center" }}>
           <h3>Game Over</h3>
           {isLeader ? (
-            <Button variant="outlined" onClick={handlePlayAgain}>
-              Play again
-            </Button>
+            <RenderPlayAgainBtn />
           ) : (
             <Typography>Waiting for leader to start again</Typography>
           )}
         </div>
       ) : (
         <React.Fragment>
-          <div id="countdown-clock-container" style={{ padding: 15 }}>
-            <CountdownCircleTimer
-              key={countDownKey}
-              isPlaying={countdownStarted}
-              style={{ margin: "auto" }}
-              size={70}
-              duration={timerSeconds}
-              colors={[
-                ["#004777", 0.33],
-                ["#F7B801", 0.33],
-                ["#A30000", 0.33],
-              ]}
+          <div
+            id="info-container"
+            style={{ padding: 15, textAlign: "center", position: "relevant" }}
+          >
+            <div
+              id="count-down-container"
+              style={{
+                margin: "auto",
+                position: "absolute",
+                top: 90,
+                left: 10,
+              }}
             >
-              {({ remainingTime }) => remainingTime}
-            </CountdownCircleTimer>
+              <CountdownCircleTimer
+                key={countDownKey}
+                isPlaying={countdownStarted}
+                size={70}
+                duration={timerSeconds}
+                colors={[
+                  ["#004777", 0.33],
+                  ["#F7B801", 0.33],
+                  ["#A30000", 0.33],
+                ]}
+              >
+                {({ remainingTime }) => remainingTime}
+              </CountdownCircleTimer>
+            </div>
+            <img className={classes.icon} src={icon} alt="jjicon" />
             <Typography>
               Round {currentRound} of {numberOfRounds}
             </Typography>
@@ -209,15 +280,7 @@ const ImageComponent = ({ socket }) => {
                 <i className="arrow"></i>
               </button>
 
-              <Pannellum
-                width="100%"
-                height="500px"
-                image={imgUrl}
-                pitch={10}
-                yaw={180}
-                hfov={110}
-                autoLoad
-              />
+              <PannellumRender />
             </div>
           ) : !guessSent ? (
             <div style={{ textAlign: "center" }}>
@@ -240,40 +303,42 @@ const ImageComponent = ({ socket }) => {
             guessSent={guessSent}
             players={players}
             playerName={playerName}
+            roundOver={roundOver}
+            setRoundOver={setRoundOver}
           />
         </React.Fragment>
       )}
       {players.length > 0 && (
-        <div style={{ textAlign: "center" }}>
-          <Typography>Players in room {roomName}</Typography>
-          <List style={{ width: 200, margin: "auto" }}>
+        <Paper className={classes.cardContainer}>
+          <Typography variant="h6">Players in room {roomName}</Typography>
+          <List dense={false} style={{ width: 400, margin: "auto" }}>
             <ListItem>
+              <ListItemText inset>Name</ListItemText>
               <ListItemText>Score</ListItemText>
-              <ListItemText>Name</ListItemText>
-              <ListItemText></ListItemText>
             </ListItem>
             {players.map((player, i) => {
+              const listBackgroundColor = i % 2 === 0 ? "#ffeeee" : "inherit";
               return (
                 <React.Fragment key={`${player.name}-${i}`}>
-                  <ListItem>
-                    <ListItemText>{player.score}</ListItemText>
-                    <ListItemText>{player.name}</ListItemText>
-                    {player.isLeader ? (
+                  <ListItem style={{ backgroundColor: listBackgroundColor }}>
+                    {player.isLeader && (
                       <ListItemIcon>
                         <ChildCare />
                       </ListItemIcon>
-                    ) : (
-                      <ListItemText />
                     )}
+                    <ListItemText
+                      inset={!player.isLeader}
+                      primary={player.name}
+                    />
+                    <ListItemText primary={(+player.score).toLocaleString()} />
                   </ListItem>
                 </React.Fragment>
               );
             })}
           </List>
-        </div>
+        </Paper>
       )}
-      <br />
-    </div>
+    </AppContainer>
   );
 };
 
