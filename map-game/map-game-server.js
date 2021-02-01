@@ -17,7 +17,7 @@ module.exports = (app, server) => {
   const clients = {};
   const games = {};
   var io = require("socket.io")(server, { cors: { origin: "*" } });
-  const urlPrefix = "/map-game/";
+  const urlPrefix = "/jeojuessr/";
 
   app.use(express.static(path.join(__dirname, "./map-game-client/build")));
 
@@ -25,8 +25,8 @@ module.exports = (app, server) => {
     res.sendFile(path.join(__dirname, "./map-game-client/build/index.html"));
   });
 
-  app.get(urlPrefix + "random", (req, res) => {
-    res.send("hello map game");
+  app.get(urlPrefix + "/*", (req, res) => {
+    res.sendFile(path.join(__dirname, "./map-game-client/build/index.html"));
   });
 
   const disconnectPlayer = (socket) => {
