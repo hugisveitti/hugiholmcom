@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router";
 import FrontPage from "./components/FrontPage";
 import socketIOClient from "socket.io-client";
-import ImageComponent from "./components/ImageCompontent";
+import GameContainer from "./components/GameContainer";
 import WaitingRoomComponent from "./components/WaitingRoomComponent";
 import { config } from "./config";
 
@@ -29,7 +29,7 @@ const Routes = () => {
       />
       <Route
         path={gamePagePath}
-        render={(props) => <ImageComponent {...props} socket={socket} />}
+        render={(props) => <GameContainer {...props} socket={socket} />}
       />
       <Route
         path={waitingPagePath}

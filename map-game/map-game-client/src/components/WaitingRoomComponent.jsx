@@ -125,7 +125,9 @@ const WaitingRoomComponent = ({ socket, ...props }) => {
               }
               label="Use only panoramas?"
             />
-            <br />
+            {/**
+          * 
+             <br />
             <br />
             <FormControlLabel
               control={
@@ -136,6 +138,7 @@ const WaitingRoomComponent = ({ socket, ...props }) => {
               }
               label="Use only 40+ latitude?"
             />
+              */}
             <br />
             <br />
             <Button
