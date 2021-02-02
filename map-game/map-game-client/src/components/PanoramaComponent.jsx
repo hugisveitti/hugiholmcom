@@ -13,7 +13,6 @@ const PanoramaComponent = ({
 }) => {
   const panoRef = useRef();
   const handlePanoLoad = () => {
-    console.log("pano loaded");
     // panoRef?.current?.panorama.loadScene();
   };
 
@@ -27,7 +26,6 @@ const PanoramaComponent = ({
       webGLContainer.removeChild(webGLContainer.childNodes[0]);
     }
     if (panoRef?.current) {
-      console.log("destroying context");
       panoRef.current.panorama.destroy();
     }
 

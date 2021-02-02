@@ -167,19 +167,129 @@ const worldMapSplits = [
   {
     max: 30,
     min: 20,
-    lngIntervals: [
-      { min: -116, max: -97 }, // mexico, texas
-      { min: -85, max: -72 }, // carabean islands, florida
-      // { min: -17, max: -15 }, // sahara
-      { min: 29, max: 35 }, // egypt
-      { min: 34, max: 49 }, // saudi arabi, israel
-      { min: 50, max: 60 }, // arab countries, Oman, Iran
-      { min: 60, max: 70 }, // Pakistan
-      { min: 70, max: 89 }, // India, Nepal
-      { min: 89, max: 101 }, // Bangladesh, Myanmar, China, Lao
-      { min: 100, max: 107 }, // North Vietname, Lao
-      { min: 120, max: 122 }, // Taiwan, china
-      { min: 200, max: 205 }, // Hawaii
+    latInterVal: [
+      {
+        min: 22.7,
+        max: 24.0,
+        lngIntervals: [
+          { min: -110.3, max: -109.6 }, // Maxico, gulf of cali
+        ],
+      },
+      {
+        min: 27.9,
+        max: 30.4,
+        lngIntervals: [
+          { min: -111.4, max: -110.7 }, // Mexico
+        ],
+      },
+      {
+        min: 29.5,
+        max: 30.12,
+        lngIntervals: [
+          { min: -104.5, max: -102.3 }, // south west texas
+        ],
+      },
+      {
+        min: 28.9,
+        max: 30.2,
+        lngIntervals: [
+          { min: -94.3, max: -99.47 }, // Houston, San antionio
+        ],
+      },
+      {
+        min: 29.6,
+        max: 30.4,
+        lngIntervals: [
+          { min: -92.2, max: -84.2 }, // NOLA, Tallahassee
+        ],
+      },
+      {
+        min: 25.2,
+        max: 25.7,
+        lngIntervals: [
+          { min: -103.6, max: -100.0 }, // Monterrey, Mexico
+        ],
+      },
+      {
+        min: 20.1,
+        max: 21.2,
+        lngIntervals: [
+          { min: -90.3, max: -86.5 }, // Cancun, mexico
+        ],
+      },
+      {
+        min: 21.5,
+        max: 23.0,
+        lngIntervals: [
+          { min: -84.5, max: -79.2 }, // havana
+        ],
+      },
+      {
+        min: 19.9,
+        max: 21.0,
+        lngIntervals: [
+          { min: -77.9, max: -74.2 }, // South east cuba
+        ],
+      },
+      {
+        min: 18.05,
+        max: 19.6,
+        lngIntervals: [
+          { min: -73.4, max: -68.4 }, // Dominic republic
+        ],
+      },
+      {
+        min: 18.7,
+        max: 20.9,
+        lngIntervals: [
+          { min: -101.4, max: -98.3 }, // Mexico city
+        ],
+      },
+      {
+        max: 31.08,
+        min: 29.0,
+        lngIntervals: [
+          { min: 29.5, max: 32.4 }, // Cairo
+        ],
+      },
+      { max: 26.8, min: 24.1, lngIntervals: [{ min: 33.8, max: 35.6 }] }, // river nile
+      { min: 22.7, max: 24.9, lngIntervals: [{ min: 43.3, max: 46.7 }] }, // Riyad
+      {
+        min: 24.2,
+        max: 25.7,
+        lngIntervals: [
+          { min: 54.7, max: 56.9 }, // dubai
+        ],
+      },
+      {
+        min: 24.2,
+        max: 25.9,
+        lngIntervals: [
+          { min: 67.5, max: 69.2 }, // pakistan
+        ],
+      },
+      {
+        min: 28.1,
+        max: 28.9,
+        lngIntervals: [
+          { min: 76.7, max: 77.8 }, // new dehli
+        ],
+      },
+      { min: 27.37, max: 27.9, lngIntervals: [{ min: 83.1, max: 86.3 }] },
+      {
+        min: 21.7,
+        max: 27.9,
+        lngIntervals: [
+          { min: 87.7, max: 93.3 }, // Bangladesh
+        ],
+      },
+      {
+        min: 16.97,
+        max: 25.4,
+        lngIntervals: [
+          { min: 95.0, max: 121.94 }, // South east asia, fix!!
+        ],
+      },
     ],
   },
   {
@@ -199,16 +309,133 @@ const worldMapSplits = [
   {
     max: 10,
     min: 0,
-    lngIntervals: [
-      { min: -86, max: -72 }, // middle america, ecuador, colombia
-      { min: -72, max: -60 }, // colombia, venezuale
-      { min: -60, max: -50 }, // surina, Guyana, brazil
-      { min: -11, max: 8 }, // liberia, ivory coast, benin, togo, nigeria, more
-      { min: 8, max: 30 }, // south sudan, cameroon, CAF
-      { min: 30, max: 46 }, // uganda, kenya, somalia, ethiopia
-      { min: 75, max: 82 }, // Sri lanka, india
-      { min: 94, max: 110 }, // Malasia, indonesia, brunei, vietnam, thailand
-      { min: 120, max: 126 }, // Philippines
+    latInterVal: [
+      {
+        max: 10.8,
+        min: 8.3,
+        lngIntervals: [
+          { min: -85.3, max: -82.5 }, // Costa rica
+        ],
+      },
+      {
+        min: 7.0,
+        max: 11.35,
+        lngIntervals: [
+          { min: -82.9, max: -71.3 }, // Panama, venuzuela
+        ],
+      },
+      { max: 7.9, min: 2.6, lngIntervals: [{ min: -78.0, max: -72.4 }] },
+      {
+        max: 5.9,
+        min: 4.1,
+        lngIntervals: [
+          { min: -55.6, max: 54.7 }, // suriname
+          { min: -76.4, max: -72.6 }, // Bogota
+        ],
+      },
+      {
+        max: 1.2,
+        min: -2.8,
+        lngIntervals: [
+          { min: -80.5, max: -76.7 }, // Colombia, Ecuador
+        ],
+      },
+      {
+        min: 0.25,
+        max: 0.4,
+        lngIntervals: [
+          { min: 6.5, max: 6.76 }, // Sao Tome
+        ],
+      },
+      {
+        min: 3.5,
+        max: 4.1,
+        lngIntervals: [
+          { min: 9.1, max: 11.7 }, // Cameroon
+          { min: 18.3, max: 18.5 }, // CAR
+        ],
+      },
+      {
+        min: 2.0,
+        max: 2.38,
+        lngIntervals: [
+          { min: 20.1, max: 21.6 }, // DRotC, Bumba
+        ],
+      },
+      {
+        min: 2.6,
+        max: 2.75,
+        lngIntervals: [
+          { min: 24.6, max: 24.9 }, // Buta
+        ],
+      },
+      {
+        min: 2.3,
+        max: 3.6,
+        lngIntervals: [
+          { min: 30.9, max: 32.1 }, // Uganda
+          {
+            min: 36.7,
+            max: 38.2,
+          }, // Kenya
+        ],
+      },
+      {
+        min: 2.0,
+        max: 2.1,
+        lngIntervals: [
+          { min: 45.3, max: 45.4 }, // Mogadishu
+        ],
+      },
+      {
+        min: 5.5,
+        max: 13.1,
+        lngIntervals: [
+          { min: 34.8, max: 41.5 }, // Ethiopia
+        ],
+      },
+      {
+        min: 7.9,
+        max: 11.1,
+        lngIntervals: [
+          { min: 76.2, max: 79.9 }, // South India
+        ],
+      },
+      {
+        min: 5.9,
+        max: 9.3,
+        lngIntervals: [
+          { min: 79.8, max: 81.3 }, // Sri Lanka
+        ],
+      },
+      {
+        min: 7.8,
+        max: 10.5,
+        lngIntervals: [
+          { min: 98.3, max: 100.0 }, // Malaysia
+        ],
+      },
+      {
+        min: 9.5,
+        max: 11.6,
+        lngIntervals: [
+          { min: 122.1, max: 125.9 }, // Philippines
+        ],
+      },
+      {
+        min: 5.7,
+        max: 9.6,
+        lngIntervals: [
+          { min: 124.9, max: 126.3 }, // Philippines
+        ],
+      },
+      {
+        min: 7.2,
+        max: 7.5,
+        lngIntervals: [
+          { min: 134.4, max: 134.7 }, // Palau
+        ],
+      },
     ],
   },
   {
