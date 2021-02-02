@@ -35,6 +35,7 @@ const GameContainer = ({ socket }) => {
   const [playerName, setPlayerName] = useState("");
   const [roundOver, setRoundOver] = useState(false);
   const [playingAgainPressed, setPlayAgainPressed] = useState(false);
+  const [imageData, setImageData] = useState([]);
 
   const classes = useStyles();
 
@@ -73,6 +74,7 @@ const GameContainer = ({ socket }) => {
       startCountDownTimer,
       setRoundOver,
       setRoundPosition,
+      setImageData,
     });
 
     watchRoundOver({
@@ -179,6 +181,7 @@ const GameContainer = ({ socket }) => {
             setCurrentIndex={setCurrentIndex}
             setImgUrl={setImgUrl}
             guessSent={guessSent}
+            imageData={imageData}
           />
           <MapComponent
             socket={socket}

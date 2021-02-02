@@ -1,35 +1,32 @@
-import React, { useRef } from "react";
-import { Pannellum } from "pannellum-react";
+import React, { useEffect, useState } from "react";
 import { Typography, CircularProgress } from "@material-ui/core";
 import "./GameContainer.css";
+import { Viewer } from "photo-sphere-viewer";
+import "photo-sphere-viewer/dist/photo-sphere-viewer.css";
 
 const PanoramaComponent = ({
   imageUrls,
-  imgUrl,
+
   currentIndex,
   setCurrentIndex,
-  setImgUrl,
+
   guessSent,
+  imageData,
 }) => {
-  const panoRef = useRef();
-  const handlePanoLoad = () => {
-    // panoRef?.current?.panorama.loadScene();
-  };
+  const [viewer, setViewer] = useState(undefined);
+  const spehereRef = React.createRef();
 
   const changeImage = (newIndex) => {
     // delete webGL so its doesn't load stuff we dont want
-    const webGLContainer = document.getElementsByClassName(
-      "pnlm-render-container"
-    )[0];
 
-    while (webGLContainer.childNodes.length > 0) {
-      webGLContainer.removeChild(webGLContainer.childNodes[0]);
+    if (viewer) {
+      viewer.setPanorama(imageUrls[newIndex]).then(
+        () => {},
+        (e) => {
+          console.log("error", e);
+        }
+      );
     }
-    if (panoRef?.current) {
-      panoRef.current.panorama.destroy();
-    }
-
-    setImgUrl(imageUrls[newIndex]);
   };
 
   const incIndex = () => {
@@ -56,26 +53,25 @@ const PanoramaComponent = ({
     changeImage(newIndex);
   };
 
-  const PannellumRender = () => {
-    return (
-      <Pannellum
-        ref={panoRef}
-        width="100%"
-        height="500px"
-        image={imgUrl}
-        pitch={10}
-        yaw={180}
-        hfov={110}
-        compass
-        autoLoad
-        onLoad={handlePanoLoad}
-      />
-    );
-  };
+  useEffect(() => {
+    if (imageUrls.length > 0) {
+      if (!viewer) {
+        const viewer2 = new Viewer({
+          container: spehereRef.current,
+          panorama: imageUrls[0],
+          navbar: false,
+        });
+        setViewer(viewer2);
+      } else {
+        changeImage(0);
+      }
+    }
+  }, [imageUrls?.length]);
 
-  if (imageUrls.length > 0) {
-    return (
-      <div className="pano-container">
+  const displayPano = imageUrls.length > 0 ? "block" : "none";
+  return (
+    <React.Fragment>
+      <div className="pano-container" style={{ display: displayPano }}>
         <Typography style={{ textAlign: "center" }}>
           {currentIndex + 1} / {imageUrls.length}{" "}
         </Typography>
@@ -89,23 +85,24 @@ const PanoramaComponent = ({
         >
           <i className="arrow"></i>
         </button>
-        <PannellumRender />
+        <div
+          style={{ height: 400, width: "100%" }}
+          id="viewer"
+          ref={spehereRef}
+        ></div>
       </div>
-    );
-  }
-
-  if (!guessSent) {
-    return (
-      <div style={{ textAlign: "center" }}>
-        <CircularProgress />
+      <div style={{ display: imageUrls.length > 0 ? "none" : "block" }}>
+        {!guessSent ? (
+          <div style={{ textAlign: "center" }}>
+            <CircularProgress />
+          </div>
+        ) : (
+          <Typography style={{ textAlign: "center" }}>
+            Waiting for leader to start round.
+          </Typography>
+        )}
       </div>
-    );
-  }
-
-  return (
-    <Typography style={{ textAlign: "center" }}>
-      Waiting for leader to start round.
-    </Typography>
+    </React.Fragment>
   );
 };
 

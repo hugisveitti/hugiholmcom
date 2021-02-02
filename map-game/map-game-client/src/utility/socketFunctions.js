@@ -30,6 +30,7 @@ export const watchSendImages = ({
   startCountDownTimer,
   setRoundOver,
   setRoundPosition,
+  setImageData,
 }) => {
   socket.on("handleSendImages", (data) => {
     setGameOver(false);
@@ -47,6 +48,7 @@ export const watchSendImages = ({
     setTimerSeconds(_timePerRound);
     setPlayers(_players);
     const myImageUrls = [];
+    setImageData(gameData["features"]);
     if (gameData["features"].length > 0) {
       for (let i = 0; i < gameData["features"].length; i++) {
         const item = gameData["features"][i];
@@ -54,6 +56,7 @@ export const watchSendImages = ({
         const url = getImageUrlFromKey(currKey);
         myImageUrls.push(url);
       }
+      console.log("gamedata", gameData);
       setCurrentIndex(0);
       setImageUrls(myImageUrls);
       setImgUrl(myImageUrls[0]);
