@@ -53,8 +53,8 @@ module.exports = (app, server) => {
   };
 
   io.on("connection", (socket) => {
+    let playerNotConnectedToGame = true;
     console.log("connection made");
-    socket.emit("connectedToRoomCallBack", { message: "Hello from socket" });
 
     socket.on("roomConnection", (data) => {
       console.log(data);
@@ -67,16 +67,34 @@ module.exports = (app, server) => {
         if (player) {
           // player created
         } else {
+          socket.emit("roomConnectionCallback", {
+            message: "Name in use",
+            status: "error",
+          });
           console.log("name in use", playerName);
+          return;
         }
       } else {
+        const game = new MapGame(io, roomName);
+
         const player = new Player(socket, playerName);
-        const game = new MapGame(io, socket, roomName);
         game.addPlayer(player);
         player.setGame(game);
         player.setIsGameLeader();
         games[roomName] = game;
       }
+      playerNotConnectedToGame = false;
+      socket.emit("roomConnectionCallback", {
+        message: "connected to room",
+        status: "success",
+      });
+    });
+
+    socket.on("connectedToAnyRoom", () => {
+      console.log("connected to any room");
+      socket.emit("connectedToAnyRoomCallback", {
+        playerNotConnectedToGame,
+      });
     });
 
     clients[socket.id] = socket;

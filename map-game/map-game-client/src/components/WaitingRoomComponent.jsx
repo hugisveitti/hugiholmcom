@@ -14,6 +14,7 @@ import {
 import { ChildCare } from "@material-ui/icons";
 import { gamePagePath } from "../Routes";
 import AppContainer, { useStyles } from "./AppContainer";
+import { playerConnectedCheck } from "../utility/socketFunctions";
 
 const WaitingRoomComponent = ({ socket, ...props }) => {
   const [roomName, setRoomName] = useState("");
@@ -28,6 +29,8 @@ const WaitingRoomComponent = ({ socket, ...props }) => {
 
   useEffect(() => {
     if (socket) {
+      playerConnectedCheck(socket, props);
+
       socket.emit("connectedToWaitingRoom");
       socket.once("connectedToWaitingRoomCallback", (data) => {
         const _roomName = data["roomName"];

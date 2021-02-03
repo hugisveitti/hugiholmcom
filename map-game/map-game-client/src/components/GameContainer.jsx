@@ -13,8 +13,9 @@ import AppContainer, { useStyles } from "./AppContainer";
 import icon from "./icon.png";
 import PanoramaComponent from "./PanoramaComponent";
 import LeaderBoardComponent from "./LeaderBoardComponent";
+import { playerConnectedCheck } from "../utility/socketFunctions";
 
-const GameContainer = ({ socket }) => {
+const GameContainer = ({ socket, ...props }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [imgUrl, setImgUrl] = useState("");
   const [imageUrls, setImageUrls] = useState([]);
@@ -55,6 +56,8 @@ const GameContainer = ({ socket }) => {
 
   useEffect(() => {
     if (!socket) return;
+
+    playerConnectedCheck(socket, props);
 
     watchSendImages({
       socket,

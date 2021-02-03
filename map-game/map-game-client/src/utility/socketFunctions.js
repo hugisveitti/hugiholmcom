@@ -1,3 +1,5 @@
+import { frontPagePath } from "../Routes";
+
 export const sortPlayersByScore = (players) => {
   return players.sort((a, b) => {
     if (a.score < b.score) return 1;
@@ -56,7 +58,6 @@ export const watchSendImages = ({
         const url = getImageUrlFromKey(currKey);
         myImageUrls.push(url);
       }
-      console.log("gamedata", gameData);
       setCurrentIndex(0);
       setImageUrls(myImageUrls);
       setImgUrl(myImageUrls[0]);
@@ -94,5 +95,14 @@ export const watchRoundOver = ({
     setIsLeader(isGameLeader);
     setCountdownStarted(false);
     setRoundOver(true);
+  });
+};
+
+export const playerConnectedCheck = (socket, props) => {
+  socket.emit("connectedToAnyRoom");
+  socket.on("connectedToAnyRoomCallback", (data) => {
+    if (data["playerNotConnectedToGame"]) {
+      props.history.push(frontPagePath);
+    }
   });
 };

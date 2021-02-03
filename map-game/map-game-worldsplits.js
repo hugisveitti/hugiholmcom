@@ -135,15 +135,332 @@ const worldMapSplits = [
   {
     max: 50,
     min: 40,
-    lngIntervals: [
-      { min: -124, max: -100 }, // USA West
-      { min: -100, max: -70 }, // USA east
-      { min: -9, max: 7 }, // spain and portugal, france
-      { min: 6, max: 16 }, // italy, croatia, ger, swiss, austria, more
-      { min: 15, max: 29 }, // east europe
-      { min: 30, max: 40 }, // ukrain
-      { min: 52, max: 129 }, // kazak, china, mongolia
-      { min: 140, max: 146 }, // north japan
+    latInterVal: [
+      {
+        max: 50,
+        min: 42.1,
+        lngIntervals: [
+          //USA CANADA
+          { min: -124.54, max: -115.49 }, // USA oregon
+        ],
+      },
+      {
+        max: 50,
+        min: 41.77,
+        lngIntervals: [
+          { min: -115.4, max: -103.89 }, // montana
+        ],
+      },
+      {
+        max: 43.56,
+        min: 42.03,
+        lngIntervals: [
+          { min: -105.56, max: -102.57 }, // dakota
+        ],
+      },
+      {
+        max: 46.21,
+        min: 44.02,
+        lngIntervals: [
+          { min: -94.01, max: -90.86 }, // minneapolis
+        ],
+      },
+      {
+        max: 44.21,
+        min: 39.88,
+        lngIntervals: [
+          { min: -124.1, max: -117.16 }, // north cali
+        ],
+      },
+      {
+        max: 43.17,
+        min: 39.74,
+        lngIntervals: [
+          { min: -117.82, max: -110.66 }, // Utah
+        ],
+      },
+      {
+        max: 42.91,
+        min: 39.5,
+        lngIntervals: [
+          { min: -111.27, max: -104.68 }, // colorado
+        ],
+      },
+      {
+        max: 43.36,
+        min: 40.75,
+        lngIntervals: [
+          { min: -105.47, max: -95.64 }, // South of minneapolis
+        ],
+      },
+      {
+        max: 42.97,
+        min: 40.45,
+        lngIntervals: [
+          { min: -93.22, max: -87.9 }, // millwakee
+        ],
+      },
+      {
+        max: 41.48,
+        min: 39.64,
+        lngIntervals: [
+          { min: -87.9, max: -83.25 }, // Ohio
+        ],
+      },
+      {
+        max: 45.09,
+        min: 41.87,
+        lngIntervals: [
+          { min: -86.32, max: -83.34 }, // Detroid
+        ],
+      },
+      {
+        max: 41.51,
+        min: 39.47,
+        lngIntervals: [
+          { min: -81.93, max: -73.94 }, // NY state
+        ],
+      },
+      {
+        max: 44.93,
+        min: 42.94,
+        lngIntervals: [
+          { min: -80.17, max: -71.7 }, // Toronto
+        ],
+      },
+      {
+        max: 46.86,
+        min: 45.68,
+        lngIntervals: [
+          { min: -73.89, max: -70.34 }, // Franska canada
+        ],
+      },
+      {
+        max: 44.25,
+        min: 41.41,
+        lngIntervals: [
+          { min: -73.5, max: -70.03 }, // boston
+        ],
+      },
+      {
+        max: 45.18,
+        min: 44.21,
+        lngIntervals: [
+          { min: -65.94, max: -62.6 }, // halifax
+        ],
+      },
+      {
+        max: 47.61,
+        min: 47.35,
+        lngIntervals: [
+          { min: -53.24, max: -52.64 }, // Newfoundland
+        ],
+      },
+      {
+        max: 42.1,
+        min: 40.38,
+        lngIntervals: [
+          { min: 42.09, max: 48.24 }, // Georgia
+        ],
+      },
+      {
+        max: 41.44,
+        min: 39.37,
+        lngIntervals: [
+          { min: 43.76, max: 48.5 }, // Armania
+        ],
+      },
+      {
+        max: 42.23,
+        min: 41.79,
+        lngIntervals: [
+          { min: 57.9, max: 60.44 }, // Uzbekistan, turk
+        ],
+      },
+      {
+        max: 41.51,
+        min: 40.56,
+        lngIntervals: [
+          { min: 68.39, max: 69.8 }, // Kyrgistan
+        ],
+      },
+      {
+        max: 42.59,
+        min: 42.4,
+        lngIntervals: [
+          { min: 75.81, max: 76.48 }, // Issykul
+        ],
+      },
+      {
+        max: 51.26,
+        min: 51,
+        lngIntervals: [
+          { min: 71.2, max: 71.63 }, // Nur sultan
+        ],
+      },
+      {
+        max: 48.03,
+        min: 47.55,
+        lngIntervals: [
+          { min: 106.22, max: 107.16 }, // Ulaanbaatar
+        ],
+      },
+      {
+        max: 44.47,
+        min: 42.84,
+        lngIntervals: [
+          { min: 131.29, max: 132.91 }, // Vladovstok
+        ],
+      },
+      {
+        max: 44.26,
+        min: 42.75,
+        lngIntervals: [
+          { min: 141.08, max: 143.32 }, // North japan
+        ],
+      },
+      {
+        max: 43.68,
+        min: 42.41,
+        lngIntervals: [
+          { min: 142.33, max: 145.23 }, // japan
+        ],
+      },
+      {
+        max: 40.43,
+        min: 38.7,
+        lngIntervals: [
+          { min: 139.57, max: 141.76 }, // north mainland japan
+        ],
+      },
+    ],
+  },
+  {
+    max: 50,
+    min: 40,
+    latInterVal: [
+      // EUROPE for more liklihood of europe
+      {
+        max: 43.13,
+        min: 37.23,
+        lngIntervals: [
+          { min: -8.98, max: -5.64 }, // Portugal
+        ],
+      },
+      { max: 42.81, min: 37.3, lngIntervals: [{ min: -7.05, max: -3.18 }] },
+      { max: 42.75, min: 36.53, lngIntervals: [{ min: -4.24, max: 0.15 }] }, // spain
+      {
+        max: 48.34,
+        min: 47.81,
+        lngIntervals: [
+          { min: -3.98, max: -0.29 }, // west france
+        ],
+      },
+      {
+        max: 49.38,
+        min: 43.33,
+        lngIntervals: [
+          { min: -1.43, max: 3.14 }, // france
+        ],
+      },
+      {
+        max: 51.07,
+        min: 49.5,
+        lngIntervals: [
+          { min: 1.12, max: 4.98 }, // belgium
+        ],
+      },
+      {
+        max: 53.07,
+        min: 51.45,
+        lngIntervals: [
+          { min: 3.93, max: 7.62 }, // netherlands
+        ],
+      },
+      {
+        max: 47.4,
+        min: 43.58,
+        lngIntervals: [
+          { min: 5.25, max: 10.96 }, // swiss
+        ],
+      },
+      {
+        max: 50.23,
+        min: 47.4,
+        lngIntervals: [
+          { min: 5.16, max: 12.45 }, // South ger
+        ],
+      },
+      {
+        max: 53.7,
+        min: 50.96,
+        lngIntervals: [
+          { min: 6.57, max: 13.95 }, // North ger
+        ],
+      },
+      {
+        max: 48.4,
+        min: 44.28,
+        lngIntervals: [
+          { min: 9.99, max: 16.49 }, // Austria
+        ],
+      },
+      {
+        max: 54.27,
+        min: 48.86,
+        lngIntervals: [
+          { min: 13.95, max: 23.7 }, // Poland
+        ],
+      },
+      {
+        max: 47.87,
+        min: 43.39,
+        lngIntervals: [
+          { min: 15.88, max: 22.47 }, // Croatia, hungary
+        ],
+      },
+      {
+        max: 44.34,
+        min: 41.38,
+        lngIntervals: [
+          { min: 12.19, max: 12.28 }, // Italy
+        ],
+      },
+      {
+        max: 42.1,
+        min: 36.88,
+        lngIntervals: [
+          { min: 13.86, max: 15.26 }, // South italy
+        ],
+      },
+      {
+        max: 42.81,
+        min: 38.94,
+        lngIntervals: [
+          { min: 8.5, max: 9.53 }, // italian islands
+        ],
+      },
+      {
+        max: 46.26,
+        min: 36.77,
+        lngIntervals: [
+          { min: 21.27, max: 23.69 }, // Greece, serbia
+        ],
+      },
+      {
+        max: 48.05,
+        min: 40.68,
+        lngIntervals: [
+          { min: 23.69, max: 29.75 }, // Bulgaria
+        ],
+      },
+      {
+        max: 50.99,
+        min: 46.38,
+        lngIntervals: [
+          { min: 24.08, max: 39.72 }, // Ukrain
+        ],
+      },
     ],
   },
   {
@@ -477,22 +794,272 @@ const worldMapSplits = [
   {
     max: -30,
     min: -40,
-    lngIntervals: [
-      { min: -73.8, max: -50 }, // chile, argentina, uruguay
-      { min: 17.5, max: 31 }, // South africa
-      { min: 115, max: 136 }, // south west australia
-      { min: 136, max: 152 }, // south east australia
-      { min: 172, max: 178 }, // North island New Zealand
+    latInterVal: [
+      {
+        max: -32.99,
+        min: -38.2,
+        lngIntervals: [
+          { min: -73.39, max: -69.96 }, // west chile
+        ],
+      },
+      {
+        max: -40.81,
+        min: -42,
+        lngIntervals: [
+          { min: -72.03, max: -71.06 }, // chile
+        ],
+      },
+      {
+        max: -38.77,
+        min: -39.18,
+        lngIntervals: [
+          { min: -68.47, max: -67.81 }, // arg
+        ],
+      },
+      {
+        max: -37.53,
+        min: -38.53,
+        lngIntervals: [
+          { min: -58.61, max: -57.25 }, // arg
+        ],
+      },
+      {
+        max: -34.51,
+        min: -35.14,
+        lngIntervals: [
+          { min: -60.08, max: -58.15 }, // buenos aires
+        ],
+      },
+      {
+        max: -31.26,
+        min: -31.99,
+        lngIntervals: [
+          { min: -65.09, max: -63.72 }, // Cordoba
+        ],
+      },
+      {
+        max: -32.88,
+        min: -33.28,
+        lngIntervals: [
+          { min: -61.42, max: -60.36 }, // Rosario
+        ],
+      },
+      {
+        max: -34.51,
+        min: -34.98,
+        lngIntervals: [
+          { min: -56.56, max: -55.66 }, // Uruguay
+        ],
+      },
+      {
+        max: -32.84,
+        min: -33.43,
+        lngIntervals: [
+          { min: -53.23, max: -52.46 }, // east uruguay
+        ],
+      },
+      {
+        max: -29.69,
+        min: -30.64,
+        lngIntervals: [
+          { min: -52.58, max: -49.81 }, // Port algere
+        ],
+      },
+      {
+        max: -33.5,
+        min: -34.11,
+        lngIntervals: [
+          { min: 18.39, max: 19.82 }, // Cape town
+        ],
+      },
+      {
+        max: -28.54,
+        min: -31.37,
+        lngIntervals: [
+          { min: 17.62, max: 17.89 }, // east south africa
+        ],
+      },
+      {
+        max: -33.65,
+        min: -34.2,
+        lngIntervals: [
+          { min: 24.52, max: 26.63 }, // Port elizabeth
+        ],
+      },
+      {
+        max: -29.04,
+        min: -30.47,
+        lngIntervals: [
+          { min: 26.58, max: 29.35 }, // Lesotho
+        ],
+      },
+      {
+        max: -29.44,
+        min: -30.71,
+        lngIntervals: [
+          { min: 30.12, max: 31.28 }, // Eswatini
+        ],
+      },
+      {
+        max: -32.05,
+        min: -34.89,
+        lngIntervals: [
+          { min: 115.86, max: 118.85 }, // Perth
+        ],
+      },
+      {
+        max: -28.57,
+        min: -31.37,
+        lngIntervals: [
+          { min: 115.27, max: 116.72 }, // Geraldton
+        ],
+      },
+      {
+        max: -33.21,
+        min: -33.89,
+        lngIntervals: [
+          { min: 123, max: 124.01 }, // south aust
+        ],
+      },
+      {
+        max: -33.32,
+        min: -34.11,
+        lngIntervals: [
+          { min: 135.26, max: 137.34 }, // middle south aust
+        ],
+      },
+      {
+        max: -33.89,
+        min: -36.01,
+        lngIntervals: [
+          { min: 136.99, max: 139.67 }, // Adelaide
+        ],
+      },
+      {
+        max: -35.6,
+        min: -38.03,
+        lngIntervals: [
+          { min: 140.47, max: 150.22 }, // Melbourne
+        ],
+      },
+      {
+        max: -32.73,
+        min: -35.46,
+        lngIntervals: [
+          { min: 147.72, max: 152.2 }, // Sydney
+        ],
+      },
+      {
+        max: -27.57,
+        min: -32.73,
+        lngIntervals: [
+          { min: 147.33, max: 153.21 }, // east australia
+        ],
+      },
+      {
+        max: -31.82,
+        min: -32.19,
+        lngIntervals: [
+          { min: 141.14, max: 141.63 }, // Broken hill
+        ],
+      },
     ],
   },
   {
     max: -40,
     min: -50,
-    lngIntervals: [
-      { min: -75, max: -70 }, // chile argentina
-      { min: -65, max: -62 }, // chile argentina
-      { min: 144, max: 148 }, // Tasmania
-      { min: 166, max: 177 }, // New Zealand
+    latInterVal: [
+      {
+        max: -54.12,
+        min: -54.9,
+        lngIntervals: [
+          { min: -68.51, max: -67.1 }, // South argentina
+        ],
+      },
+      {
+        max: -43.25,
+        min: -44.26,
+        lngIntervals: [
+          { min: -72.51, max: -71.43 }, // South chile
+        ],
+      },
+      {
+        max: -42.31,
+        min: -42.91,
+        lngIntervals: [
+          { min: -65, max: -63.66 }, // south arg
+        ],
+      },
+      {
+        max: -51.54,
+        min: -52.12,
+        lngIntervals: [
+          { min: -59.54, max: -57.93 }, // Falkland
+        ],
+      },
+      {
+        max: -40.85,
+        min: -43.28,
+        lngIntervals: [
+          { min: 145.7, max: 146.29 }, // west tasmania
+        ],
+      },
+      {
+        max: -40.9,
+        min: -43.53,
+        lngIntervals: [
+          { min: 146.43, max: 148.4 }, // east tasmania
+        ],
+      },
+      {
+        max: -45.02,
+        min: -46.17,
+        lngIntervals: [
+          { min: 167.53, max: 171.04 }, // Dunedin
+        ],
+      },
+      {
+        max: -43.59,
+        min: -44.11,
+        lngIntervals: [
+          { min: 171.56, max: 173.2 }, // CHristchurch
+        ],
+      },
+      {
+        max: -43.33,
+        min: -43.53,
+        lngIntervals: [
+          { min: 169.73, max: 170.06 }, // west coast
+        ],
+      },
+      {
+        max: -41.28,
+        min: -41.59,
+        lngIntervals: [
+          { min: 173.36, max: 174.37 }, // North south island
+        ],
+      },
+      {
+        max: -40.85,
+        min: -41.24,
+        lngIntervals: [
+          { min: 174.79, max: 176.15 }, // South north island
+        ],
+      },
+      {
+        max: -37.51,
+        min: -39.49,
+        lngIntervals: [
+          { min: 173.96, max: 178.73 }, // North island
+        ],
+      },
+      {
+        max: -35.09,
+        min: -36.6,
+        lngIntervals: [
+          { min: 173.66, max: 174.29 }, // North north island
+        ],
+      },
     ],
   },
   // Not going more south since it till cause an inbalance because -50, -60 will be only chile argentina and it will appear 1/13 of the time

@@ -1,5 +1,12 @@
-import React, { useState } from "react";
-import { Button, Card, CardContent, TextField } from "@material-ui/core";
+import React, { useState, useEffect } from "react";
+import {
+  Button,
+  Card,
+  CardContent,
+  TextField,
+  Snackbar,
+} from "@material-ui/core";
+import { Alert } from "@material-ui/lab";
 import { waitingPagePath } from "../Routes";
 import AppContainer, { useStyles } from "./AppContainer";
 import icon from "./icon.png";
@@ -8,14 +15,48 @@ const FrontPage = ({ socket, ...props }) => {
   const classes = useStyles();
   const [roomName, setRoomName] = useState("");
   const [playerName, setPlayerName] = useState("");
+  const [snackOpen, setSnackOpen] = useState(false);
+  const [snackMessage, setSnackMessage] = useState("");
+  const [snackStatus, setSnackStatus] = useState("");
+
+  useEffect(() => {
+    if (!socket) return;
+  }, [socket]);
+
   const handleConnectToRoom = () => {
-    if (roomName === "" || playerName === "") return;
+    if (roomName === "" || playerName === "") {
+      setSnackOpen(true);
+      setSnackStatus("error");
+      setSnackMessage("Please fill in your name and room name");
+      return;
+    }
     socket.emit("roomConnection", { roomName, playerName });
-    props.history.push(waitingPagePath);
+    socket.on("roomConnectionCallback", (data) => {
+      setSnackMessage(data["message"]);
+      setSnackStatus(data["status"]);
+      setSnackOpen(true);
+      if (data["status"] === "success") {
+        props.history.push(waitingPagePath);
+      }
+    });
   };
 
   return (
     <AppContainer>
+      <Snackbar
+        open={snackOpen}
+        autoHideDuration={5000}
+        onClose={() => setSnackOpen(false)}
+      >
+        <Alert
+          elevation={6}
+          variant="filled"
+          severity={snackStatus}
+          onClose={() => setSnackOpen(false)}
+        >
+          {snackMessage}
+        </Alert>
+      </Snackbar>
       <div style={{ textAlign: "center" }}>
         <img className={classes.icon} src={icon} alt="joejuessrlogo" />
         <Card className={classes.cardContainer}>
@@ -30,6 +71,10 @@ const FrontPage = ({ socket, ...props }) => {
               This is in development so there are probably hella bugs. ToDo: add
               leaderboard. Make finding new positions better. Using open street
               maps and Mapillary.
+            </p>
+            <p>
+              It is possible to reconnect to a game by writing the exact same
+              name.
             </p>
 
             <TextField

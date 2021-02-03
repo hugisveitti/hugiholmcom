@@ -2,13 +2,12 @@ const { getImagesFromMapillary, getDistance } = require("./positionUtility");
 const { Player } = require("./map-player-class");
 
 class MapGame {
-  constructor(io, socket, roomName) {
+  constructor(io, roomName) {
     this.players = {};
     this.numberOfRounds = 5;
     this.currentRound = 0;
     this.currentPosition = { lat: 0, lng: 0 };
     this.io = io;
-    this.socket = socket;
     this.gameStarted = false;
     this.leader = undefined;
     this.gameFinished = false;

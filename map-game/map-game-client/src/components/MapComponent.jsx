@@ -31,6 +31,7 @@ const MapComponent = ({
 }) => {
   const position = [51.505, -0.09];
   const [markerPos, setMarkerPos] = useState({ lat: 51.505, lng: -0.09 });
+  const [oldMarkerPos, setOldMarkerPos] = useState({ lat: 51.505, lng: -0.09 });
   const classes = useStyles();
   const defaultIcon = (correctIcon) =>
     L.icon({
@@ -68,10 +69,22 @@ const MapComponent = ({
     );
   };
 
+  const around = (num) => {
+    return Math.round(num * 100) / 100;
+  };
+
   const MyMarker = () => {
     useMapEvents({
       click(e) {
         console.log("map clicked", e.latlng);
+        let latMax = around(Math.max(e.latlng.lat, markerPos.lat));
+        let latMin = around(Math.min(e.latlng.lat, markerPos.lat));
+        let lngMax = around(Math.max(e.latlng.lng, markerPos.lng));
+        let lngMin = around(Math.min(e.latlng.lng, markerPos.lng));
+        console.log(`{ max: ${latMax}, min: ${latMin}, lngIntervals:[
+         { min: ${lngMin} , max:${lngMax} }
+        ] },`);
+        setOldMarkerPos(markerPos);
         if (!roundOver) {
           setMarkerPos({ lat: e.latlng.lat, lng: e.latlng.lng });
         }

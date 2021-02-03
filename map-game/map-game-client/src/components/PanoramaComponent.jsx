@@ -60,6 +60,7 @@ const PanoramaComponent = ({
           container: spehereRef.current,
           panorama: imageUrls[0],
           navbar: false,
+          loadingTxt: "",
         });
         setViewer(viewer2);
       } else {
