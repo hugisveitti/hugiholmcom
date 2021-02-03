@@ -91,7 +91,6 @@ module.exports = (app, server) => {
     });
 
     socket.on("connectedToAnyRoom", () => {
-      console.log("connected to any room");
       socket.emit("connectedToAnyRoomCallback", {
         playerNotConnectedToGame,
       });
