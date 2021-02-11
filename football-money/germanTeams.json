@@ -1,0 +1,1317 @@
+{
+  "data": [
+    {
+      "team_id": 3489,
+      "name": "RB Leipzig",
+      "short_code": "RBL",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/101.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 3915,
+      "name": "VfB Stuttgart",
+      "short_code": "VFB",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2849.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 3951,
+      "name": "TSV Havelse",
+      "short_code": "HAV",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2831.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 3952,
+      "name": "Hannoverscher SC",
+      "short_code": "HAN",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2832.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 3953,
+      "name": "SC Weiche Flensburg 08",
+      "short_code": "WEF",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2833.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 3954,
+      "name": "VfL Wolfsburg II",
+      "short_code": "WOB",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2834.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 3955,
+      "name": "Hannover 96 II",
+      "short_code": "H96",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2835.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 3956,
+      "name": "SV Drochtersen/Assel",
+      "short_code": "DRO",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2836.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 3957,
+      "name": "Hamburger SV II",
+      "short_code": "HSV2",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2837.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 3958,
+      "name": "Heider SV",
+      "short_code": "HED",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2838.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 3959,
+      "name": "VfB Lubeck",
+      "short_code": "LUB",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2839.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 3960,
+      "name": "SSV Jeddeloh II",
+      "short_code": "JED",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2840.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 3961,
+      "name": "SV Werder Bremen II",
+      "short_code": "BRE",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2841.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 3962,
+      "name": "Luneburger SK Hansa",
+      "short_code": "LSK",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2842.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 3963,
+      "name": "BSV Rehden",
+      "short_code": "REH",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2843.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 3964,
+      "name": "Holstein Kiel II",
+      "short_code": "HOL",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2844.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 3965,
+      "name": "Eintracht Norderstedt",
+      "short_code": "NOR",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2845.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 3966,
+      "name": "Altonaer FC Von 1893",
+      "short_code": "ALT",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2846.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 3967,
+      "name": "VfB Oldenburg",
+      "short_code": "OLD",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2847.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 3968,
+      "name": "FC St. Pauli II",
+      "short_code": "PAU",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2848.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 3991,
+      "name": "1. FC Köln",
+      "short_code": "KOE",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2809.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 3992,
+      "name": "SC Paderborn 07",
+      "short_code": "PAD",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2807.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 3993,
+      "name": "1. FC Union Berlin",
+      "short_code": "UNI",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2819.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 3995,
+      "name": "FC Oberlausitz Neugersdorf",
+      "short_code": "FCON",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1167.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4044,
+      "name": "1. Goppinger SV",
+      "short_code": "GOP",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1108.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4045,
+      "name": "FC 08 Villingen",
+      "short_code": "VIL",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1109.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4046,
+      "name": "FV Ravensburg",
+      "short_code": "RAV",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1110.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4047,
+      "name": "Stuttgarter Kickers",
+      "short_code": "STK",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1111.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4048,
+      "name": "SSV Reutlingen 1905",
+      "short_code": "REU",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1112.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4049,
+      "name": "SV Oberachern",
+      "short_code": "SVO",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1113.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4050,
+      "name": "FSV 08 Bissingen",
+      "short_code": "BIS",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1114.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4051,
+      "name": "SV Sandhausen II",
+      "short_code": "SVS",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1115.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4052,
+      "name": "Neckarsulm",
+      "short_code": "NEU",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1116.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4053,
+      "name": "Spfr. Dorfmerkingen",
+      "short_code": "SFD",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1117.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4054,
+      "name": "SV Linx",
+      "short_code": "LIN",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1118.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4055,
+      "name": "SGV Freiberg",
+      "short_code": "FRE",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1119.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4056,
+      "name": "VfB Stuttgart II",
+      "short_code": "VFB",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1120.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4057,
+      "name": "FC Nottingen",
+      "short_code": "NOT",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1121.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4058,
+      "name": "Freiburger FC",
+      "short_code": "FBU",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1122.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4059,
+      "name": "1. FC Pforzheim 1896",
+      "short_code": "FCP",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1123.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4060,
+      "name": "1. FC Rielasingen-Arlen",
+      "short_code": "RIA",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1124.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4061,
+      "name": "TSV Ilshofen",
+      "short_code": "ILS",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1125.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4062,
+      "name": "SC Wiedenbruck",
+      "short_code": "WIE",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1143.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4064,
+      "name": "1. FC Kaan-Marienborn",
+      "short_code": "KAM",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1157.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 3931,
+      "name": "DSC Arminia Bielefeld",
+      "short_code": "DSC Arminia Bielefeld",
+      "common_name": "",
+      "logo": "",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4066,
+      "name": "FC Bayern Munchen",
+      "short_code": "FCB",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/111.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4067,
+      "name": "Hertha Berlin",
+      "short_code": "BSC",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2806.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4068,
+      "name": "Bayer 04 Leverkusen",
+      "short_code": "B04",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/114.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4069,
+      "name": "VfL Wolfsburg",
+      "short_code": "WOB",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2808.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4070,
+      "name": "SV Werder Bremen",
+      "short_code": "SVW",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2810.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4071,
+      "name": "Fortuna Dusseldorf",
+      "short_code": "F95",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2811.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4072,
+      "name": "Sport-Club Freiburg",
+      "short_code": "SCF",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2812.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4073,
+      "name": "1. FSV Mainz 05",
+      "short_code": "M05",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2813.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4074,
+      "name": "Borussia Dortmund",
+      "short_code": "BVB",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/98.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4075,
+      "name": "FC Augsburg",
+      "short_code": "FCA",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2814.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4076,
+      "name": "Borussia Monchengladbach",
+      "short_code": "BMG",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2815.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4077,
+      "name": "FC Schalke 04",
+      "short_code": "S04",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2816.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4078,
+      "name": "Eintracht Frankfurt",
+      "short_code": "SGE",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2817.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4079,
+      "name": "TSG Hoffenheim",
+      "short_code": "TSG",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/2818.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4190,
+      "name": "Greifswalder FC",
+      "short_code": "GRE",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1127.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4216,
+      "name": "Brandenburger SC South 05",
+      "short_code": "BSC",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1136.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4217,
+      "name": "FC Hertha 03 Z.",
+      "short_code": "HEZ",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1135.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4218,
+      "name": "FC Hansa Rostock II",
+      "short_code": "HRO",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1132.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4220,
+      "name": "Charlottenburger FC Hertha 06",
+      "short_code": "CHA",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1133.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4221,
+      "name": "SC Staaken 1919",
+      "short_code": "SCS",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1138.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4222,
+      "name": "1. FC Lok Stendal",
+      "short_code": "LOS",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1131.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4223,
+      "name": "SpVgg Blau-Weiss 1890 Berlin",
+      "short_code": "BWB",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1130.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4230,
+      "name": "FC Gutersloh 2000",
+      "short_code": "FC ",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1142.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4231,
+      "name": "SV Schermbeck 1912",
+      "short_code": "SV ",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1144.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4232,
+      "name": "SC Westfalia 1904 Herne",
+      "short_code": "SC ",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1145.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4233,
+      "name": "Sportfreunde Siegen 1899",
+      "short_code": "SIE",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1146.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4234,
+      "name": "Holzwickeder SC",
+      "short_code": "HOL",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1147.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4235,
+      "name": "Hammer SpVg",
+      "short_code": "HAM",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1148.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4236,
+      "name": "SC Preussen Munster II",
+      "short_code": "SC ",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1149.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4237,
+      "name": "Rot Weiss Ahlen",
+      "short_code": "AHL",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1150.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4238,
+      "name": "FC Eintracht Rheine",
+      "short_code": "RHE",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1151.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4239,
+      "name": "TuS Erndtebruck 1895",
+      "short_code": "ERN",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1152.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4240,
+      "name": "TUS Ennepetal",
+      "short_code": "ENN",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1153.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4241,
+      "name": "RSV Meinerzhagen",
+      "short_code": "MZH",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1154.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4242,
+      "name": "SV Westfalia Rhynern",
+      "short_code": "SV ",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1155.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4243,
+      "name": "TSG 1881 Sprockhovel",
+      "short_code": "TSG",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1156.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4244,
+      "name": "SC Paderborn 07 II",
+      "short_code": "P07",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1158.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 4245,
+      "name": "ASC 09 Dortmund",
+      "short_code": "ASC",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1159.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 9654,
+      "name": "FSV Luckenwalde",
+      "short_code": "LUC",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1172.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 9669,
+      "name": "FC Strausberg",
+      "short_code": "FCS",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1128.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 9671,
+      "name": "SV Victoria Seelow",
+      "short_code": "VSE",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1129.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 9682,
+      "name": "Union Sandersdorf",
+      "short_code": "USA",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1162.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 9685,
+      "name": "FSV Martinroda",
+      "short_code": "FSV",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1166.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 9688,
+      "name": "SC Tasmania 1900 Berlin",
+      "short_code": "SCTB",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1140.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 9689,
+      "name": "FC International Leipzig",
+      "short_code": "ILE",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1171.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 9691,
+      "name": "Carl Zeiss Jena II",
+      "short_code": "CZJ",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1163.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 9695,
+      "name": "TSG Neustrelitz",
+      "short_code": "NEU",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1139.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 9697,
+      "name": "VFC Plauen",
+      "short_code": "PLA",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1174.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 9700,
+      "name": "MSV Pampow",
+      "short_code": "MSV",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1134.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 9709,
+      "name": "FC Eilenburg",
+      "short_code": "EIL",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1161.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 9712,
+      "name": "Einheit Rudolstadt",
+      "short_code": "EIN",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1175.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 9716,
+      "name": "FC Grimma",
+      "short_code": "FC ",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1168.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 9717,
+      "name": "1. FC Merseburg",
+      "short_code": "1. ",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1160.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 9725,
+      "name": "VFB 1921 Krieschow",
+      "short_code": "VFB",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1164.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 9734,
+      "name": "VfL Halle 1896",
+      "short_code": "HAL",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1170.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    },
+    {
+      "team_id": 11993,
+      "name": "Askania Bernburg",
+      "short_code": "ASB",
+      "common_name": "",
+      "logo": "https://cdn.sportdataapi.com/images/soccer/teams/100/1169.png",
+      "country": {
+        "country_id": 48,
+        "name": "Germany",
+        "country_code": "de",
+        "continent": "Europe"
+      }
+    }
+  ]
+}

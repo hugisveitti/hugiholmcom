@@ -54,7 +54,7 @@ module.exports = (app, server) => {
 
   io.on("connection", (socket) => {
     let playerNotConnectedToGame = true;
-    console.log("connection made");
+    console.log("connection made to map-game");
 
     socket.on("roomConnection", (data) => {
       console.log(data);

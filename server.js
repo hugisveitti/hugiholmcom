@@ -15,10 +15,10 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use(express.static(path.join(__dirname, "client")));
+app.use(express.static(path.join(__dirname, "./client/build")));
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "client/index.html"));
+  res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 const port = process.env.PORT || 8000;
@@ -27,3 +27,6 @@ const server = app.listen(port, () => {
 });
 
 require("./map-game/map-game-server.js")(app, server);
+require("./box-fly/box-fly-server.js")(app, server);
+require("./football-money/index.js")(app);
+require("./letingi/app.js")(app);

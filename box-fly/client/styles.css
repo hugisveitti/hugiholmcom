@@ -1,0 +1,38 @@
+html, body{
+    margin:0;
+    padding:0;
+}
+
+#game-container{
+    visibility: hidden;
+    display: block;
+}
+
+#mobile-container{
+    display:none;
+    visibility: hidden;
+}
+
+@media only screen and (max-width:600px){
+
+    body{
+        /* background-color: #ddd; */
+        /* background-image: image(); */
+    }
+
+    #game-container{
+        /* visibility: hidden;
+        display: none; */
+    }
+    #desktop-info{
+        visibility: hidden;
+        display: none;
+    }
+    #mobile-container{
+        display: block;
+        background-color: #ddd;
+        width:100%;
+        height: 100%;
+        visibility: visible;
+    }
+}

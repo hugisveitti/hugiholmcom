@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="is">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" type="image/png" href="images/L_favicon.png"/>
+    <link rel="stylesheet" href="adal.css">
+    <title>Letingi</title>
+</head>
+<body class="invert-off">
+    <div id="info-bar">
+        <canvas id="colors">
+        </canvas>
+       
+        <a type="image/svg+xml" id="info-icon" class="icon"></a>
+        <a type="image/svg+xml" id="buy-icon" class="icon"></a>
+        <a type="image/svg+xml" id="instagram-icon" class="icon"></a>
+        <label class="switch">
+            <input type="checkbox" onclick="inverse()">
+            <span class="slider round" ></span>
+        </label>
+    </div>
+    <div id="container">
+
+    </div>
+
+    <div id="info-panel" class="pop-up-panel">
+        <button class="close-btn"></button>
+        <a  type="image/svg+xml" class="flag en-flag"></a>
+        <a  type="image/svg+xml" class="flag is-flag"></a>
+       
+        
+        <span lang="en">
+            <p>
+                <b>€ 25 – Print licence</b>
+                <br>
+                <b>€ 25 – Web licence</b>
+                <br>
+                <br>
+                <b>Contact for large licences</b>
+            </p>
+            <p>
+                Email <u><a href="mailto:letingi@letingi.is">letingi@letingi.is</a></u> to purchase or just to say hello.
+            </p>
+
+            <p>
+                Letingi, a small font club, was founded in the spring of 2017 at Hótel Holt surrounded of drawings by the legendary artist Jóhannes Kjarval.
+            </p>
+        </span>
+        <span lang="is">
+            <p>
+                <b>3.500 kr. – Stakt prentleyfi</b>
+                <br>
+                <b>3.500 kr. – Stakt vefleyfi</b>
+                <br>
+                <br>
+                <b>Hafðu samband fyrir stærri notkun.</b>
+            </p>
+            <p>
+                Hafðu samband á <u><a href="mailto:letingi@letingi.is">letingi@letingi.is</a></u> til að versla eða bara til að segja hæ.</p>
+            <p>
+                    Leturklúbburinn Letingi var stofnaður vorið 2017 á Hótel Holt.
+            </p>
+        </span>
+
+
+        <p>
+            Elín Edda Þorsteinsdóttir <u><a href="https://www.instagram.com/elin.edda/">@elin.edda</a></u>
+            <br>
+            Ísak Einarsson <u><a href="https://www.instagram.com/da_man_in_da_house/">@da_man_in_da_house</a></u>
+            <br>
+            Kolbeinn Hamíðsson <u><a href="https://www.instagram.com/kolbeinnjara/">@kolbeinnjara</a></u>
+            <br>
+            Þorgeir K. Blöndal <u><a href="https://www.instagram.com/toggibla/">@toggibla</a></u>
+        </p>
+        <span lang="en">
+            <p>
+                :Letingi
+                <br>
+                Reykjavík, Iceland
+                <br>
+                2017–2019
+            </p>
+            <p>
+                Thanks to <a href="http://hugiholm.com">Hugi Hólm</a> for programming.
+            </p>
+        </span>
+        <span lang="is">
+            <p>
+                :Letingi
+                <br>
+                Reykjavík
+                <br>
+                2017–2019
+            </p>
+            <p>
+                Þökkum <a href="http://hugiholm.com">Huga Hólm</a> fyrir kóðun.
+            </p>
+        </span>
+    </div>
+    
+
+
+    <div id="buy-panel" class="pop-up-panel">
+        <button class="close-btn"></button>
+        <a type="image/svg+xml" class="flag en-flag"></a>
+        <a type="image/svg+xml" class="flag is-flag"></a>
+       
+        <br>
+        <div id="buy-checkboxes">
+
+        </div>
+        <br>
+        <span lang="en">
+            <button class="pointer" id="download-fonts">Download Trials</button>
+        </span>
+        <span lang="is">
+            <button class="pointer" id="download-fonts">Sækja prufuletur</button>
+        </span>
+    </div>
+
+
+</body>
+<script src="script.js"></script>
+
+</html>

@@ -1,0 +1,57 @@
+.hide-card {
+  display: None;
+}
+
+#game-container {
+  padding: 15px;
+  min-height: 80vh;
+}
+
+.my-card {
+  text-align: center;
+}
+
+h5,
+h4,
+h3 {
+  text-align: center;
+}
+
+.dataviz {
+  text-align: center;
+}
+
+.full-width {
+  width: 100%;
+}
+
+#stacked-info {
+  columns: 180px;
+  margin: auto;
+}
+
+.stacked-info-square {
+  height: 15px;
+  width: 15px;
+  margin: 0 0.5em 0 0;
+}
+.stacked-info-label {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 15px - 0.5em);
+}
+.stacked-info-item {
+  break-inside: avoid;
+  display: flex;
+  align-items: center;
+  padding-bottom: 1px;
+}
+
+.nav-wrapper {
+  height: auto;
+}
+
+.container {
+  margin-bottom: 15px;
+}

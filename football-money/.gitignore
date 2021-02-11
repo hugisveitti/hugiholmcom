@@ -1,0 +1,5 @@
+node_modules/
+.ipynb_checkpoints/
+__pycache__/
+players_old.json
+players - Copy.json

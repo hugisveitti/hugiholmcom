@@ -171,6 +171,18 @@ const MapComponent = ({
 
   return (
     <div style={{ padding: 20 }}>
+      {imageLoaded && !roundPosition && (
+        <div style={{ textAlign: "center" }}>
+          <Typography>You have to send your guess</Typography>
+          <Button
+            onClick={handleGuessSent}
+            variant="contained"
+            className={classes.greenButton}
+          >
+            Send
+          </Button>
+        </div>
+      )}
       <MapContainer
         center={position}
         zoom={2}
@@ -202,17 +214,7 @@ const MapComponent = ({
           )}
         </React.Fragment>
       )}
-      {imageLoaded && !roundPosition && (
-        <div style={{ textAlign: "center" }}>
-          <Button
-            onClick={handleGuessSent}
-            variant="contained"
-            className={classes.greenButton}
-          >
-            Send
-          </Button>
-        </div>
-      )}
+
       {guessSent && !roundPosition && (
         <div style={{ textAlign: "center", paddingBottom: 20 }}>
           <Typography>Waiting for other players to finish.</Typography>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/client/styles.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.js"></script>
+
+    <title>Box-fly</title>
+</head>
+<body>
+    <div id="connection-info">
+        <h1>Welcome!</h1>
+        <h3 id="curr-room-num"></h3>
+        <input placeholder="Type Room Number"  type="text" id="room-num">
+        <button onclick="sendRoomNum()">Send</button>
+        <p>You have to choose a room, type in the name of the room on your computer and the same room on your phone.</p>
+        <br>
+        <br>
+        <!-- <input  type="text" id="text2">
+        <div id="messages"></div> -->
+    </div>
+
+    <div id="game-container">
+
+
+    </div>
+    <div id="desktop-info">
+        <p>Welcome to the game. It is in a beta stage so it maybe buggy.</p>
+        <p>Avoid the red boxes, get points for hitting the yellow boxes.</p>
+        <p>You get an extra life for every 3 points you get.</p>
+        <p>You have to see to it that your mobile phone screen does not go to sleep. You can do that by taping the screen on you phone every 30 secs or something.</p>
+        <p>When the screen on your phone goes gray, touch anywhere to restart the game.</p>
+    </div>
+    <div id="mobile-container">
+        <!-- go to the ip adress of your computer and port 3000, http://  ip:address :3000 -->
+
+    </div>
+</body>
+<script type="text/javascript" src="/client/script.js"></script>
+<script src="/client/sketch.js"></script>
+<!-- <div id="game-script"></div> -->
+<!-- <script src="/client/sketch.js"></script> -->
+</html>

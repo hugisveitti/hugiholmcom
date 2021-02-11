@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Football money</title>
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link rel="stylesheet" href="./css/main.css" />
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://d3js.org/d3.v4.js"></script>
+  </head>
+
+  <body>
+    <nav>
+      <div class="nav-wrapper green darken-3">
+        <a href="#" class="brand-logo center">Football</a>
+      </div>
+    </nav>
+    <div class="container">
+      <br />
+
+      <div id="league-mode">
+        <div class="row">
+          <div class="col s0 m0 l3"></div>
+          <div class="col s12 m12 l6">
+            <div class="card-panel my-card">
+              <h5>League selection</h5>
+              <p>
+                Please select one of the leagues to explore. To reach the other
+                league you will have to refresh the page.
+              </p>
+            </div>
+          </div>
+          <div class="col s0 m0 l3"></div>
+        </div>
+        <div class="row">
+          <div class="col s0 m3"></div>
+          <div class="col s6 m3">
+            <button class="btn full-width" id="show-epl-btn">English PL</button>
+          </div>
+          <div class="col s6 m3">
+            <button class="btn full-width" id="show-bundesliga-btn">
+              German Bundesliga
+            </button>
+          </div>
+          <div class="col s0 m3"></div>
+        </div>
+      </div>
+
+      <div class="hide-card" id="visualization-mode">
+        <div class="row">
+          <div class="col s0 m0 l3"></div>
+          <div class="col s12 m12 l6">
+            <div class="card-panel my-card">
+              <h5>visualization selection</h5>
+              <p>Please select one of the visualization.</p>
+            </div>
+          </div>
+          <div class="col s0 m0 l3"></div>
+        </div>
+        <div class="row">
+          <div class="col s0 l2"></div>
+          <div class="col s3 l2">
+            <button class="btn" id="league-info-btn">
+              League visualizations
+            </button>
+          </div>
+          <div class="col s0 l1"></div>
+          <div class="col s3 l2">
+            <button class="btn" id="players-info-btn">
+              Players visualizations
+            </button>
+          </div>
+          <div class="col s0 l1"></div>
+          <div class="col s3 l2">
+            <button class="btn" id="matches-info-btn">
+              Matches visualizations
+            </button>
+          </div>
+          <div class="col s0 l2"></div>
+        </div>
+      </div>
+
+      <div id="players-container" class="hide-card">
+        <h3>Players visualization</h3>
+        <div class="row">
+          <div class="col s0 m3"></div>
+          <div class="col s12 m6">
+            <div class="card-panel my-card">
+              <h4>League information</h4>
+              <p>
+                There are <span id="league-player-count"></span> players in the
+                <span id="league-name"></span>.
+              </p>
+              <p>
+                The average market value is €<span id="avg-market-value"></span
+                >.
+              </p>
+              <p>
+                The average weekly salary is €<span
+                  id="avg-weekly-salary"
+                ></span
+                >.
+              </p>
+            </div>
+          </div>
+          <div class="col s0 m3"></div>
+        </div>
+
+        <div class="row">
+          <div class="col s0 m0 l3"></div>
+          <div class="col s12 m12 l6">
+            <div class="card-panel my-card">
+              <p>
+                Each player has many attributes such as speed, ball control,
+                passing abilities and more. The fifaindex.com has rated every
+                player in these categories. The index also includes the market
+                value, which how much they estimate otherteams are willing to
+                pay for the player to come play for their club. The weekly
+                salary is how much their current club pays them in Euros per
+                week. By plotting them we can see patterns in a players
+                attributes and his market value and salary, or anything else.
+              </p>
+              <p>
+                You can select any of these attributes to be represented on the
+                X and Y axis.
+              </p>
+              <p>
+                To avoid too much clutter we only plot the 11 players with the
+                highest market value for each team.
+              </p>
+              <p>
+                You can hover over a player and more information appears and the
+                rest of his team is highlighted.
+              </p>
+              <p>
+                The black circle is the average value of the players in the
+                plot.
+              </p>
+            </div>
+          </div>
+          <div class="col s0 m0 l3"></div>
+        </div>
+        <div class="row">
+          <div class="col s0 m3"></div>
+          <div class="input-field col s6 m3">
+            <span>X axis</span>
+            <select id="x-axis-select"></select>
+          </div>
+          <div class="input-field col s6 m3">
+            <span>Y axis</span>
+            <select id="y-axis-select"></select>
+          </div>
+          <div class="col s3 m3"></div>
+        </div>
+        <div class="dataviz" id="symbol_info_dataviz"></div>
+        <div class="dataviz" id="players_dataviz"></div>
+        <button onclick="saveSvg('#players_svg', 'playerScatter')" class="btn">
+          Save svg
+        </button>
+
+        <div class="row">
+          <div class="col s0 m3"></div>
+          <div class="col s12 m6">
+            <div class="card-panel my-card">
+              <h5>Analysis</h5>
+              <p>
+                Here is more mathematical information about the selected axis.
+              </p>
+              <p>
+                The line on the graph is the result of linear regression with
+                the x axis data and y axis data.
+              </p>
+              <p>R^2 of linear regression <span id="r2"></span></p>
+              <p>
+                The line can tell us some interesting things, such as if we set
+                the Y axis as 'Market Value' and the X axis a 'Weekly Salary',
+                and since there is (usually) a high R^2 value, then the players
+                on the left side of the line are underpaid and the ones on the
+                right side are overpaid.
+              </p>
+
+              <h5>More information</h5>
+              <p>
+                Mean of <span id="x-axis-mean-label"></span> is
+                <span id="x-axis-mean"></span>, standard deviation is
+                <span id="x-axis-std"></span>
+              </p>
+              <p>
+                Mean of <span id="y-axis-mean-label"></span> is
+                <span id="y-axis-mean"></span>, standard deviation is
+                <span id="y-axis-std"></span>
+              </p>
+            </div>
+          </div>
+          <div class="col s0 m3"></div>
+        </div>
+        <div class="row">
+          <div class="col s0 m3"></div>
+          <div class="col s12 m6">
+            <div class="card-panel my-card">
+              <h4>Comparing market values</h4>
+              <p>
+                The following is a sunburst distribution that compares the total
+                market value of each team and then also the market value of each
+                player in a team.
+              </p>
+              <p>If you hover over a item you see more details about it.</p>
+              <p>
+                If you click on a team name then it zooms in and shows a more
+                detailed digram of that team.
+              </p>
+              <p>To go back you press the white circle in the middel.</p>
+              <p>Showing <strong id="sunburst-setting"></strong></p>
+              <button class="btn" id="sunburst-setting-button">
+                Use weekly salary
+              </button>
+            </div>
+          </div>
+          <div class="col s0 m3"></div>
+        </div>
+
+        <div class="dataviz" id="teams_players_sunburst"></div>
+        <button
+          onclick="saveSvg('#sunburst_svg', 'playerSunburst')"
+          class="btn"
+        >
+          Save svg
+        </button>
+      </div>
+
+      <div id="league-container" class="hide-card">
+        <h3>League visualizations</h3>
+        <div class="row">
+          <div class="col">
+            <div class="col s0 m3"></div>
+            <div class="col s12 m6">
+              <div class="card-panel my-card">
+                <h5>League standings</h5>
+                <p>
+                  How much money a team has often is a good indicator of how
+                  well it will play. If the team has much money it can simply
+                  buy all the best players, but buying all the best players
+                  isn't the only thing that matters but clearly it matters a
+                  lot. Here the league standings is on the y axis and then the
+                  teams summed value is on the x axis. The value is up to you to
+                  explore, the default value is 'Market Value'.
+                </p>
+                <p>
+                  <span id="league-viz-info"></span>
+                </p>
+                <div class="row">
+                  <div class="col s0 m3"></div>
+
+                  <div class="input-field col s12 m6">
+                    <span>X axis</span>
+                    <select id="standings-select"></select>
+                  </div>
+                  <div class="col s0 m3"></div>
+                </div>
+                <p>
+                  Since number of players in a team varies, we use 11 players
+                  with the highest 'Market Value' of each team.
+                </p>
+              </div>
+            </div>
+            <div class="col s0 m3"></div>
+          </div>
+        </div>
+        <div class="dataviz" id="league_dataviz"></div>
+        <button onclick="saveSvg('#league_svg', 'leaguestandings')" class="btn">
+          Save svg
+        </button>
+        <br />
+        <div class="row">
+          <div class="col s0 m3"></div>
+          <div class="col s12 m6">
+            <div class="card-panel my-card">
+              <h5>Teams value in each position</h5>
+              <p>
+                The following plot uses a ridgeline plot to visualize the market
+                value of each position. Here we can visualize where teams spend
+                their money. Each player has some preferred postions. We select
+                the first one in the list, then we select assume all teams play
+                the 4-4-2 setup.
+              </p>
+            </div>
+            <div class="col s0 m3"></div>
+          </div>
+        </div>
+
+        <div class="dataviz" id="league_horizon_dataviz"></div>
+        <button onclick="saveSvg('#league_horizon_svg', 'horizon')" class="btn">
+          Save svg
+        </button>
+
+        <div class="row">
+          <div class="col s0 m3"></div>
+          <div class="col s12 m6">
+            <div class="card-panel my-card">
+              <h5>League score progression</h5>
+              <p>
+                This figure shows the how the total score on the table prgresses
+                over the rounds. The last two ticks is the total 'Market Value'
+                and total 'Weekly Salary' for the top 11 players for the
+                respective team. This is to show if the the monetary values
+                follow how many points the team have accumulated.
+              </p>
+              <p>
+                The black line indicates the end of rounds and where the 'Market
+                Value' starts which is followed by 'Weekly Salary'. If the width
+                of the accumulated score is the same as the monetary values then
+                you could say the team is getting what it pays for, while if the
+                monetary width is more then the team is paying too much and if
+                less then it is getting a good deal for its players.
+              </p>
+            </div>
+          </div>
+          <div class="col s0 m3"></div>
+        </div>
+        <div id="stacked-info"></div>
+
+        <div class="dataviz" id="league_stacked_dataviz"></div>
+        <button
+          onclick="saveSvg('#league_stacked_svg', 'leagueStacked')"
+          class="btn"
+        >
+          Save svg
+        </button>
+      </div>
+
+      <div id="game-container" class="modal">
+        <div class="row">
+          <div class="col s12 m12">
+            <div class="card-content">
+              <h5>
+                <span id="home-team-title">Home team</span>
+                <span>vs.</span>
+                <span id="away-team-title">Away team</span>
+              </h5>
+              <p>
+                Match results was
+                <span id="game-score"></span>. Match day was
+                <span id="game-day"></span>.
+              </p>
+              <p>THIS IS NOT FINISHED</p>
+              <p>Plotting data from 20 most expensive players in each team</p>
+              <!-- Add 2 buttons -->
+              <button onclick="updateTeamBars('data1')">Market value</button>
+              <button onclick="updateTeamBars('data2')">Weekly salary</button>
+              <button onclick="updateTeamBars('Market value / goals')">
+                Market value / goals
+              </button>
+              <div id="match_dataviz"></div>
+              <p>The players with the highest market value in each team</p>
+              <div id="player_match_dataviz"></div>
+              <p>
+                The market value of the player higest market value in the match
+                and the top 20 players in the team with lower market value
+              </p>
+              <div id="player_vs_team_match_dataviz"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="matches-container" class="hide-card">
+        <h3>Recent games</h3>
+        <div class="row">
+          <div class="col s0 m3"></div>
+          <div class="col s12 m6">
+            <div class="card-panel my-card">
+              <h5>visualization of individual games</h5>
+              <p>
+                I decided not to do anything with this, but I already wrote it
+                and decided to leave it in, and possibly do more in the future.
+              </p>
+            </div>
+            <div class="col s0 m3"></div>
+          </div>
+        </div>
+
+        <div class="collection" id="matches-list"></div>
+      </div>
+    </div>
+  </body>
+  <script src="./js/p5.min.js"></script>
+  <script src="./js/d3-save-svg.min.js"></script>
+  <script src="./js/stackedAreaChart.js"></script>
+  <script src="./js/sunburstDiagram.js"></script>
+  <script src="./js/horizonChart.js"></script>
+  <script src="./js/localdata.js"></script>
+  <script src="./js/leagueBarPlot.js"></script>
+  <script src="./js/cardscript.js"></script>
+  <script src="./js/standingsScript.js"></script>
+  <script src="./js/teamBarPlots.js"></script>
+  <script src="./js/playerScript.js"></script>
+  <script src="./js/playerPlot.js"></script>
+  <script src="./js/symbolInfoViz.js"></script>
+  <script src="./js/matchesScript.js"></script>
+  <script src="./js/linearRegression.js"></script>
+  <script src="./js/script.js"></script>
+</html>
