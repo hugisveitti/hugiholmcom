@@ -30,3 +30,4 @@ require("./map-game/map-game-server.js")(app, server);
 require("./box-fly/box-fly-server.js")(app, server);
 require("./football-money/index.js")(app);
 require("./letingi/app.js")(app);
+require("./flag-game/insert.js")(app);
