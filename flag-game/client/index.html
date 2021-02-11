@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  <title>Countries</title>
+</head>
+<body>
+
+  <ul id="games" class="dropdown-content">
+    <li><a class="settings" value="nameCapital" href="#">Name and Capital</a></li>
+    <li><a class="settings" value="countryNameFour" href="#">Countries Names Four Options</a></li>
+    <li><a class="settings" value="capital" href="#">Capital Cities</a></li>
+    <li><a class="settings" value="capitalFour" href="#">Capital Cities Four Options</a></li>
+  </ul>
+  <ul id="game-settings" class="dropdown-content">
+    <li><a class="gameSettings" value="random" href="#">Random</a></li>
+    <li><a class="gameSettings" value="all" href="#">Get Them All</a></li>
+  </ul>
+  <ul id="gamesbig" class="dropdown-content">
+    <li><a class="settings" value="nameCapital" href="#">Name and Capital</a></li>
+    <li><a class="settings" value="countryNameFour" href="#">Countries Names Four Options</a></li>
+    <li><a class="settings" value="capital" href="#">Capital Cities</a></li>
+    <li><a class="settings" value="capitalFour" href="#">Capital Cities Four Options</a></li>
+  </ul>
+  <ul id="game-settingsbig" class="dropdown-content">
+    <li><a class="gameSettings" value="random" href="#">Random</a></li>
+    <li><a class="gameSettings" value="all" href="#">Get Them All</a></li>
+  </ul>
+
+  <nav class="nav-extended">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo"></a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="center hide-on-med-and-down">
+          <li class="tab"><a class="Region" value="All Countries">All Countries</a></li>
+          <li class="tab"><a class="Region" value="Africa">Africa</a></li>
+          <li class="tab"><a class="Region" value="Asia">Asia</a></li>
+          <li class="tab"><a class="Region" value="Americas">Americas</a></li>
+          <li class="tab"><a class="Region" value="Europe">Europe</a></li>
+          <li class="tab"><a class="Region" value="Oceania">Oceania</a></li>
+          <li class="tab"><a class="dropdown-button" href="#" data-activates="gamesbig">Games<i class="material-icons right">arrow_drop_down</i></a></li>
+          <li class="tab"><a class="dropdown-button" href="#" data-activates="game-settingsbig">Game Settings<i class="material-icons right">arrow_drop_down</i></a></li>
+          <li class="tab"><a class="highscores" value="highscores" onclick="getHighscores()" id="highscores" href="#">Highscores</a></li>
+        </ul>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li class="tab"><a class="Region" value="All Countries">All Countries</a></li>
+          <li class="tab"><a class="Region" value="Africa">Africa</a></li>
+          <li class="tab"><a class="Region" value="Asia">Asia</a></li>
+          <li class="tab"><a class="Region" value="Americas">Americas</a></li>
+          <li class="tab"><a class="Region" value="Europe">Europe</a></li>
+          <li class="tab"><a class="Region" value="Oceania">Oceania</a></li>
+          <li class="tab"><a class="dropdown-button" href="#" data-activates="games">Games<i class="material-icons right">arrow_drop_down</i></a></li>
+          <li class="tab"><a class="dropdown-button" href="#" data-activates="game-settings">Game Settings<i class="material-icons right">arrow_drop_down</i></a></li>
+          <li class="tab"><a class="highscores" value="highscores" onclick="getHighscores()" id="highscores" href="#">Highscores</a></li>
+        </ul>
+      </div>
+    </nav>
+
+  <div class="container">
+
+    <h3 class="center-align" id="country_title">Countries</h3>
+    <h2 class="center-align">
+    <a id="randButt" class="button btn" href="#"">Random Country</a>
+    </h2>
+    <div class="center-align" id='countries'></div>
+
+    <div id="country"></div>
+
+  </div>
+  <br>
+
+</body>
+<script src="https://www.gstatic.com/firebasejs/4.4.0/firebase.js"></script>
+<script src="jquery-3.2.1.js"></script>
+<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+<script src="./script.js"></script>
+</html>

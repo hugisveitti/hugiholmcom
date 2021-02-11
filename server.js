@@ -25,7 +25,7 @@ const server = app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
 
-require("./flag-game/flag-game-server.js")(app);
+require("./flag-game/flag-game-server")(app);
 require("./map-game/map-game-server.js")(app, server);
 require("./box-fly/box-fly-server.js")(app, server);
 require("./football-money/index.js")(app);
