@@ -49,6 +49,11 @@ const pages = [
     pageUrl: "/flaggame",
     imageUrl: "../images/flaggame.PNG",
   },
+  {
+    name: "Colors",
+    pageUrl: "/colors",
+    imageUrl: "../images/colors.PNG",
+  },
 ];
 
 const FrontPage = () => {
