@@ -24,8 +24,8 @@ window.addEventListener("DOMContentLoaded", () => {
   body[0].classList.add(lang);
   let enFlags = document.getElementsByClassName("en-flag");
 
-  for (var i = 0; i < enFlags.length; i++) {
-    enFlags[i].addEventListener("click", () => {
+  for (let j = 0; j < enFlags.length; j++) {
+    enFlags[j].addEventListener("click", () => {
       html[0].lang = "en";
       body[0].classList.remove("is");
       body[0].classList.add("en");
@@ -33,8 +33,8 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   let isFlags = document.getElementsByClassName("is-flag");
-  for (var i = 0; i < isFlags.length; i++) {
-    isFlags[i].addEventListener("click", () => {
+  for (let j = 0; j < isFlags.length; j++) {
+    isFlags[j].addEventListener("click", () => {
       html[0].lang = "is";
       body[0].classList.remove("en");
       body[0].classList.add("is");
@@ -75,7 +75,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   dlBtn.addEventListener("click", (event) => {
     event.preventDefault();
-    for (var i = 0; i < downloadable.length; i++) {
+    for (let j = 0; j < downloadable.length; j++) {
       //eina leidin til ad fa thetta til ad virka...
       var che = document.getElementById(downloadable[i].name + "checkbox");
       if (che.checked) {
@@ -91,7 +91,6 @@ window.addEventListener("DOMContentLoaded", () => {
   function dlFile(url) {
     console.log(url);
     //do nothing for now........
-    return;
     var iframe = document.createElement("iframe");
     iframe.src = url;
     iframe.style.display = "none";
@@ -161,17 +160,17 @@ window.addEventListener("DOMContentLoaded", () => {
 
   function addDownloads(titles, fonts, ext) {
     var buyCheckboxes = document.getElementById("buy-checkboxes");
-    for (var i = 0; i < fonts.length; i++) {
+    for (var j = 0; j < fonts.length; j++) {
       var div = document.createElement("div");
       var checkbox = document.createElement("input");
 
       checkbox.type = "checkbox";
-      checkbox.setAttribute("name", fonts[i] + ext[i]);
-      checkbox.setAttribute("id", fonts[i] + ext[i] + "checkbox");
+      checkbox.setAttribute("name", fonts[j] + ext[j]);
+      checkbox.setAttribute("id", fonts[j] + ext[j] + "checkbox");
       checkbox.classList.add("checkbox-download");
       var label = document.createElement("label");
       label.appendChild(checkbox);
-      label.innerHTML += titles[i];
+      label.innerHTML += titles[j];
 
       div.appendChild(label);
       // div.innerHTML += fonts[i];
