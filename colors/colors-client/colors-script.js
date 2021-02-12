@@ -20,11 +20,11 @@ class MyObject {
     this.dragging = false;
     this.dragOffsetX = 0;
     this.dragOffsetY = 0;
-    this.vx = 1;
-    this.vy = 1.5;
-    this.cx = 1;
-    this.cy = 1.5;
-    this.move = false;
+    this.vx = Math.random() * 2 + 0.5;
+    this.vy = Math.random() * 2 + 0.5;
+    this.cx = this.vx;
+    this.cy = this.vy;
+    this.move = true;
     this.sliderCreated = false;
   }
 
@@ -34,6 +34,14 @@ class MyObject {
       objBlue: blue(this.color),
       objGreen: green(this.color),
       objAlpha: alpha(this.color),
+    };
+  }
+  getIndex() {
+    return {
+      x0: Math.floor(this.x),
+      xN: Math.floor(this.x + this.r),
+      y0: Math.floor(this.y),
+      yN: Math.floor(this.y + this.r),
     };
   }
 
@@ -157,39 +165,50 @@ function setup() {
   const button = createButton("add");
   button.position(19, 19);
   button.mousePressed(addObject);
+  const button2 = createButton("move");
+  button2.position(19, 49);
+  button2.mousePressed(stopAll);
+  frameRate(150);
 }
 
 function draw() {
+  loadPixels();
   for (let i = 0; i < area.length; i++) {
-    area[i] = 0;
+    pixels[i] = 0;
     if (i % 4 === 3) {
-      area[i] = 0;
+      pixels[i] = 0;
     }
   }
 
   for (let i = 0; i < objects.length; i++) {
     objects[i].draw();
     let { objRed, objGreen, objBlue, objAlpha } = objects[i].getColor();
-    for (let x = objects[i].x; x < objects[i].r + objects[i].x; x++) {
-      for (let y = objects[i].y; y < objects[i].r + objects[i].y; y++) {
+    let { x0, xN, y0, yN } = objects[i].getIndex();
+    for (let x = x0; x < xN; x++) {
+      for (let y = y0; y < yN; y++) {
         let index = (x + y * width) * 4;
 
-        area[index] += objRed;
-        area[index + 1] += objGreen;
-        area[index + 2] += objBlue;
-        area[index + 3] += objAlpha;
+        pixels[index] += objRed;
+        pixels[index + 1] += objGreen;
+        pixels[index + 2] += objBlue;
+        pixels[index + 3] += objAlpha;
       }
     }
   }
-  loadPixels();
+  updatePixels();
   for (let i = 0; i < area.length; i++) {
     pixels[i] = area[i];
   }
-  updatePixels();
   //noLoop();
 }
 
 function addObject() {
   let c = new MyObject();
   objects.push(c);
+}
+
+function stopAll() {
+  for (let i = 0; i < objects.length; i++) {
+    objects[i].move = !objects[i].move;
+  }
 }
