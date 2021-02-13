@@ -174,6 +174,7 @@ const MapComponent = ({
       {imageLoaded && !roundPosition && (
         <div style={{ textAlign: "center" }}>
           <Typography>You have to send your guess</Typography>
+          <br />
           <Button
             onClick={handleGuessSent}
             variant="contained"
@@ -183,6 +184,8 @@ const MapComponent = ({
           </Button>
         </div>
       )}
+      <br />
+
       <MapContainer
         center={position}
         zoom={2}

@@ -20,14 +20,14 @@ app.use(express.static(path.join(__dirname, "./client/build")));
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 80;
 const server = app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
 
 require("./flag-game/flag-game-server")(app);
 require("./map-game/map-game-server.js")(app, server);
-require("./box-fly/box-fly-server.js")(app, server);
+//require("./box-fly/box-fly-server.js")(app, server);
 require("./football-money/index.js")(app);
 require("./letingi/app.js")(app);
 require("./colors/colors-server.js")(app);
