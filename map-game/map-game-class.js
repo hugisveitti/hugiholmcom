@@ -1,5 +1,9 @@
 const { getImagesFromMapillary, getDistance } = require("./positionUtility");
 const { Player } = require("./map-player-class");
+const {
+  addGameCreateToDatabase,
+  addToAllGamesStarted,
+} = require("./databasefunctions");
 
 class MapGame {
   constructor(io, roomName) {
@@ -20,6 +24,7 @@ class MapGame {
     this.timeoutFunction = undefined;
     this.onlyPano = true;
     this.onlyEuropeUsa = false;
+    addGameCreateToDatabase();
   }
 
   // check if game has player with that name
@@ -77,7 +82,6 @@ class MapGame {
   }
 
   addPlayerGuessed(player) {
-    console.log("add player guessed");
     this.playersGuessed.push(player);
     if (this.playersGuessed.length === this.playerNames.length) {
       clearTimeout(this.timeoutFunction);
@@ -119,7 +123,6 @@ class MapGame {
 
   startRound() {
     this.playersGuessed = [];
-    console.log("start round");
     this.resetPlayersMarketPositions();
 
     this.io.to(this.roomName).emit("handleSendImages", {
@@ -136,7 +139,6 @@ class MapGame {
   getNextRandomPosition() {
     this.currentRound++;
     if (this.currentRound > this.numberOfRounds) {
-      console.log("game over");
       this.gameOver();
     } else {
       getImagesFromMapillary(this, () => {
@@ -146,13 +148,21 @@ class MapGame {
   }
 
   sendUpdatePlayerList() {
-    console.log("send updateplayer list", this.playerNames);
     this.io
       .to(this.roomName)
       .emit("updatePlayers", { players: this.playerNames });
   }
 
   startGame(timePerRound, numberOfRounds, onlyPano, onlyEuropeUsa) {
+    const myPlayerNames = this.playerNames.map((player) => player.name);
+    console.log("## GAME STARTED with players:", myPlayerNames);
+    addToAllGamesStarted({
+      roomName: this.roomName,
+      timePerRound,
+      numberOfRounds,
+      onlyPano,
+      players: myPlayerNames,
+    });
     this.currentRound = 0;
     if (onlyPano !== undefined) {
       this.onlyPano = onlyPano;
@@ -161,11 +171,12 @@ class MapGame {
       this.onlyEuropeUsa = onlyEuropeUsa;
     }
     this.resetPlayersScore();
+    // Tell user about max?
+    const myTimePerRound = Math.min(+timePerRound, 2147483647);
 
-    this.timePerRound = +timePerRound;
+    this.timePerRound = myTimePerRound;
     this.numberOfRounds = +numberOfRounds;
     this.gameStarted = true;
-    console.log("game started");
     this.io.to(this.roomName).emit("gameStarted");
     this.getNextRandomPosition();
   }

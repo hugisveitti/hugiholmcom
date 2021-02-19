@@ -19,6 +19,8 @@ module.exports = (app, server) => {
   var io = require("socket.io")(server, { cors: { origin: "*" } });
   const urlPrefix = "/jeojuessr/";
 
+  const { addPlayerConnectedToRoom } = require("./databasefunctions");
+
   app.use(express.static(path.join(__dirname, "./map-game-client/build")));
 
   app.get(urlPrefix, (req, res) => {
@@ -57,9 +59,9 @@ module.exports = (app, server) => {
     console.log("connection made to map-game");
 
     socket.on("roomConnection", (data) => {
-      console.log(data);
       const { roomName, playerName } = data;
       console.log("### PLAYER ", playerName, "CONNECTED");
+      addPlayerConnectedToRoom();
       socket.join(roomName);
       if (roomName in games) {
         const game = games[roomName];
@@ -83,6 +85,7 @@ module.exports = (app, server) => {
         player.setIsGameLeader();
         games[roomName] = game;
       }
+      clients[socket.id] = playerName;
       playerNotConnectedToGame = false;
       socket.emit("roomConnectionCallback", {
         message: "connected to room",
@@ -96,12 +99,10 @@ module.exports = (app, server) => {
       });
     });
 
-    clients[socket.id] = socket;
-
     socket.on("disconnect", (data) => {
       console.log("client disconnected");
       delete clients[socket.id];
-      console.log("connected clients", Object.keys(clients));
+      console.log("connected clients", Object.entries(clients));
 
       disconnectPlayer(socket);
     });

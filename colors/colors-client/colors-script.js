@@ -1,10 +1,10 @@
 let objects = [];
 let numberOfObjects = 5;
-let width = 600;
-let height = 400;
+const width = 400;
+const height = 400;
 let pixelD;
 let draggingOtherObject = false;
-const area = [];
+let area = [];
 
 let selectedObject;
 class MyObject {
@@ -144,6 +144,8 @@ class MyObject {
 }
 
 function setup() {
+  console.log("setup");
+  console.log(width, height);
   const cvn = createCanvas(width, height);
   cvn.parent("canvascontainer");
   colorMode(RGB, 255);
@@ -152,15 +154,9 @@ function setup() {
     objects.push(c);
   }
 
-  for (let i = 0; i < width; i++) {
-    for (let j = 0; j < height; j++) {
-      let index = 4 * (i + j * width);
-      area[index] = 0;
-      area[index + 1] = 0;
-      area[index + 2] = 255;
-      area[index + 3] = 255;
-    }
-  }
+  loadPixels();
+  area = new Array(pixels.length);
+  updatePixels();
 
   const button = createButton("add");
   button.position(19, 19);
@@ -172,11 +168,11 @@ function setup() {
 }
 
 function draw() {
-  loadPixels();
   for (let i = 0; i < area.length; i++) {
-    pixels[i] = 0;
+    area[i] = 0;
+    if (i % 4 === 0) area[i] = 255;
     if (i % 4 === 3) {
-      pixels[i] = 0;
+      area[i] = 250;
     }
   }
 
@@ -184,22 +180,28 @@ function draw() {
     objects[i].draw();
     let { objRed, objGreen, objBlue, objAlpha } = objects[i].getColor();
     let { x0, xN, y0, yN } = objects[i].getIndex();
+
+    console.log("width", width);
     for (let x = x0; x < xN; x++) {
       for (let y = y0; y < yN; y++) {
-        let index = (x + y * width) * 4;
+        let index = (y * width + x) * 4;
+        // console.log("index", index);
 
-        pixels[index] += objRed;
-        pixels[index + 1] += objGreen;
-        pixels[index + 2] += objBlue;
-        pixels[index + 3] += objAlpha;
+        area[index] += objRed;
+        area[index + 1] += objGreen;
+        area[index + 2] += objBlue;
+        area[index + 3] += objAlpha;
       }
     }
   }
-  updatePixels();
+  loadPixels();
   for (let i = 0; i < area.length; i++) {
     pixels[i] = area[i];
   }
-  //noLoop();
+  console.log("al", area.length);
+  console.log("p le", pixels.length);
+  updatePixels();
+  noLoop();
 }
 
 function addObject() {

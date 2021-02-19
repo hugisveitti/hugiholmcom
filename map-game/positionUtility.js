@@ -1,6 +1,9 @@
 const request = require("request");
 const uuid = require("uuid").v4;
-
+const {
+  addBadGuessLocation,
+  addGoodGuessLocation,
+} = require("./databasefunctions");
 const { worldMapSplits } = require("./map-game-worldsplits");
 
 const options = (url) => ({
@@ -81,14 +84,19 @@ const getImagesFromMapillary = (game, callBack) => {
       radius = "radius=10000";
       perpage = "per_page=50";
     }
-    console.log("radius", radius);
+
     const bbox = `closeto=${myLng},${myLat}`;
     const url = `https://a.mapillary.com/v3/images?${bbox}&${pano}&min_quality_score=3&${perpage}&${radius}&client_id=${mapillaryAPIKey}`;
     request(options(url), (err, apiRes, body) => {
       const data = JSON.parse(body);
-      console.log("number of images at location", data["features"].length);
       if (data["features"].length < 3) {
-        console.log("not enough data on", "lat:", myLat, ", lng:", myLng);
+        addBadGuessLocation({
+          lat: myLat,
+          lng: myLng,
+          nrImages: data["features"].length,
+          radius,
+          perpage,
+        });
         const newCoor = getRandomLatLng(game);
         // increase search space, so loading isnt long
         getImageWithLatLng(newCoor.lat, newCoor.lng, false, radius_meters * 10);
@@ -96,8 +104,14 @@ const getImagesFromMapillary = (game, callBack) => {
         const coor = data["features"][0]["geometry"]["coordinates"];
         getImageWithLatLng(coor[1], coor[0], true, 10000);
       } else {
-        console.log("place at lat lag", myLat, myLng);
         // socket.emit("sendSequence", data);
+        addGoodGuessLocation({
+          lat: myLat,
+          lng: myLng,
+          nrImages: data["features"].length,
+          radius,
+          perpage,
+        });
         game.setCurrentGameData(data);
         game.setCurrentPosition(myLat, myLng);
         callBack();

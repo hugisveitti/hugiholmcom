@@ -8,6 +8,7 @@ import {
   TileLayer,
   Marker,
   useMapEvents,
+  useMap,
   Polyline,
   Popup,
 } from "react-leaflet";
@@ -29,9 +30,10 @@ const MapComponent = ({
   roundOver,
   setRoundOver,
 }) => {
-  const position = [51.505, -0.09];
+  const [position, setPosition] = useState({ lat: 51.505, lng: -0.09 });
   const [markerPos, setMarkerPos] = useState({ lat: 51.505, lng: -0.09 });
   const [oldMarkerPos, setOldMarkerPos] = useState({ lat: 51.505, lng: -0.09 });
+  const [mouseIsDown, setMouseIsDown] = useState(false);
   const classes = useStyles();
   const defaultIcon = (correctIcon) =>
     L.icon({
@@ -73,10 +75,19 @@ const MapComponent = ({
     return Math.round(num * 100) / 100;
   };
 
+  const SetNormalizedPosition = ({ normposition }) => {
+    const myMap = useMap();
+    const currCenter = myMap.getCenter();
+    if (currCenter.lng < -180 || currCenter.lng > 180) {
+      const newLng = getCorrectLng(currCenter.lng);
+      myMap.setView({ lat: currCenter.lat, lng: newLng });
+    }
+    return null;
+  };
+
   const MyMarker = () => {
     useMapEvents({
       click(e) {
-        console.log("map clicked", e.latlng);
         let latMax = around(Math.max(e.latlng.lat, markerPos.lat));
         let latMin = around(Math.min(e.latlng.lat, markerPos.lat));
         let lngMax = around(Math.max(e.latlng.lng, markerPos.lng));
@@ -88,6 +99,9 @@ const MapComponent = ({
         if (!roundOver) {
           setMarkerPos({ lat: e.latlng.lat, lng: e.latlng.lng });
         }
+      },
+      mouseup(e) {
+        setPosition(e.latlng);
       },
     });
 
@@ -197,6 +211,7 @@ const MapComponent = ({
         }}
         bounds={L.latLngBounds(L.latLng(90, 180), L.latLng(-90, -180))}
       >
+        <SetNormalizedPosition normposition={position} />
         <MyMarker />
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
