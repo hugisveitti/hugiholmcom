@@ -1,7 +1,7 @@
 const { database } = require("./firebase-config");
 
 const addPlayerConnectedToRoom = () => {
-  const playersConnectedToRoomsRef = "metaData/playersConnectedToRooms";
+  const playersConnectedToRoomsRef = "metadata/playersConnectedToRooms";
   database
     .ref(playersConnectedToRoomsRef)
     .once("value")
