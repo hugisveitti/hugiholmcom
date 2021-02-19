@@ -18,7 +18,19 @@ class Player {
   handleStartGame() {
     if (this.isGameLeader) {
       this.socket.on("handleStartGame", (data) => {
-        const { timePerRound, numberOfRounds, onlyPano, onlyEuropeUsa } = data;
+        let { timePerRound, numberOfRounds, onlyPano, onlyEuropeUsa } = data;
+        if (!onlyPano) {
+          onlyPano = this.game.onlyPano;
+          if (!onlyPano) {
+            onlyPano = false;
+          }
+        }
+        if (!onlyEuropeUsa) {
+          onlyEuropeUsa = this.game.onlyEuropeUsa;
+          if (!onlyEuropeUsa) {
+            onlyEuropeUsa = false;
+          }
+        }
         this.game.startGame(
           timePerRound,
           numberOfRounds,
