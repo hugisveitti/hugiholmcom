@@ -45,6 +45,8 @@ const addGoodGuessLocation = ({ lat, lng, nrImages, radius, perpage }) => {
 const addToAllGamesStarted = (object) => {
   const allGamesStartedRef = "all-games-started/";
   const newKey = database.ref().child(allGamesStartedRef).push().key;
+  const dateNow = new Date().toISOString();
+  object["date"] = dateNow;
   const updates = {};
   updates[allGamesStartedRef + newKey] = object;
   database.ref().update(updates);
