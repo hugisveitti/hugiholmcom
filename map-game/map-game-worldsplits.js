@@ -758,13 +758,252 @@ const worldMapSplits = [
   {
     max: 0,
     min: -10,
-    lngIntervals: [
-      { min: -81, max: -67 }, // ecuador, peru, brazil
-      { min: -64, max: -35 }, // brazil
-      { min: 9, max: 30 }, // Equatorial guinea, gabon, DRC, north Angola
-      { min: 30, max: 42 }, // Kenya, Tanzania
-      { min: 100, max: 116 }, // indonesia
-      { min: 116, max: 146 }, // Indonesia, Papua new Guinea
+    latInterVal: [
+      {
+        max: -0.5,
+        min: -3.36,
+        lngIntervals: [
+          { min: -80.54, max: -78.56 }, // Ecuador
+        ],
+      },
+      {
+        max: -6.77,
+        min: -6.96,
+        lngIntervals: [
+          { min: -80.01, max: -79.56 }, // Peru
+        ],
+      },
+      {
+        max: -3.08,
+        min: -4.09,
+        lngIntervals: [
+          { min: -40.21, max: -38.4 }, // North brazil
+        ],
+      },
+      {
+        max: -5.67,
+        min: -8.24,
+        lngIntervals: [
+          { min: -37.29, max: -34.83 }, // Brazil
+        ],
+      },
+      {
+        max: -4.77,
+        min: -6.08,
+        lngIntervals: [
+          { min: 11.77, max: 12.54 }, // west africa
+        ],
+      },
+      {
+        max: -4.11,
+        min: -4.35,
+        lngIntervals: [
+          { min: 15.17, max: 15.58 }, // Kinshasa
+        ],
+      },
+      {
+        max: -2.91,
+        min: -3,
+        lngIntervals: [
+          { min: 25.9, max: 25.96 }, // kindu congo
+        ],
+      },
+      {
+        max: 0.62,
+        min: 0.37,
+        lngIntervals: [
+          { min: 24.91, max: 25.38 }, // Kisangani
+        ],
+      },
+      {
+        max: -0.22,
+        min: -2.37,
+        lngIntervals: [
+          { min: 28.86, max: 30.6 }, // Rwanda
+        ],
+      },
+      {
+        max: 0.76,
+        min: -0.08,
+        lngIntervals: [
+          { min: 32.16, max: 34.21 }, // Uganda
+        ],
+      },
+      {
+        max: -0.07,
+        min: -1.1,
+        lngIntervals: [
+          { min: 34.11, max: 36.13 }, // Kenya
+        ],
+      },
+      {
+        max: 0.32,
+        min: -1.51,
+        lngIntervals: [
+          { min: 36.7, max: 38.11 }, // Kenya
+        ],
+      },
+      {
+        max: -3.43,
+        min: -5.1,
+        lngIntervals: [
+          { min: 28.84, max: 29.26 }, // Burundi
+        ],
+      },
+      {
+        max: -7.21,
+        min: -10.12,
+        lngIntervals: [
+          { min: 13.16, max: 13.25 }, // angola
+        ],
+      },
+      {
+        max: -4,
+        min: -4.92,
+        lngIntervals: [
+          { min: 14.13, max: 16.11 }, // Kinshasa, Kongo
+        ],
+      },
+      {
+        max: -8.31,
+        min: -9.57,
+        lngIntervals: [
+          { min: 28.06, max: 29.03 }, // Dem Rep Congo
+        ],
+      },
+      {
+        max: -6.72,
+        min: -7.18,
+        lngIntervals: [
+          { min: 39.06, max: 39.28 }, // Tanzania
+        ],
+      },
+      {
+        max: -5.92,
+        min: -6.43,
+        lngIntervals: [
+          { min: 39.14, max: 39.58 }, // Zanzibar
+        ],
+      },
+      {
+        max: -4.98,
+        min: -5.41,
+        lngIntervals: [
+          { min: 39.64, max: 39.84 }, // Island
+        ],
+      },
+      {
+        max: -3.88,
+        min: -4.24,
+        lngIntervals: [
+          { min: 39.51, max: 39.83 }, // Mombasa
+        ],
+      },
+      {
+        max: -6.1,
+        min: -6.32,
+        lngIntervals: [
+          { min: 35.56, max: 35.85 }, // Dodoma, Tanzania
+        ],
+      },
+      {
+        max: 1.82,
+        min: 0.98,
+        lngIntervals: [
+          { min: 102.63, max: 104.74 }, // Singapore
+        ],
+      },
+      {
+        max: -0.65,
+        min: -1.38,
+        lngIntervals: [
+          { min: 100.06, max: 100.79 }, // Padang
+        ],
+      },
+      {
+        max: -2.6,
+        min: -3.87,
+        lngIntervals: [
+          { min: 103.48, max: 105.29 }, // Plemband
+        ],
+      },
+      {
+        max: -5.54,
+        min: -7.11,
+        lngIntervals: [
+          { min: 104.39, max: 107.73 }, // Jakarta
+        ],
+      },
+      {
+        max: -7.51,
+        min: -7.66,
+        lngIntervals: [
+          { min: 108.73, max: 112.73 }, // Java
+        ],
+      },
+      {
+        max: -8.26,
+        min: -8.53,
+        lngIntervals: [
+          { min: 114.79, max: 115.61 }, // eyja
+        ],
+      },
+      {
+        max: -3.27,
+        min: -3.44,
+        lngIntervals: [
+          { min: 114.19, max: 115.02 }, // Banjarmasin
+        ],
+      },
+      {
+        max: -4.41,
+        min: -5.63,
+        lngIntervals: [
+          { min: 119.34, max: 120.48 }, // Makassar
+        ],
+      },
+      {
+        max: -8.85,
+        min: -8.9,
+        lngIntervals: [
+          { min: 120.27, max: 121.25 }, // Ehv
+        ],
+      },
+      {
+        max: -8.65,
+        min: -9.48,
+        lngIntervals: [
+          { min: 124.95, max: 125.96 }, // Timor Leste
+        ],
+      },
+      {
+        max: -3.45,
+        min: -4.68,
+        lngIntervals: [
+          { min: 142.79, max: 144.81 }, // Papua new guinea
+        ],
+      },
+      {
+        max: -3.1,
+        min: -3.54,
+        lngIntervals: [
+          { min: 151.45, max: 152.24 }, // pap
+        ],
+      }, // pap
+      {
+        max: -8.7,
+        min: -9.92,
+        lngIntervals: [
+          { min: 146.43, max: 147.58 }, // Port Moresby
+        ],
+      },
+      {
+        max: -8.35,
+        min: -9.01,
+        lngIntervals: [
+          { min: 160.57, max: 160.83 }, // Solomon Islands.
+        ],
+      },
     ],
   },
   {

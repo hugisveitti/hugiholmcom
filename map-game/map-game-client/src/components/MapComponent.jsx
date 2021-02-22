@@ -32,8 +32,6 @@ const MapComponent = ({
 }) => {
   const [position, setPosition] = useState({ lat: 51.505, lng: -0.09 });
   const [markerPos, setMarkerPos] = useState({ lat: 51.505, lng: -0.09 });
-  const [oldMarkerPos, setOldMarkerPos] = useState({ lat: 51.505, lng: -0.09 });
-  const [mouseIsDown, setMouseIsDown] = useState(false);
   const classes = useStyles();
   const defaultIcon = (correctIcon) =>
     L.icon({
@@ -95,7 +93,6 @@ const MapComponent = ({
         console.log(`{ max: ${latMax}, min: ${latMin}, lngIntervals:[
          { min: ${lngMin} , max:${lngMax} }
         ] },`);
-        setOldMarkerPos(markerPos);
         if (!roundOver) {
           setMarkerPos({ lat: e.latlng.lat, lng: e.latlng.lng });
         }
@@ -198,27 +195,6 @@ const MapComponent = ({
           </Button>
         </div>
       )}
-      <br />
-
-      <MapContainer
-        center={position}
-        zoom={2}
-        style={{
-          height: 400,
-          width: "70%",
-          margin: "auto",
-          marginBottom: 15,
-        }}
-        bounds={L.latLngBounds(L.latLng(90, 180), L.latLng(-90, -180))}
-      >
-        <SetNormalizedPosition normposition={position} />
-        <MyMarker />
-        <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png"
-        />
-      </MapContainer>
-
       {roundPosition && (
         <React.Fragment>
           {distance !== -1 ? (
@@ -239,6 +215,26 @@ const MapComponent = ({
         </div>
       )}
       <StartNextRoundButton />
+      <br />
+
+      <MapContainer
+        center={position}
+        zoom={2}
+        style={{
+          height: 400,
+          width: "70%",
+          margin: "auto",
+          marginBottom: 15,
+        }}
+        bounds={L.latLngBounds(L.latLng(90, 180), L.latLng(-90, -180))}
+      >
+        <SetNormalizedPosition normposition={position} />
+        <MyMarker />
+        <TileLayer
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png"
+        />
+      </MapContainer>
     </div>
   );
 };

@@ -172,7 +172,7 @@ class MapGame {
     }
     this.resetPlayersScore();
     // Tell user about max?
-    const myTimePerRound = Math.min(+timePerRound, 2147483647);
+    const myTimePerRound = Math.min(+timePerRound, 214748364);
 
     this.timePerRound = myTimePerRound;
     this.numberOfRounds = +numberOfRounds;
