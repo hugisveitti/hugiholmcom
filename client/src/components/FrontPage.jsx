@@ -21,7 +21,7 @@ const useStyles = makeStyles(() => ({
 const pages = [
   {
     name: "Spottaði fugl",
-    pageUrl: "http://spottadi-fugl.herokuapp.com/",
+    pageUrl: "fuglabok.is",
     imageUrl: "../images/spottadifugl.PNG",
   },
   {
