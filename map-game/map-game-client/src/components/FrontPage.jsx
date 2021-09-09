@@ -10,6 +10,7 @@ import { Alert } from "@material-ui/lab";
 import { waitingPagePath } from "../Routes";
 import AppContainer, { useStyles } from "./AppContainer";
 import icon from "./icon.png";
+import DonateButton from "./DonateButton";
 
 const FrontPage = ({ socket, ...props }) => {
   const classes = useStyles();
@@ -76,6 +77,16 @@ const FrontPage = ({ socket, ...props }) => {
               It is possible to reconnect to a game by writing the exact same
               name.
             </p>
+
+            <h3>
+              I have noticed that people still play this game even though I have
+              not advertised it. That is why I have set up a link to accept
+              donations, with that I will continue to develop the game, put it
+              on a better server (it will be faster) and even take some
+              requests.
+            </h3>
+            <DonateButton />
+            <br />
 
             <TextField
               id="player-text-field"

@@ -90,8 +90,8 @@ const FrontPage = () => {
           }}
         >
           <Typography>
-            My name is Hugi Holm I am a Computer Science student at the
-            University of Copenhagen graduating in August 2021.
+            My name is Hugi Holm and I recently graduated with a master's degree
+            in Computer Science from the University of Copenhagen.
           </Typography>
           <br />
           <Divider />
@@ -109,10 +109,7 @@ const FrontPage = () => {
           <br />
           <Divider />
           <br />
-          <Typography>
-            I am currently looking for a job in machine learning, anything data
-            related or just something interesting.
-          </Typography>
+          <Typography>I am currently looking for a job.</Typography>
           <Typography>
             On this site are some side-projects I have played with. Most of
             these are on my{" "}

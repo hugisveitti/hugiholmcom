@@ -25,6 +25,10 @@ const server = app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
 
+app.get("/takk", (req, res) => {
+  res.send("Thank you for the donation!")
+})
+
 require("./flag-game/flag-game-server")(app);
 require("./map-game/map-game-server.js")(app, server);
 //require("./box-fly/box-fly-server.js")(app, server);
