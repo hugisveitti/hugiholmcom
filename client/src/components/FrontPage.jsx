@@ -97,8 +97,8 @@ const FrontPage = () => {
           <Divider />
           <br />
           <Typography>
-            I am interested in Machine Learning, currently I am doing my
-            Master's thesis and the topic is related to{" "}
+            I am interested in Machine Learning, I did my Master's thesis where
+            the topic was{" "}
             <Link href="https://en.wikipedia.org/wiki/Generative_adversarial_network">
               GANs
             </Link>
@@ -109,7 +109,6 @@ const FrontPage = () => {
           <br />
           <Divider />
           <br />
-          <Typography>I am currently looking for a job.</Typography>
           <Typography>
             On this site are some side-projects I have played with. Most of
             these are on my{" "}

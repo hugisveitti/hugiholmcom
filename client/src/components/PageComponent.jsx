@@ -27,9 +27,6 @@ const PageComponent = ({
         onClick={() => setExpanded(!expanded)}
         title={cardTitle}
       >
-        <CardContent style={{ padding: 0 }}>
-          <CardMedia style={{ height: 400, width: "auto" }} image={imageUrl} />
-        </CardContent>
         <Collapse in={expanded}>
           <CardContent>
             <Typography>{cardText}</Typography>
@@ -40,10 +37,13 @@ const PageComponent = ({
               variant="contained"
               color="primary"
             >
-              Go to site
+              Visit site
             </Button>
           </CardContent>
         </Collapse>
+        <CardContent style={{ padding: 0 }}>
+          <CardMedia style={{ height: 400, width: "auto" }} image={imageUrl} />
+        </CardContent>
       </Card>
     </Grid>
   );
