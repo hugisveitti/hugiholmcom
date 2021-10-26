@@ -17,11 +17,12 @@ const PageComponent = ({
   smSize,
   cardText,
   cardTitle,
+  lgSize,
 }) => {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <Grid item xs={xsSize} sm={smSize}>
+    <Grid item xs={xsSize} sm={smSize} lg={lgSize}>
       <Card
         className="page-card"
         onClick={() => setExpanded(!expanded)}

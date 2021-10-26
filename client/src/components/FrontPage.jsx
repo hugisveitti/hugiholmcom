@@ -20,6 +20,13 @@ const useStyles = makeStyles(() => ({
 
 const pages = [
   {
+    name: "Collisio",
+    pageUrl: "https://www.collisio.club",
+    imageUrl: "../images/collisio.PNG",
+    cardText:
+      "A racing game. Use your phone to steer a car displayed on your computer. I create all the models used in the game.",
+  },
+  {
     name: "Spottaði fugl",
     pageUrl: "https://fuglabok.is",
     imageUrl: "../images/spottadifugl.PNG",
@@ -75,15 +82,17 @@ const pages = [
 
 const FrontPage = () => {
   const classes = useStyles();
-  const xsSize = 6;
+  const xsSize = 12;
   const smSize = 4;
+  const lgSize = 3;
   return (
-    <Grid container className={classes.root} spacing={2}>
-      <Grid item xs={12}>
+    <Grid container className={classes.root} spacing={0}>
+      <Grid item xs={1} lg={3} />
+      <Grid item xs={10} lg={6}>
         <Paper
           style={{
             margin: "auto",
-            width: 300,
+
             padding: 15,
             backgroundColor: "#eee",
             marginTop: 25,
@@ -116,12 +125,14 @@ const FrontPage = () => {
           </Typography>
         </Paper>
       </Grid>
+      <Grid item xs={1} lg={3} />
       {pages.map((page) => (
         <PageComponent
           pageUrl={page.pageUrl}
           imageUrl={page.imageUrl}
           xsSize={xsSize}
           smSize={smSize}
+          lgSize={lgSize}
           key={page.pageUrl}
           cardText={page.cardText}
           cardTitle={page.name}
