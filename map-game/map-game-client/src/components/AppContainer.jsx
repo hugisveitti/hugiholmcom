@@ -54,6 +54,7 @@ export const useStyles = makeStyles(() =>
     cardContainer: {
       margin: "auto",
       width: 400,
+      maxWidth: "85%",
       backgroundColor: backgroundCardColor,
       textAlign: "center",
       padding: 20,

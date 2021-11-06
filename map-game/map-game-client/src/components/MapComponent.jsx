@@ -222,7 +222,7 @@ const MapComponent = ({
         zoom={2}
         style={{
           height: 400,
-          width: "70%",
+          width: "100%",
           margin: "auto",
           marginBottom: 15,
         }}

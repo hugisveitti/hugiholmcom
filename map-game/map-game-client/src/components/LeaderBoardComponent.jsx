@@ -16,7 +16,10 @@ const LeaderBoardComponent = ({ players, roomName }) => {
   return (
     <Paper className={classes.cardContainer}>
       <Typography variant="h6">Players in room {roomName}</Typography>
-      <List dense={false} style={{ width: 400, margin: "auto" }}>
+      <List
+        dense={false}
+        style={{ width: 400, margin: "auto", maxWidth: "100%" }}
+      >
         <ListItem>
           <ListItemText inset>Name</ListItemText>
           <ListItemText>Score</ListItemText>
