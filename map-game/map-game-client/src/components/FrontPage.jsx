@@ -64,6 +64,13 @@ const FrontPage = ({ socket, ...props }) => {
           <CardContent>
             <p>Still in development</p>
             <p>
+              <i>
+                The Mapillary API changed recently so the game stopped working,
+                but I think I fixed it now. Also check out my new game{" "}
+                <a href="https://www.collisio.club/">Collisio</a>.
+              </i>
+            </p>
+            <p>
               Please write in 'Room Name' anything, then tell your friends to
               write the same thing to play together. Or you can play by
               yourself.

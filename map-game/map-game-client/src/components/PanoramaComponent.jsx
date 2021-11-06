@@ -96,6 +96,7 @@ const PanoramaComponent = ({
         {!guessSent ? (
           <div style={{ textAlign: "center" }}>
             <CircularProgress />
+            <div>Loading image...</div>
           </div>
         ) : (
           <Typography style={{ textAlign: "center" }}>

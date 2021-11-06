@@ -48,7 +48,6 @@ module.exports = (app, server) => {
       }
 
       if (playersDisconnected === playerIds.length) {
-        console.log("all players disconnected, deleting game", gameRooms[i]);
         delete games[gameRooms[i]];
       }
     }

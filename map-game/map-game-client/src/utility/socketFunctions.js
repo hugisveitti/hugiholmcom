@@ -9,9 +9,10 @@ export const sortPlayersByScore = (players) => {
 };
 
 // 1024 640 or 2048
-const getImageUrlFromKey = (key) => {
-  const _imgUrl = `https://images.mapillary.com/${key}/thumb-2048.jpg`;
-  return _imgUrl;
+const getImageUrlFromKey = (item) => {
+  return item["thumb_2048_url"]
+  // const _imgUrl = `https://images.mapillary.com/${key}/thumb-2048.jpg`;
+  // return _imgUrl;
 };
 
 export const watchSendImages = ({
@@ -50,12 +51,12 @@ export const watchSendImages = ({
     setTimerSeconds(_timePerRound);
     setPlayers(_players);
     const myImageUrls = [];
-    setImageData(gameData["features"]);
-    if (gameData["features"].length > 0) {
-      for (let i = 0; i < gameData["features"].length; i++) {
-        const item = gameData["features"][i];
-        const currKey = item["properties"]["key"];
-        const url = getImageUrlFromKey(currKey);
+    setImageData(gameData);
+    if (gameData.length > 0) {
+      for (let i = 0; i < gameData.length; i++) {
+        const item = gameData[i];
+        //  const currKey = item["properties"]["key"];
+        const url = getImageUrlFromKey(item);
         myImageUrls.push(url);
       }
       setCurrentIndex(0);

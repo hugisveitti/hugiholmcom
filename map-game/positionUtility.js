@@ -6,6 +6,8 @@ const {
 } = require("./databasefunctions");
 const { worldMapSplits } = require("./map-game-worldsplits");
 
+const mapillaryToken = "MLY|4367117063399154|25516b1e9532102c9d0fbd3d5471bcfa"
+
 const options = (url) => ({
   dataType: "json",
   type: "Get",
@@ -85,35 +87,38 @@ const getImagesFromMapillary = (game, callBack) => {
       perpage = "per_page=50";
     }
 
-    const bbox = `closeto=${myLng},${myLat}`;
-    const url = `https://a.mapillary.com/v3/images?${bbox}&${pano}&min_quality_score=3&${perpage}&${radius}&client_id=${mapillaryAPIKey}`;
+    const bbox = `${myLng},${myLat},${myLng + 1},${myLat + 1}`;
+    const url = `https://graph.mapillary.com/images?access_token=${mapillaryToken}&limit=50&bbox=${bbox}&fields=id,thumb_2048_url,geometry`
+    // const url = `https://a.mapillary.com/v3/images?${bbox}&${pano}&min_quality_score=3&${perpage}&${radius}&client_id=${mapillaryAPIKey}`;
     request(options(url), (err, apiRes, body) => {
-      const data = JSON.parse(body);
-      if (data["features"].length < 3) {
+      if (body === undefined) {
+        getImagesFromMapillary(game, callBack)
+        return
+      }
+      const data = JSON.parse(body)["data"];
+      if (data.length < 3) {
         addBadGuessLocation({
           lat: myLat,
           lng: myLng,
-          nrImages: data["features"].length,
+          nrImages: data.length,
           radius,
           perpage,
         });
         const newCoor = getRandomLatLng(game);
         // increase search space, so loading isnt long
         getImageWithLatLng(newCoor.lat, newCoor.lng, false, radius_meters * 10);
-      } else if (!imageKnown) {
-        const coor = data["features"][0]["geometry"]["coordinates"];
-        getImageWithLatLng(coor[1], coor[0], true, 10000);
       } else {
         // socket.emit("sendSequence", data);
         addGoodGuessLocation({
           lat: myLat,
           lng: myLng,
-          nrImages: data["features"].length,
+          nrImages: data.length,
           radius,
           perpage,
         });
         game.setCurrentGameData(data);
-        game.setCurrentPosition(myLat, myLng);
+        const [lng, lat] = data[0].geometry.coordinates
+        game.setCurrentPosition(lat, lng);
         callBack();
       }
     });
