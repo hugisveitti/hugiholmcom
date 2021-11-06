@@ -21,9 +21,7 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-app.get("/takk", (req, res) => {
-  res.send("Thank you very much!")
-})
+
 
 const port = process.env.PORT || 80;
 const server = app.listen(port, () => {
