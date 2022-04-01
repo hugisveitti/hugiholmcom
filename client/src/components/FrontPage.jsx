@@ -22,9 +22,16 @@ const pages = [
   {
     name: "Collisio",
     pageUrl: "https://www.collisio.club",
-    imageUrl: "../images/collisio.PNG",
+    imageUrl: "../images/collisio.png",
     cardText:
       "A racing game. Use your phone to steer a car displayed on your computer. I create all the models used in the game.",
+  },
+  {
+    name: "Fill in the Quote",
+    pageUrl: "/quote",
+    imageUrl: "../images/quotes.png",
+    cardText:
+      "A simple text game I created to learn to program in the Flutter environment.",
   },
   {
     name: "Spottaði fugl",
@@ -112,8 +119,10 @@ const FrontPage = () => {
               GANs
             </Link>
             . I am also interested in frontend development, I worked part-time
-            along with my studies as a React developer. Most of my studies have
-            focused on computational science, algorithms and machine learning.
+            along with my studies as a React developer, and I am interested in
+            learning more backend, that is more than throwing together a nodejs
+            sever. Most of my studies have focused on computational science,
+            algorithms and machine learning.
           </Typography>
           <br />
           <Divider />
