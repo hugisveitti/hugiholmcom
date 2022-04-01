@@ -22,7 +22,7 @@ const pages = [
   {
     name: "Collisio",
     pageUrl: "https://www.collisio.club",
-    imageUrl: "../images/collisio.png",
+    imageUrl: "../images/collisio2.png",
     cardText:
       "A racing game. Use your phone to steer a car displayed on your computer. I create all the models used in the game.",
   },
