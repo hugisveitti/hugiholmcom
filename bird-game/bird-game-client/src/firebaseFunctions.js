@@ -41,13 +41,13 @@ export const getHighscores = async (gameType) => {
 
 
 
-export const saveHighscore = (gameType, score, name) => {
+export const saveHighscore = (gameType, score, total, name) => {
   return new Promise((resolve, reject) => {
 
     const path = gameType === "plant" ? plantPath : birdPath
 
     addDoc(collection(db, path), {
-      name, score, date: Timestamp.now()
+      name, score, date: Timestamp.now(), total
     }).then(() => {
       resolve()
     })

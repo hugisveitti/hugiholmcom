@@ -6,7 +6,7 @@ let score = 0;
 let total = 0;
 let data = [];
 let allIdx = [];
-const ImgGame = ({ gameOver, gameType, setScore }) => {
+const ImgGame = ({ gameOver, gameType, setScore, setTotal }) => {
   const [activeIdx, setActiveIdx] = useState([]);
   const [roundOver, setRoundOver] = useState(false);
 
@@ -29,17 +29,28 @@ const ImgGame = ({ gameOver, gameType, setScore }) => {
     allIdx = _allIdx;
     score = 0;
     setScore(0);
+    setTotal(0);
     total = 0;
     nextRound();
   }, [gameType]);
+
+  const sameCategory = (num1, num2) => {
+    if (gameType === "plant") {
+      return true;
+    }
+
+    return data[num1]["category"] === data[num2]["category"];
+  };
 
   const nextRound = () => {
     if (data.length === 0) return;
     let a = [];
     a.push(allIdx[0]);
+
     for (let i = 0; i < 3; i++) {
       let e = randomInt(data.length);
-      while (itemInArray(e, a)) {
+
+      while (itemInArray(e, a) || !sameCategory(e, allIdx[0])) {
         e = randomInt(data.length);
       }
       a.push(e);
@@ -51,7 +62,7 @@ const ImgGame = ({ gameOver, gameType, setScore }) => {
 
   const handleGameOver = () => {
     setRoundOver(true);
-    gameOver(score);
+    gameOver(score, total);
   };
 
   const roundFinished = () => {
@@ -70,7 +81,6 @@ const ImgGame = ({ gameOver, gameType, setScore }) => {
     nextRound();
   }, []);
 
-  console.log("activeIdx", activeIdx);
   const isBirds = gameType === "bird";
   return (
     <div>

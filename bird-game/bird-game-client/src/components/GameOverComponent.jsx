@@ -5,7 +5,6 @@ const GameOverComponent = ({ score, saveScore }) => {
 
   const handleSaveScore = () => {
     if (name === "") return;
-    console.log("save score");
     window.localStorage.setItem("name", name);
     saveScore(name);
   };

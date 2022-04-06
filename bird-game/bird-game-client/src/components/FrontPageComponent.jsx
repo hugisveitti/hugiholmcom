@@ -8,6 +8,7 @@ import ImgGame from "./ImgGame";
 const FrontPage = () => {
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState(0);
+  const [total, setTotal] = useState(0);
   const [gameType, setGameType] = useState("");
 
   const [birdData, setBirdData] = useState(undefined);
@@ -34,9 +35,11 @@ const FrontPage = () => {
         <>
           <ImgGame
             setScore={setScore}
-            gameOver={(_score) => {
+            setTotal={setTotal}
+            gameOver={(_score, _total) => {
               setGameOver(true);
               setScore(_score);
+              setTotal(_total);
             }}
             gameType={gameType}
           />
@@ -73,7 +76,7 @@ const FrontPage = () => {
             } else {
               setPlantData(undefined);
             }
-            saveHighscore(gameType, score, name).then(() => {
+            saveHighscore(gameType, score, total, name).then(() => {
               handleGetHi(gameType);
             });
             setGameType("");

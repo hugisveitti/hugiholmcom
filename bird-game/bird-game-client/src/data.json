@@ -3,498 +3,581 @@
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Tjaldur34.jpg",
         "name": "Tjaldur",
         "soundUrl": "https://fuglavefur.is/audio/tjaldur.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/tjaldur.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/tjaldur.jpg",
+        "category": 4
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Sandloa17.jpg",
-        "name": "Sandl\u00f3a",
+        "name": "Sandlóa",
         "soundUrl": "https://fuglavefur.is/audio/sandloa.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/sandloa.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/sandloa.jpg",
+        "category": 4
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Skogarth46.jpg",
-        "name": "Sk\u00f3gar\u00fer\u00f6stur",
+        "name": "Skógarþröstur",
         "soundUrl": "https://fuglavefur.is/audio/skogarthrostur.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/skogarthrostur.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/skogarthrostur.jpg",
+        "category": 1
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Louthraell22.jpg",
-        "name": "L\u00f3u\u00fer\u00e6ll",
+        "name": "Lóuþræll",
         "soundUrl": "https://fuglavefur.is/audio/louthraell.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/louthraell.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/louthraell.jpg",
+        "category": 4
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Sanderla23.jpg",
         "name": "Sanderla",
         "soundUrl": "https://fuglavefur.is/audio/sanderla.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/sanderla.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/sanderla.jpg",
+        "category": 4
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Raudbrystingur31.jpg",
-        "name": "Rau\u00f0brystingur",
+        "name": "Rauðbrystingur",
         "soundUrl": "https://fuglavefur.is/audio/raudbrystingur.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/raudbrystingur.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/raudbrystingur.jpg",
+        "category": 4
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Hrossi42.jpg",
         "name": "Hrossagaukur",
         "soundUrl": "https://fuglavefur.is/audio/hrossagaukur.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/hrossagaukur.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/hrossagaukur.jpg",
+        "category": 4
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Heidlo40.jpg",
-        "name": "Hei\u00f0l\u00f3a",
+        "name": "Heiðlóa",
         "soundUrl": "https://fuglavefur.is/audio/heidloa.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/heidloa.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/heidloa.jpg",
+        "category": 4
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Sendlingur10.jpg",
         "name": "Sendlingur",
         "soundUrl": "https://fuglavefur.is/audio/sendlingur.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/sendlingur.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/sendlingur.jpg",
+        "category": 4
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Spoi31.jpg",
-        "name": "Sp\u00f3i",
+        "name": "Spói",
         "soundUrl": "https://fuglavefur.is/audio/spoi.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/spoi.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/spoi.jpg",
+        "category": 4
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Jadrakan34.jpg",
-        "name": "Ja\u00f0rakan",
+        "name": "Jaðrakan",
         "soundUrl": "https://fuglavefur.is/audio/jadrakan.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/jadrakan.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/jadrakan.jpg",
+        "category": 4
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Odinshani09.jpg",
-        "name": "\u00d3\u00f0inshani",
+        "name": "Óðinshani",
         "soundUrl": "https://fuglavefur.is/audio/odinshani.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/odinshani.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/odinshani.jpg",
+        "category": 4
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Hettumafur39.jpg",
-        "name": "Hettum\u00e1fur",
+        "name": "Hettumáfur",
         "soundUrl": "https://fuglavefur.is/audio/hettumavur.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/hettumavur.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/hettumavur.jpg",
+        "category": 0
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Kria31.jpg",
-        "name": "Kr\u00eda",
+        "name": "Kría",
         "soundUrl": "https://fuglavefur.is/audio/kria.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/kria.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/kria.jpg",
+        "category": 0
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Silfurmafur22.jpg",
-        "name": "Silfurm\u00e1fur",
+        "name": "Silfurmáfur",
         "soundUrl": "https://fuglavefur.is/audio/silfurmafur.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/silfurmavur.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/silfurmavur.jpg",
+        "category": 0
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Rita28.jpg",
         "name": "Rita",
         "soundUrl": "https://fuglavefur.is/audio/rita.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/rita.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/rita.jpg",
+        "category": 0
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Svartbakur21.jpg",
         "name": "Svartbakur",
         "soundUrl": "https://fuglavefur.is/audio/svartbakur.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/svartbakur.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/svartbakur.jpg",
+        "category": 0
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Silamafur23.jpg",
-        "name": "S\u00edlam\u00e1fur",
+        "name": "Sílamáfur",
         "soundUrl": "https://fuglavefur.is/audio/silamavur.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/silamavur.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/silamavur.jpg",
+        "category": 0
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Skumur14.jpg",
-        "name": "Sk\u00famur",
+        "name": "Skúmur",
         "soundUrl": "https://fuglavefur.is/audio/skumur.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/skumur.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/skumur.jpg",
+        "category": 0
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Kjoi21.jpg",
-        "name": "Kj\u00f3i",
+        "name": "Kjói",
         "soundUrl": "https://fuglavefur.is/audio/kjoi.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/kjoi.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/kjoi.jpg",
+        "category": 0
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Thufutittl14.jpg",
-        "name": "\u00de\u00fafutittlingur",
+        "name": "Þúfutittlingur",
         "soundUrl": "https://fuglavefur.is/audio/thufutittlingur.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/thufutittlingur.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/thufutittlingur.jpg",
+        "category": 1
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Steindepill12.jpg",
         "name": "Steindepill",
         "soundUrl": "https://fuglavefur.is/audio/steindepill.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/steindepill.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/steindepill.jpg",
+        "category": 1
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Stari51.jpg",
         "name": "Stari",
         "soundUrl": "https://fuglavefur.is/audio/stari.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/stari.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/stari.jpg",
+        "category": 1
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Snjotittlingur43.jpg",
-        "name": "Snj\u00f3tittlingur",
+        "name": "Snjótittlingur",
         "soundUrl": "https://fuglavefur.is/audio/snjotittlingur.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/snjotittlingur.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/snjotittlingur.jpg",
+        "category": 1
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Mariuerla16.jpg",
-        "name": "Mar\u00eduerla",
+        "name": "Maríuerla",
         "soundUrl": "https://fuglavefur.is/audio/mariuerla.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/mariuerla.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/mariuerla.jpg",
+        "category": 1
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Musarrindill17.jpg",
-        "name": "M\u00fasarrindill",
+        "name": "Músarrindill",
         "soundUrl": "https://fuglavefur.is/audio/musarrindill.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/musarrindill.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/musarrindill.jpg",
+        "category": 1
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Hrafn65.jpg",
         "name": "Hrafn",
         "soundUrl": "https://fuglavefur.is/audio/hrafn.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/hrafn.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/hrafn.jpg",
+        "category": 1
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Audnutittlingur06e.jpg",
-        "name": "Au\u00f0nutittlingur",
+        "name": "Auðnutittlingur",
         "soundUrl": "https://fuglavefur.is/audio/audnutittlingur.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/audnutittlingur.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/audnutittlingur.jpg",
+        "category": 1
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Alft53.jpg",
-        "name": "\u00c1lft",
+        "name": "Álft",
         "soundUrl": "https://fuglavefur.is/audio/alft.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/alft.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/alft.jpg",
+        "category": 3
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Gragaes25.jpg",
-        "name": "Gr\u00e1g\u00e6s",
+        "name": "Grágæs",
         "soundUrl": "https://fuglavefur.is/audio/gragaes.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/gragaes.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/gragaes.jpg",
+        "category": 3
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Margaes38.jpg",
-        "name": "Marg\u00e6s",
+        "name": "Margæs",
         "soundUrl": "https://fuglavefur.is/audio/margaes.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/margaes.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/margaes.jpg",
+        "category": 3
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Stokkond35.jpg",
-        "name": "Stokk\u00f6nd",
+        "name": "Stokkönd",
         "soundUrl": "https://fuglavefur.is/audio/stokkond.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/stokkond.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/stokkond.jpg",
+        "category": 3
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Skufond19.jpg",
-        "name": "Sk\u00faf\u00f6nd",
+        "name": "Skúfönd",
         "soundUrl": "https://fuglavefur.is/audio/skufond.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/skufond.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/skufond.jpg",
+        "category": 3
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Duggond14.jpg",
-        "name": "Dugg\u00f6nd",
+        "name": "Duggönd",
         "soundUrl": "https://fuglavefur.is/audio/duggond.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/duggond.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/duggond.jpg",
+        "category": 3
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Havella32.jpg",
-        "name": "H\u00e1vella",
+        "name": "Hávella",
         "soundUrl": "https://fuglavefur.is/audio/havella.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/havella.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/havella.jpg",
+        "category": 3
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Toppond38.jpg",
-        "name": "Topp\u00f6nd",
+        "name": "Toppönd",
         "soundUrl": "https://fuglavefur.is/audio/toppond.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/toppond.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/toppond.jpg",
+        "category": 3
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Aedur59.jpg",
-        "name": "\u00c6\u00f0arfugl",
+        "name": "Æðarfugl",
         "soundUrl": "https://fuglavefur.is/audio/aedarfugl.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/aedarfugl.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/aedarfugl.jpg",
+        "category": 3
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Heidagaes17.jpg",
-        "name": "Hei\u00f0ag\u00e6s",
+        "name": "Heiðagæs",
         "soundUrl": "https://fuglavefur.is/audio/heidagaes.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/heidagaes.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/heidagaes.jpg",
+        "category": 3
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Lomur23.jpg",
-        "name": "L\u00f3mur",
+        "name": "Lómur",
         "soundUrl": "https://fuglavefur.is/audio/lomur.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/lomur.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/lomur.jpg",
+        "category": 3
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Himbrimi22.jpg",
         "name": "Himbrimi",
         "soundUrl": "https://fuglavefur.is/audio/himbrimi.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/himbrimi.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/himbrimi.jpg",
+        "category": 3
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Husond31.jpg",
-        "name": "H\u00fas\u00f6nd",
+        "name": "Húsönd",
         "soundUrl": "https://fuglavefur.is/audio/husond.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/husond.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/husond.jpg",
+        "category": 3
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Dilaskarfur25.jpg",
-        "name": "D\u00edlaskarfur",
+        "name": "Dílaskarfur",
         "soundUrl": "https://fuglavefur.is/audio/dilaskarfur.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/dilaskarfur.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/dilaskarfur.jpg",
+        "category": 2
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Fyll31.jpg",
-        "name": "F\u00fdll",
+        "name": "Fýll",
         "soundUrl": "https://fuglavefur.is/audio/fyll.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/fyll.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/fyll.jpg",
+        "category": 2
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Sula55.jpg",
-        "name": "S\u00fala",
+        "name": "Súla",
         "soundUrl": "https://fuglavefur.is/audio/sula.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/sula.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/sula.jpg",
+        "category": 2
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Alka14.jpg",
-        "name": "\u00c1lka",
+        "name": "Álka",
         "soundUrl": "https://fuglavefur.is/audio/alka.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/alka.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/alka.jpg",
+        "category": 2
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Lundi344.jpg",
         "name": "Lundi",
         "soundUrl": "https://fuglavefur.is/audio/lundi.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/lundi.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/lundi.jpg",
+        "category": 2
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Teista10.jpg",
         "name": "Teista",
         "soundUrl": "https://fuglavefur.is/audio/teista.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/teista.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/teista.jpg",
+        "category": 2
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Stuttnefja18.jpg",
         "name": "Stuttnefja",
         "soundUrl": "https://fuglavefur.is/audio/stuttnefja.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/stuttnefja.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/stuttnefja.jpg",
+        "category": 2
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Langvia10.jpg",
-        "name": "Langv\u00eda",
+        "name": "Langvía",
         "soundUrl": "https://fuglavefur.is/audio/langvia.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/langvia.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/langvia.jpg",
+        "category": 2
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Falki62.jpg",
-        "name": "F\u00e1lki",
+        "name": "Fálki",
         "soundUrl": "https://fuglavefur.is/audio/falki.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/falki.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/falki.jpg",
+        "category": 5
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Smyrill37.jpg",
         "name": "Smyrill",
         "soundUrl": "https://fuglavefur.is/audio/smyrill.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/smyrill.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/smyrill.jpg",
+        "category": 5
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Orn44.jpg",
-        "name": "Haf\u00f6rn",
+        "name": "Haförn",
         "soundUrl": "https://fuglavefur.is/audio/haforn.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/haforn.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/haforn.jpg",
+        "category": 5
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Brandugla24.jpg",
         "name": "Brandugla",
         "soundUrl": "https://fuglavefur.is/audio/brandugla.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/brandugla.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/brandugla.jpg",
+        "category": 5
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Rjupa33.jpg",
-        "name": "Rj\u00fapa",
+        "name": "Rjúpa",
         "soundUrl": "https://fuglavefur.is/audio/rjupa.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/rjupa.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/rjupa.jpg",
+        "category": 5
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Stelkur31.jpg",
         "name": "Stelkur",
         "soundUrl": "https://fuglavefur.is/audio/stelkur.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/stelkur.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/stelkur.jpg",
+        "category": 1
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Florgodi24.jpg",
-        "name": "Fl\u00f3rgo\u00f0i",
+        "name": "Flórgoði",
         "soundUrl": "https://fuglavefur.is/audio/florgodi.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/florgodi.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/florgodi.jpg",
+        "category": 1
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Gargond08.jpg",
-        "name": "Garg\u00f6nd",
+        "name": "Gargönd",
         "soundUrl": "https://fuglavefur.is/audio/gargond.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/gargond.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/gargond.jpg",
+        "category": 3
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Raudhofdi11.jpg",
-        "name": "Rau\u00f0h\u00f6f\u00f0a\u00f6nd",
+        "name": "Rauðhöfðaönd",
         "soundUrl": "https://fuglavefur.is/audio/raudhofdaond.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/raudhofdi.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/raudhofdi.jpg",
+        "category": 3
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Helsingi24.jpg",
         "name": "Helsingi",
         "soundUrl": "https://fuglavefur.is/audio/helsingi.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/helsingi.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/helsingi.jpg",
+        "category": 3
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Toppskarfur18.jpg",
         "name": "Toppskarfur",
         "soundUrl": "https://fuglavefur.is/audio/toppskarfur.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/toppskarfur.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/toppskarfur.jpg",
+        "category": 2
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Hrafnsond09.jpg",
-        "name": "Hrafns\u00f6nd",
+        "name": "Hrafnsönd",
         "soundUrl": "https://fuglavefur.is/audio/hrafnsond.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/hrafnsond.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/hrafnsond.jpg",
+        "category": 3
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Straumond31.jpg",
-        "name": "Straum\u00f6nd",
+        "name": "Straumönd",
         "soundUrl": "https://fuglavefur.is/audio/straumond.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/straumond.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/straumond.jpg",
+        "category": 3
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Svartthrostur22.jpg",
-        "name": "Svart\u00fer\u00f6stur",
+        "name": "Svartþröstur",
         "soundUrl": "https://fuglavefur.is/audio/svartthrostur.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/svartthrostur.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/svartthrostur.jpg",
+        "category": 1
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Urtond39.jpg",
-        "name": "Urt\u00f6nd",
+        "name": "Urtönd",
         "soundUrl": "https://fuglavefur.is/audio/urtond.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/urtond.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/urtond.jpg",
+        "category": 3
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Skeidond16.jpg",
-        "name": "Skei\u00f0\u00f6nd",
+        "name": "Skeiðönd",
         "soundUrl": "https://fuglavefur.is/audio/skeidond.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/skeidond.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/skeidond.jpg",
+        "category": 3
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Hvitmafur07p.jpg",
-        "name": "Hv\u00edtm\u00e1fur",
+        "name": "Hvítmáfur",
         "soundUrl": "https://fuglavefur.is/audio/hvitmafur.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/hvitmafur.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/hvitmafur.jpg",
+        "category": 0
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Thorshani18.jpg",
-        "name": "\u00de\u00f3rshani",
+        "name": "Þórshani",
         "soundUrl": "https://fuglavefur.is/audio/thorshani.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/thorshani.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/thorshani.jpg",
+        "category": 4
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Bjartmafur05.jpg",
-        "name": "Bjartm\u00e1fur",
+        "name": "Bjartmáfur",
         "soundUrl": "https://fuglavefur.is/audio/bjartmafur.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/bjartmafur.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/bjartmafur.jpg",
+        "category": 0
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Grafond15.jpg",
-        "name": "Graf\u00f6nd",
+        "name": "Grafönd",
         "soundUrl": "https://fuglavefur.is/audio/grafond.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/grafond.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/grafond.jpg",
+        "category": 3
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Bjargdufa12.jpg",
-        "name": "Bjargd\u00fafa",
+        "name": "Bjargdúfa",
         "soundUrl": "https://fuglavefur.is/audio/bjargdufa.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/bjargdufa.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/bjargdufa.jpg",
+        "category": 5
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Blesgaes37.jpg",
-        "name": "Blesg\u00e6s",
+        "name": "Blesgæs",
         "soundUrl": "https://fuglavefur.is/audio/blesgaes.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/blesgaes.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/blesgaes.jpg",
+        "category": 3
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Brandond13e.jpg",
-        "name": "Brand\u00f6nd",
+        "name": "Brandönd",
         "soundUrl": "https://fuglavefur.is/audio/brandond.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/brandond.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/brandond.jpg",
+        "category": 3
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Gulond19.jpg",
-        "name": "Gul\u00f6nd",
+        "name": "Gulönd",
         "soundUrl": "https://fuglavefur.is/audio/gulond.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/gulond.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/gulond.jpg",
+        "category": 3
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Graspor05.jpg",
-        "name": "Gr\u00e1sp\u00f6r",
+        "name": "Gráspör",
         "soundUrl": "https://fuglavefur.is/audio/graspor.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/graspor.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/graspor.jpg",
+        "category": 1
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Sjosvala07.jpg",
-        "name": "Sj\u00f3svala",
+        "name": "Sjósvala",
         "soundUrl": "https://fuglavefur.is/audio/sjosvala.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/sjosvala.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/sjosvala.jpg",
+        "category": 2
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Grathrostur13.jpg",
-        "name": "Gr\u00e1\u00fer\u00f6stur",
+        "name": "Gráþröstur",
         "soundUrl": "https://fuglavefur.is/audio/grathrostur.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/grathrostur.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/grathrostur.jpg",
+        "category": 1
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Skrofa12.jpg",
         "name": "Skrofa",
         "soundUrl": "https://fuglavefur.is/audio/skrofa.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/skrofa.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/skrofa.jpg",
+        "category": 2
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Stormmafur11.jpg",
-        "name": "Stormm\u00e1fur",
+        "name": "Stormmáfur",
         "soundUrl": "https://fuglavefur.is/audio/stormmafur.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/stormmafur.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/stormmafur.jpg",
+        "category": 0
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Stormsvala07.jpg",
         "name": "Stormsvala",
         "soundUrl": "https://fuglavefur.is/audio/stormsvala.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/stormsvala.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/stormsvala.jpg",
+        "category": 2
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Tildra21.jpg",
         "name": "Tildra",
         "soundUrl": "https://fuglavefur.is/audio/tildra.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/tildra.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/tildra.jpg",
+        "category": 4
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Haftyrdill07.jpg",
-        "name": "Haftyr\u00f0ill",
+        "name": "Haftyrðill",
         "soundUrl": "https://fuglavefur.is/audio/haftyrdill.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/haftyrdill.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/haftyrdill.jpg",
+        "category": 2
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Glokollur19.jpg",
-        "name": "Gl\u00f3kollur",
+        "name": "Glókollur",
         "soundUrl": "https://fuglavefur.is/audio/glokollur.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/glokollur.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/glokollur.jpg",
+        "category": 1
     },
     {
         "imgUrl": "https://fuglavefur.is/fuglamyndir/lg/Krossnefur14.jpg",
         "name": "Krossnefur",
         "soundUrl": "https://fuglavefur.is/audio/krossnefur.ogg",
-        "thumb": "https://fuglavefur.is/thumbs/krossnefur.jpg"
+        "thumb": "https://fuglavefur.is/thumbs/krossnefur.jpg",
+        "category": 1
     }
 ]
