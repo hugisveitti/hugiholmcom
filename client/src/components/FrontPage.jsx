@@ -35,10 +35,17 @@ const pages = [
   },
   {
     name: "Spottaði fugl",
-    pageUrl: "https://fuglabok.is",
+    pageUrl: "https://spottadi-fugl.herokuapp.com/",
     imageUrl: "../images/spottadifugl.PNG",
     cardText:
       "An online bird diary. I received a small grant from the Icelandic ministry of the Environment to develop this site.",
+  },
+  {
+    name: "Bird game",
+    pageUrl: "/fuglar",
+    imageUrl: "../images/birds.jpg",
+    cardText:
+      "Another bird related project. Simple game to learn the birds of Iceland. No real point to this project.",
   },
   {
     name: "JeoJuessr",

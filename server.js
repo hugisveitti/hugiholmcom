@@ -37,5 +37,6 @@ require("./map-game/map-game-server.js")(app, server);
 //require("./box-fly/box-fly-server.js")(app, server);
 require("./football-money/index.js")(app);
 require("./letingi/app.js")(app);
+require("./bird-game/app.js")(app);
 require("./quote-fill/app.js")(app);
 require("./colors/colors-server.js")(app);
