@@ -6,7 +6,14 @@ let score = 0;
 let total = 0;
 let data = [];
 let allIdx = [];
-const ImgGame = ({ gameOver, gameType, setScore, setTotal }) => {
+const allBirdData = require("../data.json");
+const allPlantData = require("../plantdata.json");
+
+const copyJson = (j) => {
+  return JSON.parse(JSON.stringify(j));
+};
+
+const ImgGame = ({ gameOver, gameType, setScore, setTotal, percentPlay }) => {
   const [activeIdx, setActiveIdx] = useState([]);
   const [roundOver, setRoundOver] = useState(false);
 
@@ -15,10 +22,14 @@ const ImgGame = ({ gameOver, gameType, setScore, setTotal }) => {
 
   useEffect(() => {
     if (gameType === "") return;
-    const _data =
-      gameType === "bird"
-        ? require("../data.json")
-        : require("../plantdata.json");
+    let _data =
+      gameType === "bird" ? copyJson(allBirdData) : copyJson(allPlantData);
+
+    shuffle(_data);
+    let delCount = Math.floor(_data.length * (percentPlay / 100));
+
+    delCount = Math.max(delCount, 10);
+    _data = _data.splice(0, delCount);
 
     let _allIdx = [];
     _allIdx = [];
@@ -32,7 +43,7 @@ const ImgGame = ({ gameOver, gameType, setScore, setTotal }) => {
     setTotal(0);
     total = 0;
     nextRound();
-  }, [gameType]);
+  }, [gameType, percentPlay]);
 
   const sameCategory = (num1, num2) => {
     if (gameType === "plant") {
@@ -49,9 +60,13 @@ const ImgGame = ({ gameOver, gameType, setScore, setTotal }) => {
 
     for (let i = 0; i < 3; i++) {
       let e = randomInt(data.length);
-
-      while (itemInArray(e, a) || !sameCategory(e, allIdx[0])) {
+      let numWrong = 0;
+      while (
+        (itemInArray(e, a) || !sameCategory(e, allIdx[0])) &&
+        numWrong < 20
+      ) {
         e = randomInt(data.length);
+        numWrong += 1;
       }
       a.push(e);
     }
@@ -81,10 +96,15 @@ const ImgGame = ({ gameOver, gameType, setScore, setTotal }) => {
     nextRound();
   }, []);
 
+  // const da = data.filter((d) => d.category3 === "Asteraceae");
+
   const isBirds = gameType === "bird";
   return (
     <div>
       <div className="imgs-container">
+        {/* {da.map((d) => (
+          <ImgCard card={d} key={`iad-${d.name}`} onClick={() => {}} />
+        ))} */}
         <span
           style={{ width: "25%", display: "inline-block", textAlign: "left" }}
         >
@@ -107,23 +127,11 @@ const ImgGame = ({ gameOver, gameType, setScore, setTotal }) => {
         >
           Stig {score} / {total}
         </span>
+        <div style={{ marginBottom: 15 }}></div>
 
-        <div className="center">
-          <button
-            className={`btn ${roundOver ? "" : "hide"}`}
-            onClick={() => roundFinished()}
-          >
-            {allIdx.length === 1
-              ? "Ljúka leik"
-              : isBirds
-              ? "Næsti fugl"
-              : "Næsta planta"}
-          </button>
-        </div>
-
-        {activeIdx.map((i) => (
+        {activeIdx.map((i, num) => (
           <ImgCard
-            key={`${i}-img`}
+            key={`${i}-img-${num}`}
             card={data[i]}
             roundOver={roundOver}
             correct={i === active}
@@ -145,6 +153,30 @@ const ImgGame = ({ gameOver, gameType, setScore, setTotal }) => {
             }}
           />
         ))}
+
+        <div
+          className={`center ${roundOver ? "" : "hide"}`}
+          style={{ marginBottom: 15 }}
+        >
+          <button className={`btn `} onClick={() => roundFinished()}>
+            {allIdx.length === 1
+              ? "Ljúka leik"
+              : isBirds
+              ? "Næsti fugl"
+              : "Næsta planta"}
+          </button>
+          <br />
+          <span
+            style={{
+              borderRadius: 10,
+              padding: 5,
+              backgroundColor:
+                incorrect === -1 ? "rgba(0,255,0, .3)" : "rgba(255,0,0, .3)",
+            }}
+          >
+            {incorrect === -1 ? "Rétt!" : "Rangt"}
+          </span>
+        </div>
       </div>
     </div>
   );

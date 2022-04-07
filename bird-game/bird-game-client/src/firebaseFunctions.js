@@ -1,5 +1,5 @@
 // Import the functions you need from the SDKs you need
-import { addDoc, collection, getDocs, getFirestore, orderBy, query, Timestamp } from "@firebase/firestore";
+import { addDoc, collection, getDocs, getFirestore, limit, limitToLast, orderBy, query, Timestamp } from "@firebase/firestore";
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -29,7 +29,7 @@ export const getHighscores = async (gameType) => {
     const path = gameType === "plant" ? plantPath : birdPath
 
     const ref = collection(db, path)
-    const q = query(ref, orderBy("score", "desc"))
+    const q = query(ref, orderBy("score", "desc"), limit(25))
     const docs = await getDocs(q)
     let arr = []
     docs.forEach(element => {

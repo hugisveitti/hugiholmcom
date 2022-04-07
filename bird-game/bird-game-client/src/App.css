@@ -124,3 +124,10 @@ body {
 .highscore-item-name {
   float: left;
 }
+
+.range {
+  width: 200px;
+  display: block;
+  margin: auto;
+  margin-top: 15px;
+}

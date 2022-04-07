@@ -1,25 +1,42 @@
 import React, { useState, useEffect } from "react";
 import { getHighscores, saveHighscore } from "../firebaseFunctions";
+import DonationBtn from "./DontationBtn";
 import GameOverComponent from "./GameOverComponent";
 import GameTypeSelect from "./GameTypeSelect";
 import HighscoreComponent from "./HighscoreComponent";
 import ImgGame from "./ImgGame";
+import { getLocalBestScore, saveLocalBestScore } from "./utils";
 
+const percentPlayKey = "percentPlay";
 const FrontPage = () => {
   const [gameOver, setGameOver] = useState(false);
   const [score, setScore] = useState(0);
   const [total, setTotal] = useState(0);
   const [gameType, setGameType] = useState("");
 
-  const [birdData, setBirdData] = useState(undefined);
-  const [plantData, setPlantData] = useState(undefined);
+  const [birdData, setBirdData] = useState({
+    data: undefined,
+    pb: getLocalBestScore("bird"),
+  });
+  const [plantData, setPlantData] = useState({
+    data: undefined,
+    pb: getLocalBestScore("plant"),
+  });
+
+  const [perc, setPerc] = useState(
+    window.localStorage.getItem(percentPlayKey) ?? 100
+  );
 
   const handleGetHi = (_gameType) => {
     getHighscores(_gameType).then((d) => {
+      const pb = getLocalBestScore(_gameType);
       if (_gameType === "bird") {
-        setBirdData(d);
+        setBirdData({
+          data: d,
+          pb,
+        });
       } else if (_gameType === "plant") {
-        setPlantData(d);
+        setPlantData({ data: d, pb });
       }
     });
   };
@@ -42,6 +59,7 @@ const FrontPage = () => {
               setTotal(_total);
             }}
             gameType={gameType}
+            percentPlay={perc}
           />
           <div className="center">
             <button
@@ -71,10 +89,15 @@ const FrontPage = () => {
               name = name.slice(0, 16);
             }
             if (score === 0) return;
+            const setPB = saveLocalBestScore(gameType, score);
+            let pb = getLocalBestScore(gameType);
+            if (setPB) {
+              pb = score;
+            }
             if (gameType === "bird") {
-              setBirdData(undefined);
+              setBirdData({ data: undefined, pb });
             } else {
-              setPlantData(undefined);
+              setPlantData({ data: undefined, pb });
             }
             saveHighscore(gameType, score, total, name).then(() => {
               handleGetHi(gameType);
@@ -94,8 +117,15 @@ const FrontPage = () => {
             setGameOver(false);
             setGameType(g);
           }}
+          perc={perc}
+          setPerc={(val) => {
+            setPerc(val);
+            window.localStorage.setItem(percentPlayKey, val);
+          }}
         />
       }
+
+      <DonationBtn />
 
       <HighscoreComponent gameType={"bird"} data={birdData} />
       <HighscoreComponent gameType={"plant"} data={plantData} />
