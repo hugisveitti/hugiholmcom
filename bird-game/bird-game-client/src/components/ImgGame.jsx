@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import ImgCard from "./ImgCard";
-import { itemInArray, randomInt, shuffle } from "./utils";
+import {
+  getDataFromGameType,
+  getGeoQuestionFromCategory,
+  itemInArray,
+  randomInt,
+  shuffle,
+} from "./utils";
 
 let score = 0;
 let total = 0;
 let data = [];
 let allIdx = [];
-const allBirdData = require("../data.json");
-const allPlantData = require("../plantdata.json");
-
-const copyJson = (j) => {
-  return JSON.parse(JSON.stringify(j));
-};
 
 const ImgGame = ({ gameOver, gameType, setScore, setTotal, percentPlay }) => {
   const [activeIdx, setActiveIdx] = useState([]);
@@ -22,8 +22,7 @@ const ImgGame = ({ gameOver, gameType, setScore, setTotal, percentPlay }) => {
 
   useEffect(() => {
     if (gameType === "") return;
-    let _data =
-      gameType === "bird" ? copyJson(allBirdData) : copyJson(allPlantData);
+    let _data = getDataFromGameType(gameType);
 
     shuffle(_data);
     let delCount = Math.floor(_data.length * (percentPlay / 100));
@@ -98,7 +97,26 @@ const ImgGame = ({ gameOver, gameType, setScore, setTotal, percentPlay }) => {
 
   // const da = data.filter((d) => d.category3 === "Asteraceae");
 
-  const isBirds = gameType === "bird";
+  let leftText = "";
+  let question = "";
+  let nextText = "";
+  if (gameType === "plant") {
+    leftText = "plöntur";
+    question = "planta";
+    nextText = "Næsta planta";
+  } else if (gameType === "bird") {
+    leftText = "fuglar";
+    question = "fugl";
+    nextText = "Næsti fugl";
+  } else if (gameType === "geo") {
+    leftText = "spurningar";
+    nextText = "Næsta spurning";
+    question =
+      data.length > 0
+        ? getGeoQuestionFromCategory(data[allIdx[0]].category)
+        : "";
+  }
+
   return (
     <div>
       <div className="imgs-container">
@@ -108,7 +126,7 @@ const ImgGame = ({ gameOver, gameType, setScore, setTotal, percentPlay }) => {
         <span
           style={{ width: "25%", display: "inline-block", textAlign: "left" }}
         >
-          {allIdx?.length ?? 0} {isBirds ? "fuglar" : "plöntur"} eftir
+          {allIdx?.length ?? 0} {leftText} eftir
         </span>
         <span
           style={{
@@ -119,8 +137,7 @@ const ImgGame = ({ gameOver, gameType, setScore, setTotal, percentPlay }) => {
             fontWeight: "bold",
           }}
         >
-          Hvaða {isBirds ? "fugl" : "planta"} er {data[active]?.name ?? "unkno"}
-          ?
+          Hvaða {question} er {data[active]?.name ?? "unkno"}?
         </span>
         <span
           style={{ width: "25%", display: "inline-block", textAlign: "right" }}
@@ -159,11 +176,7 @@ const ImgGame = ({ gameOver, gameType, setScore, setTotal, percentPlay }) => {
           style={{ marginBottom: 15 }}
         >
           <button className={`btn `} onClick={() => roundFinished()}>
-            {allIdx.length === 1
-              ? "Ljúka leik"
-              : isBirds
-              ? "Næsti fugl"
-              : "Næsta planta"}
+            {allIdx.length === 1 ? "Ljúka leik" : nextText}
           </button>
           <br />
           <span

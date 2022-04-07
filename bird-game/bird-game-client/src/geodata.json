@@ -1,0 +1,317 @@
+[
+    {
+        "name": "Stykkishólmur",
+        "id": "stykkisholmur",
+        "image": "images/stykkisholmur.jpg",
+        "category": "town",
+        "imgUrl": "https://imgur.com/7MFBMPH.jpg"
+    },
+    {
+        "name": "Ólafsvík",
+        "id": "olafsvik",
+        "image": "images/olafsvik.jpg",
+        "category": "town",
+        "imgUrl": "https://imgur.com/mRsTITn.jpg"
+    },
+    {
+        "name": "Snæfellsjökull",
+        "id": "",
+        "image": "images/snaefellsjokull.jpg",
+        "category": "glacier",
+        "imgUrl": "https://imgur.com/AktIIBw.jpg"
+    },
+    {
+        "name": "Langjökull",
+        "id": "",
+        "image": "images/langjokull.jpg",
+        "category": "glacier",
+        "imgUrl": "https://imgur.com/xN8H79T.jpg"
+    },
+    {
+        "name": "Hofsjökull",
+        "id": "",
+        "image": "images/hofsjokull.jpg",
+        "category": "glacier",
+        "imgUrl": "https://imgur.com/0sFVTYl.jpg"
+    },
+    {
+        "name": "Drangajökull",
+        "id": "",
+        "image": "images/drangajokull.jpg",
+        "category": "glacier",
+        "imgUrl": "https://imgur.com/fDuPmwa.jpg"
+    },
+    {
+        "name": "Vatnajökull",
+        "id": "",
+        "image": "images/vatnajokull.jpg",
+        "category": "glacier",
+        "imgUrl": "https://imgur.com/EJJGthS.jpg"
+    },
+    {
+        "name": "Mýrdalsjökull",
+        "id": "",
+        "image": "images/myrdalsjokull",
+        "category": "glacier",
+        "imgUrl": "https://imgur.com/7rGkKqx.jpg"
+    },
+    {
+        "name": "Eyjafjallajokull",
+        "id": "",
+        "image": "images/eyjafjallajokull.jpg",
+        "category": "glacier",
+        "imgUrl": "https://imgur.com/thVxrxv.jpg"
+    },
+    {
+        "name": "Tindfjallajokull",
+        "id": "",
+        "image": "images/tindfjallajokull.jpg",
+        "category": "glacier",
+        "imgUrl": "https://imgur.com/vTi7STw.jpg"
+    },
+    {
+        "name": "Eiríksjökull",
+        "id": "",
+        "image": "images/eiriksjokull.jpg",
+        "category": "glacier",
+        "imgUrl": "https://imgur.com/5m3XQQH.jpg"
+    },
+    {
+        "name": "Raufarhöfn",
+        "id": "",
+        "image": "images/raufarhofn.jpg",
+        "category": "town",
+        "imgUrl": "https://imgur.com/IGvwC7W.jpg"
+    },
+    {
+        "name": "Kópasker",
+        "id": "",
+        "image": "images/kopasker.jpg",
+        "category": "town",
+        "imgUrl": "https://imgur.com/S2bi9tm.jpg"
+    },
+    {
+        "name": "Bakkaflói",
+        "id": "",
+        "image": "images/bakkafloi.jpg",
+        "category": "fjord",
+        "imgUrl": "https://imgur.com/TGEnCtX.jpg"
+    },
+    {
+        "name": "Þistilfjörður",
+        "id": "",
+        "image": "images/thistilfjordur.jpg",
+        "category": "fjord",
+        "imgUrl": "https://imgur.com/JhtZSUZ.jpg"
+    },
+    {
+        "name": "Vopnafjörður",
+        "id": "",
+        "image": "images/vopnafjordur.jpg",
+        "category": "fjord",
+        "imgUrl": "https://imgur.com/TovCUy9.jpg"
+    },
+    {
+        "name": "Seyðisfjörður",
+        "id": "",
+        "image": "images/seydisfjordur.jpg",
+        "category": "fjord",
+        "imgUrl": "https://imgur.com/QSy2zto.jpg"
+    },
+    {
+        "name": "Mjóifjörður",
+        "id": "",
+        "image": "images/mjoifjordur.jpg",
+        "category": "fjord",
+        "imgUrl": "https://imgur.com/U88Gfup.jpg"
+    },
+    {
+        "name": "Reyðarfjörður",
+        "id": "",
+        "image": "images/reydarfjordur.jpg",
+        "category": "fjord",
+        "imgUrl": "https://imgur.com/m3xyykA.jpg"
+    },
+    {
+        "name": "Eskifjörður",
+        "id": "",
+        "image": "images/eskifjordur.jpg",
+        "category": "fjord",
+        "imgUrl": "https://imgur.com/a4AlcHY.jpg"
+    },
+    {
+        "name": "Eyjafjörður",
+        "id": "",
+        "image": "images/eyjafjordur.jpg",
+        "category": "fjord",
+        "imgUrl": "https://imgur.com/g4ejchV.jpg"
+    },
+    {
+        "name": "Skagafjörður",
+        "id": "",
+        "image": "images/skagafjordur.jpg",
+        "category": "fjord",
+        "imgUrl": "https://imgur.com/mKnPuol.jpg"
+    },
+    {
+        "name": "Skjálfandi",
+        "id": "",
+        "image": "images/skjalfandi.jpg",
+        "category": "fjord",
+        "imgUrl": "https://imgur.com/RLG8RHj.jpg"
+    },
+    {
+        "name": "Öxarfjörður",
+        "id": "",
+        "image": "images/oxnafjordur.jpg",
+        "category": "fjord",
+        "imgUrl": "https://imgur.com/atV2y8v.jpg"
+    },
+    {
+        "name": "Blöndulón",
+        "id": "",
+        "image": "images/blondulon.jpg",
+        "category": "lake",
+        "imgUrl": "https://imgur.com/IZKA2MZ.jpg"
+    },
+    {
+        "name": "Mývatn",
+        "id": "",
+        "image": "images/myvatn.jpg",
+        "category": "lake",
+        "imgUrl": "https://imgur.com/k3lNmNh.jpg"
+    },
+    {
+        "name": "Þingvallavatn",
+        "id": "",
+        "image": "images/thingvallavatn.jpg",
+        "category": "lake",
+        "imgUrl": "https://imgur.com/i0VmB6d.jpg"
+    },
+    {
+        "name": "Apavatn",
+        "id": "",
+        "image": "images/apavatn.jpg",
+        "category": "lake",
+        "imgUrl": "https://imgur.com/0VAcHH7.jpg"
+    },
+    {
+        "name": "Hvolsvöllur",
+        "id": "",
+        "image": "images/hvolsvollur.jpg",
+        "category": "town",
+        "imgUrl": "https://imgur.com/EtiuFFI.jpg"
+    },
+    {
+        "name": "Markarfljót",
+        "id": "",
+        "image": "images/markarfljot.jpg",
+        "category": "river",
+        "imgUrl": "https://imgur.com/yZ9xcCm.jpg"
+    },
+    {
+        "name": "Þjórsá",
+        "id": "",
+        "image": "images/thjorsa.jpg",
+        "category": "river",
+        "imgUrl": "https://imgur.com/RSA0Wvn.jpg"
+    },
+    {
+        "name": "Ölfusá",
+        "id": "",
+        "image": "images/olfusa.jpg",
+        "category": "river",
+        "imgUrl": "https://imgur.com/yxj3ivE.jpg"
+    },
+    {
+        "name": "Kvíslavatn",
+        "id": "",
+        "image": "images/kvislavatn.jpg",
+        "category": "lake",
+        "imgUrl": "https://imgur.com/oK6fD9A.jpg"
+    },
+    {
+        "name": "Jökulsá á fjöllum",
+        "id": "",
+        "image": "images/jokulsaafjollum.jpg",
+        "category": "river",
+        "imgUrl": "https://imgur.com/29HJacU.jpg"
+    },
+    {
+        "name": "Lagarfljót",
+        "id": "",
+        "image": "images/lagarfljot.jpg",
+        "category": "river",
+        "imgUrl": "https://imgur.com/sjCBxVb.jpg"
+    },
+    {
+        "name": "Blanda",
+        "id": "",
+        "image": "images/blanda.jpg",
+        "category": "river",
+        "imgUrl": "https://imgur.com/IqzeYDN.jpg"
+    },
+    {
+        "name": "Skaftá",
+        "id": "",
+        "image": "images/skafta.jpg",
+        "category": "river",
+        "imgUrl": "https://imgur.com/4qzfbRU.jpg"
+    },
+    {
+        "name": "Skaftafellsá",
+        "id": "",
+        "image": "images/skafta.jpg",
+        "category": "river",
+        "imgUrl": "https://imgur.com/8DOY0iq.jpg"
+    },
+    {
+        "name": "Öræfajökull",
+        "id": "",
+        "image": "images/oraefajokull.jpg",
+        "category": "glacier",
+        "imgUrl": "https://imgur.com/cd410N0.jpg"
+    },
+    {
+        "name": "Héraðsvötn",
+        "id": "",
+        "image": "images/heradsvotn.jpg",
+        "category": "river",
+        "imgUrl": "https://imgur.com/I8aXmD5.jpg"
+    },
+    {
+        "name": "Faxaflói",
+        "id": "",
+        "image": "images/faxafloi.jpg",
+        "category": "fjord",
+        "imgUrl": "https://imgur.com/wLwaVjr.jpg"
+    },
+    {
+        "name": "Hvalfjörður",
+        "id": "",
+        "image": "images/hvalfjordur.jpg",
+        "category": "fjord",
+        "imgUrl": "https://imgur.com/5nGFmFp.jpg"
+    },
+    {
+        "name": "Borgarfjörður",
+        "id": "",
+        "image": "images/borgarfjordur.jpg",
+        "category": "fjord",
+        "imgUrl": "https://imgur.com/895KXO5.jpg"
+    },
+    {
+        "name": "Jökulsá í Lóni",
+        "id": "",
+        "image": "images/jokulsailoni.jpg",
+        "category": "river",
+        "imgUrl": "https://imgur.com/P7DdiAj.jpg"
+    },
+    {
+        "name": "Þórisvatn",
+        "id": "",
+        "image": "images/",
+        "category": "á",
+        "imgUrl": "https://imgur.com/CiMeues.jpg"
+    }
+]

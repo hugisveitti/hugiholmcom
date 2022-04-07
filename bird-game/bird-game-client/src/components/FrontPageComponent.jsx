@@ -5,7 +5,12 @@ import GameOverComponent from "./GameOverComponent";
 import GameTypeSelect from "./GameTypeSelect";
 import HighscoreComponent from "./HighscoreComponent";
 import ImgGame from "./ImgGame";
-import { getLocalBestScore, saveLocalBestScore } from "./utils";
+import {
+  capitalize,
+  getLocalBestScore,
+  getTitleFromGameType,
+  saveLocalBestScore,
+} from "./utils";
 
 const percentPlayKey = "percentPlay";
 const FrontPage = () => {
@@ -23,6 +28,11 @@ const FrontPage = () => {
     pb: getLocalBestScore("plant"),
   });
 
+  const [geoData, setGeoData] = useState({
+    data: undefined,
+    pb: getLocalBestScore("geo"),
+  });
+
   const [perc, setPerc] = useState(
     window.localStorage.getItem(percentPlayKey) ?? 100
   );
@@ -37,6 +47,8 @@ const FrontPage = () => {
         });
       } else if (_gameType === "plant") {
         setPlantData({ data: d, pb });
+      } else if (_gameType === "geo") {
+        setGeoData({ data: d, pb });
       }
     });
   };
@@ -80,7 +92,10 @@ const FrontPage = () => {
 
   return (
     <div className="container">
-      <h3 className="center">Fugla leikurinn</h3>
+      <h3 className="center">
+        {gameType === "" ? "Fugla" : capitalize(getTitleFromGameType(gameType))}{" "}
+        leikurinn
+      </h3>
       {gameOver ? (
         <GameOverComponent
           score={score}
@@ -96,8 +111,10 @@ const FrontPage = () => {
             }
             if (gameType === "bird") {
               setBirdData({ data: undefined, pb });
-            } else {
+            } else if (gameType === "plant") {
               setPlantData({ data: undefined, pb });
+            } else if (gameType === "geo") {
+              setGeoData({ data: undefined, pb });
             }
             saveHighscore(gameType, score, total, name).then(() => {
               handleGetHi(gameType);
@@ -129,6 +146,7 @@ const FrontPage = () => {
 
       <HighscoreComponent gameType={"bird"} data={birdData} />
       <HighscoreComponent gameType={"plant"} data={plantData} />
+      <HighscoreComponent gameType={"geo"} data={geoData} />
     </div>
   );
 };

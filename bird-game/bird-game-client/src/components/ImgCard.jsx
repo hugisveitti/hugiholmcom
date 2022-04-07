@@ -8,6 +8,8 @@ const ImgCard = ({ card, correct, incorrect, roundOver, onClick }) => {
     cl += " incorrect";
   }
 
+  let url = card.thumb ?? card.imgUrl;
+
   return (
     <div
       className="img-container"
@@ -15,7 +17,7 @@ const ImgCard = ({ card, correct, incorrect, roundOver, onClick }) => {
         onClick();
       }}
     >
-      <img src={card.thumb ?? card.imgUrl} alt="" className={cl} />
+      <img src={url} alt="" className={cl} />
     </div>
   );
 };

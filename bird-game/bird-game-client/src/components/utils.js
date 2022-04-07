@@ -24,10 +24,8 @@ export const itemInArray = (item, arr) => {
     return false
 }
 
-const birdBestScoreKey = "bestBirdScore"
-const plantBestScoreKey = "bestPlantScore"
 export const saveLocalBestScore = (gameType, score) => {
-    const key = gameType === "bird" ? birdBestScoreKey : plantBestScoreKey
+    const key = getKeyFromGameType(gameType)
     const oldBest = getLocalBestScore(gameType)
 
     if (score > oldBest) {
@@ -38,11 +36,87 @@ export const saveLocalBestScore = (gameType, score) => {
 }
 
 export const getLocalBestScore = (gameType) => {
-    const key = gameType === "bird" ? birdBestScoreKey : plantBestScoreKey
+    const key = getKeyFromGameType(gameType)
 
     return window.localStorage.getItem(key) ?? 0
 }
 
+const allBirdData = require("../data.json");
+const allPlantData = require("../plantdata.json");
+const allGeoData = require("../geodata.json");
+console.log("geo", allGeoData)
+const copyJson = (j) => {
+    return JSON.parse(JSON.stringify(j));
+};
+
+export const getGeoQuestionFromCategory = (cate) => {
+    console.log("cate", cate)
+    switch (cate) {
+        case "river":
+            return "á"
+        case "lake":
+            return "stöðuvatn"
+        case "glacier":
+            return "jökull"
+        case "fjord":
+            return "fjörður eða flói"
+        case "town":
+            return "bær"
+
+        default:
+            return cate
+    }
+}
+
+/**
+ * 
+ * @param {string} str string to capitalize
+ */
+export const capitalize = (str) => {
+    str = str.toLowerCase()
+    let f = str.substring(0, 1)
+    let rest = str.substring(1)
+    return f.toUpperCase() + rest
+}
+
+export const getDataFromGameType = (gameType) => {
+    switch (gameType) {
+        case "bird":
+            return copyJson(allBirdData)
+        case "plant":
+            return copyJson(allPlantData);
+        case "geo":
+            return copyJson(allGeoData)
+        default:
+            return copyJson(allGeoData);
+    }
+}
+
+export const getKeyFromGameType = (gameType) => {
+    switch (gameType) {
+        case "bird":
+            return "bestBirdScore"
+        case "plant":
+            return "bestPlantScore"
+        case "geo":
+            return "bestGeoScore"
+        default:
+            return "óþekktur"
+    }
+}
+
+export const getTitleFromGameType = (gameType) => {
+    switch (gameType) {
+        case "bird":
+            return "fugla"
+        case "plant":
+            return "plöntu"
+        case "geo":
+            return "landafræði"
+        default:
+            return "óþekktur"
+    }
+}
 
 
 const plantCategories = {

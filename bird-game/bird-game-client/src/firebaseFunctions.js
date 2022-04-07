@@ -1,5 +1,5 @@
 // Import the functions you need from the SDKs you need
-import { addDoc, collection, getDocs, getFirestore, limit, limitToLast, orderBy, query, Timestamp } from "@firebase/firestore";
+import { addDoc, collection, deleteDoc, doc, getDocs, getFirestore, limit, limitToLast, orderBy, query, Timestamp } from "@firebase/firestore";
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -22,11 +22,25 @@ const db = getFirestore(app)
 
 const birdPath = "bird-highscore"
 const plantPath = "plant-highscore"
+const geoPath = "geo-highscore"
+
+const getPathFromGameType = (gameType) => {
+  switch (gameType) {
+    case "plant":
+      return plantPath
+    case "bird":
+      return birdPath
+    case "geo":
+      return geoPath
+    default:
+      return "no-path"
+  }
+}
 
 export const getHighscores = async (gameType) => {
   return new Promise(async (resolve, reject) => {
 
-    const path = gameType === "plant" ? plantPath : birdPath
+    const path = getPathFromGameType(gameType)
 
     const ref = collection(db, path)
     const q = query(ref, orderBy("score", "desc"), limit(25))
@@ -34,6 +48,10 @@ export const getHighscores = async (gameType) => {
     let arr = []
     docs.forEach(element => {
       arr.push(element.data())
+      if (element.data().score === 99) {
+        console.log(element.id)
+      }
+
     });
     resolve(arr)
   })
@@ -44,7 +62,7 @@ export const getHighscores = async (gameType) => {
 export const saveHighscore = (gameType, score, total, name) => {
   return new Promise((resolve, reject) => {
 
-    const path = gameType === "plant" ? plantPath : birdPath
+    const path = getPathFromGameType(gameType)
 
     addDoc(collection(db, path), {
       name, score, date: Timestamp.now(), total

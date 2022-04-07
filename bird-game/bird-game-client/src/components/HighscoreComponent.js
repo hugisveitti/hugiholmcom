@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react"
-import { getLocalBestScore } from "./utils"
+import { getLocalBestScore, getTitleFromGameType } from "./utils"
+
+
 
 const HighscoreComponent = ({ gameType, data }) => {
 
@@ -9,7 +11,7 @@ const HighscoreComponent = ({ gameType, data }) => {
         setBp(best)
     }, [])
 
-    const title = gameType === "bird" ? "fugla" : "plöntu"
+    const title = getTitleFromGameType(gameType)
     return (
         <div className="center" style={{ marginTop: 15 }}>
             <span style={{ color: "gray", fontSize: 20 }}>

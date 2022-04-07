@@ -14,8 +14,15 @@ const GameTypeSelect = ({ onSelect, inGame, perc, setPerc }) => {
       >
         Fuglar
       </button>
-      <button className="btn" onClick={() => onSelect("plant")}>
+      <button
+        className="btn"
+        style={{ marginRight: 15 }}
+        onClick={() => onSelect("plant")}
+      >
         Plöntur
+      </button>
+      <button className="btn" onClick={() => onSelect("geo")}>
+        Landafræði
       </button>
       <br />
       <label>Spila {val} % </label>
