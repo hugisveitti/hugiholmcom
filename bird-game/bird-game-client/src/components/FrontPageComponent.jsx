@@ -56,6 +56,7 @@ const FrontPage = () => {
   useEffect(() => {
     handleGetHi("bird");
     handleGetHi("plant");
+    handleGetHi("geo");
   }, []);
 
   const renderGame = () => {

@@ -131,3 +131,20 @@ body {
   margin: auto;
   margin-top: 15px;
 }
+
+.modal {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: #437871;
+  color: white;
+  padding: 10px;
+}
+
+.close-btn {
+  width: 50px;
+  font-family: "Courier New", Courier, monospace;
+  margin: 0 !important;
+  float: right;
+}

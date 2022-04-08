@@ -1,5 +1,5 @@
 // Import the functions you need from the SDKs you need
-import { addDoc, collection, deleteDoc, doc, getDocs, getFirestore, limit, limitToLast, orderBy, query, Timestamp } from "@firebase/firestore";
+import { addDoc, collection, getDocs, getFirestore, limit, orderBy, query, Timestamp } from "@firebase/firestore";
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -53,6 +53,7 @@ export const getHighscores = async (gameType) => {
       }
 
     });
+    console.log("got highscore", gameType)
     resolve(arr)
   })
 }

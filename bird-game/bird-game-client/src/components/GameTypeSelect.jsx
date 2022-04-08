@@ -21,8 +21,17 @@ const GameTypeSelect = ({ onSelect, inGame, perc, setPerc }) => {
       >
         Plöntur
       </button>
-      <button className="btn" onClick={() => onSelect("geo")}>
+      <button
+        style={{ marginRight: 15 }}
+        className="btn"
+        onClick={() => onSelect("geo")}
+      >
         Landafræði
+      </button>
+      <button className="btn">
+        <a href="/island" style={{ textDecoration: "none", color: "black" }}>
+          Skoða ísland
+        </a>
       </button>
       <br />
       <label>Spila {val} % </label>

@@ -7,5 +7,14 @@ module.exports = (app) => {
         res.sendFile(path.join(__dirname + "/bird-game-client/build/index.html"));
     });
 
+    app.get("/island/", (req, res) => {
+        res.sendFile(path.join(__dirname + "/bird-game-client/build/index.html"));
+    });
+
     app.use(express.static(__dirname + "/bird-game-client/build"));
+
+    app.get("/island/models/island.glb", (req, res) => {
+        res.sendFile(path.join(__dirname + "/models/island.glb"))
+    })
 };
+

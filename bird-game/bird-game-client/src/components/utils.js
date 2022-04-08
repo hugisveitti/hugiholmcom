@@ -44,11 +44,16 @@ export const getLocalBestScore = (gameType) => {
 const allBirdData = require("../data.json");
 const allPlantData = require("../plantdata.json");
 const allGeoData = require("../geodata.json");
-console.log("geo", allGeoData)
+
 const copyJson = (j) => {
     return JSON.parse(JSON.stringify(j));
 };
 
+/**
+ * 
+ * @param {"river" | "town" | "lake" | "fjord" | "glacier"} cate 
+ * @returns 
+ */
 export const getGeoQuestionFromCategory = (cate) => {
     console.log("cate", cate)
     switch (cate) {
@@ -79,6 +84,11 @@ export const capitalize = (str) => {
     return f.toUpperCase() + rest
 }
 
+/**
+ * 
+ * @param {"bird" | "plant" | "geo"} gameType 
+ * @returns 
+ */
 export const getDataFromGameType = (gameType) => {
     switch (gameType) {
         case "bird":
@@ -92,6 +102,11 @@ export const getDataFromGameType = (gameType) => {
     }
 }
 
+/**
+ * 
+ * @param {"bird" | "plant" | "geo"} gameType 
+ * @returns 
+ */
 export const getKeyFromGameType = (gameType) => {
     switch (gameType) {
         case "bird":
@@ -105,6 +120,11 @@ export const getKeyFromGameType = (gameType) => {
     }
 }
 
+/**
+ * 
+ * @param {"bird" | "plant" | "geo"} gameType 
+ * @returns 
+ */
 export const getTitleFromGameType = (gameType) => {
     switch (gameType) {
         case "bird":
