@@ -148,3 +148,32 @@ body {
   margin: 0 !important;
   float: right;
 }
+
+.loading-container {
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background-color: black;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.progress-container {
+  height: 25px;
+  width: 200px;
+  outline: 3px solid white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.progress-bar {
+  margin-top: 1px;
+  height: 23px;
+  background-color: white;
+  color: white;
+  display: inline-block;
+}

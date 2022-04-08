@@ -2,24 +2,57 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
+const loadingDiv = document.createElement("div");
+loadingDiv.classList.add("loading-container");
+loadingDiv.classList.add("hide");
+document.body.appendChild(loadingDiv);
+
+const progressContainer = document.createElement("div");
+progressContainer.classList.add("progress-container");
+loadingDiv.appendChild(progressContainer);
+
+const progressBar = document.createElement("div");
+progressBar.classList.add("progress-bar");
+progressContainer.appendChild(progressBar);
+
+let pW = 200;
+
+const setRatio = (num) => {
+  progressBar.setAttribute(
+    "style",
+    `
+    width:${num * pW}px
+  `
+  );
+  if (num === 1) {
+    loadingDiv.classList.add("hide");
+  } else {
+    loadingDiv.classList.remove("hide");
+  }
+};
+
 const loadIsland = (scene) => {
   const loader = new GLTFLoader();
   const fn = "island/models/island.glb";
   const path =
     window.location.hostname === "localhost" ? "http://localhost:80/" + fn : fn;
-  loader.load(path, (gltf) => {
-    scene.add(gltf.scene);
-    console.log("scene", gltf.scene);
-    for (let item of gltf.scene.children) {
-      console.log(item);
-      if (item.type === "Mesh") {
-        // scene.add(item);
-        item.castShadow = true;
-        item.receiveShadow = true;
-        item.material = item.material.clone();
+  loader.load(
+    path,
+    (gltf) => {
+      scene.add(gltf.scene);
+      for (let item of gltf.scene.children) {
+        if (item.type === "Mesh") {
+          // scene.add(item);
+          item.castShadow = true;
+          item.receiveShadow = true;
+          item.material = item.material.clone();
+        }
       }
+    },
+    (e) => {
+      setRatio(e.loaded / e.total);
     }
-  });
+  );
 };
 
 const addLights = (scene) => {
@@ -30,7 +63,6 @@ const addLights = (scene) => {
   pLigth.shadow.camera.fov = 2000;
   window.addEventListener("keypress", (e) => {
     const y = pLigth.position.y;
-    console.log("y", y);
     if (e.key === "a") {
       pLigth.position.setY(y + 10);
     } else if (e.key === "d") {
@@ -82,7 +114,7 @@ export const createIslandCanvas = () => {
   width = window.innerWidth;
   width = Math.min(window.innerWidth, width);
   height = 800;
-  height = Math.min(window.innerHeight * 0.8, height);
+  height = Math.min(window.innerHeight, height);
   height = window.innerHeight;
   camera = new THREE.PerspectiveCamera(70, width / height, 0.01, 2000);
   camera.position.z = 0;
@@ -117,6 +149,11 @@ export const createIslandCanvas = () => {
 
   renderer.domElement.addEventListener("click", () => {
     moveCamera = false;
+  });
+
+  renderer.domElement.addEventListener("touchstart", (e) => {
+    moveCamera = false;
+    shiftDown = e.touches.length > 1;
   });
   renderer.domElement.addEventListener("mousedown", () => handleClick(true));
   renderer.domElement.addEventListener("mouseup", () => handleClick(false));
@@ -220,7 +257,7 @@ const handleResize = () => {
   width = window.innerWidth;
   width = Math.min(window.innerWidth, width);
   height = 800;
-  height = Math.min(window.innerHeight * 0.8, height);
+  height = Math.min(window.innerHeight, height);
 
   renderer.setSize(width, height);
   camera.aspect = width / height;
@@ -231,7 +268,6 @@ const getPointOfClick = () => {
   raycaster.setFromCamera(mouse, camera);
   const intersects = raycaster.intersectObjects(scene.children, true);
   if (intersects.length > 0) {
-    console.log(intersects[0]);
     return intersects[0].point;
   }
 };
