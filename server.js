@@ -32,6 +32,10 @@ app.get("/takk", (req, res) => {
   res.send("Thank you for the donation!")
 })
 
+app.get("/privacy-vedur", (req, res) => {
+  res.send("We don't collect any data in Betra Veður app.");
+})
+
 require("./flag-game/flag-game-server")(app);
 require("./map-game/map-game-server.js")(app, server);
 //require("./box-fly/box-fly-server.js")(app, server);
