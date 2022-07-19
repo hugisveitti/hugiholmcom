@@ -94,6 +94,8 @@ const pages = [
   },
 ];
 
+
+
 const FrontPage = () => {
   const classes = useStyles();
   const xsSize = 12;
@@ -101,7 +103,22 @@ const FrontPage = () => {
   const lgSize = 3;
   return (
     <Grid container className={classes.root} spacing={0}>
-      <Grid item xs={1} lg={3} />
+ 
+      {pages.map((page) => (
+        <PageComponent
+          pageUrl={page.pageUrl}
+          imageUrl={page.imageUrl}
+          xsSize={xsSize}
+          smSize={smSize}
+          lgSize={lgSize}
+          key={page.pageUrl}
+          cardText={page.cardText}
+          cardTitle={page.name}
+        />
+      ))}
+        <Grid item xs={12}  />
+
+        <Grid item xs={1} lg={3} />
       <Grid item xs={10} lg={6}>
         <Paper
           style={{
@@ -113,8 +130,7 @@ const FrontPage = () => {
           }}
         >
           <Typography>
-            My name is Hugi Holm and I recently graduated with a master's degree
-            in Computer Science from the University of Copenhagen.
+            My name is Hugi Holm, I work as a fullstack developer at HorseDay. I hold a MSc in Computer Science from the University of Copenhagen.
           </Typography>
           <br />
           <Divider />
@@ -142,18 +158,6 @@ const FrontPage = () => {
         </Paper>
       </Grid>
       <Grid item xs={1} lg={3} />
-      {pages.map((page) => (
-        <PageComponent
-          pageUrl={page.pageUrl}
-          imageUrl={page.imageUrl}
-          xsSize={xsSize}
-          smSize={smSize}
-          lgSize={lgSize}
-          key={page.pageUrl}
-          cardText={page.cardText}
-          cardTitle={page.name}
-        />
-      ))}
     </Grid>
   );
 };
